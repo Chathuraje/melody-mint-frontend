@@ -1,0 +1,29 @@
+.navigation-container {
+  align-items: flex-start;
+  display: inline-flex;
+  gap: 24px; /* Adjust gap between items if needed */
+  position: relative;
+  text-align: center;
+}
+
+.navigation-container .menu-items {
+  color: #fff; /* Adjust default text color */
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 24px;
+  margin-top: -1px; /* Adjust margin if needed */
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  width: -moz-fit-content;
+  width: fit-content;
+  text-decoration: none;
+  padding: 8px 13px; /* Adjust padding as desired */
+  border-radius: 4px; /* Add rounded corners for a smoother look */
+}
+
+.navigation-container .menu-items:hover {
+  background-color: #e8edfb; /* Background color on hover */
+  color: #000; /* Darken text color on hover */
+}

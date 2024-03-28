@@ -1,0 +1,19 @@
+.main-button {
+  display: flex;
+  height: 44px;
+  padding: 10px 22px;
+  align-items: center;
+  gap: 2px;
+  border-radius: 8px;
+  border: 1px solid var(--Primary-Blue---500, #1d4ed8);
+  background: var(--Primary-Blue---500, #1d4ed8);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.main-button:hover {
+  background: var(--Primary-Blue---800, #0c2257);
+}
