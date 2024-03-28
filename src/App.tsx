@@ -1,8 +1,16 @@
+import { Box, CssBaseline, ThemeProvider } from "@mui/material";
+import { theme } from "@/theme";
+
 function App() {
   return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className="app">
+        <CssBaseline />
+        <Box width="100%" height="100%">
+          Hello!
+        </Box>
+      </div>
+    </ThemeProvider>
   );
 }
 
