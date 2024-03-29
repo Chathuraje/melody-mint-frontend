@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui";
-import { FundraiserSection } from "@/layouts/FundraiserSection/FundraiserSection";
+import { FundraiserSection } from "@/layouts/Global/FundraiserSection/FundraiserSection";
 import { Typography, Unstable_Grid2 as Grid } from "@mui/material";
 
 export const HomeFundraise = () => {

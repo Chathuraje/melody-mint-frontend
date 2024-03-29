@@ -1,6 +1,7 @@
 import { Outlet, createBrowserRouter } from "react-router-dom";
 import { Home } from "./Home/Home";
 import App from "@/App";
+import { Fundraisers } from "./Fundraisers/Fundraisers";
 
 export const routes = [
   {
@@ -14,7 +15,7 @@ export const routes = [
       },
       {
         path: "/fundraisers",
-        element: <div>fundraisers</div>,
+        element: <Fundraisers />,
         title: "Fundraisers",
         main: true,
       },
