@@ -1,9 +1,8 @@
-import { Grid } from "@mui/material";
+import { Box, Container, Unstable_Grid2 as Grid } from "@mui/material";
 
-import "./Hero.css";
 import HeroImage from "@/assets/homepage/hero-image.webp";
 import HeroBack from "@/assets/homepage/hero-back.webp";
-import TextWrapper from "./TextWrapper";
+import { TextWrapper } from "./TextWrapper";
 
 export const Hero = () => {
   const HeroBackStyle = {
@@ -14,32 +13,23 @@ export const Hero = () => {
   };
 
   return (
-    <Grid
-      marginTop={-11.1}
-      display="flex"
-      style={HeroBackStyle}
-      padding="0 0 0 65px"
-      width="100%"
-      height="100vh"
-    >
-      <Grid container>
-        <Grid
-          xs={6}
-          display="flex"
-          flexDirection="column"
-          justifyContent="center"
-        >
-          <TextWrapper />
+    <Grid display="flex" style={HeroBackStyle}>
+      <Container>
+        <Grid container display="flex" flexDirection="row" alignItems="center">
+          <Grid display="flex" md={7}>
+            <TextWrapper />
+          </Grid>
+          <Grid display="flex" md={5} alignItems="flex-end">
+            <Box
+              component="img"
+              src={HeroImage}
+              alt="Hero Image"
+              height="100%"
+              width="100%"
+            />
+          </Grid>
         </Grid>
-        <Grid
-          xs={6}
-          display="flex"
-          flexDirection="column"
-          justifyContent="flex-end"
-        >
-          <img src={HeroImage} alt="Hero Image" className="hero-image" />
-        </Grid>
-      </Grid>
+      </Container>
     </Grid>
   );
 };

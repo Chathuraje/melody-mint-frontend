@@ -1,13 +1,6 @@
-.navigation-container {
-  align-items: flex-start;
-  display: inline-flex;
-  gap: 24px; /* Adjust gap between items if needed */
-  position: relative;
-  text-align: center;
-}
-
-.navigation-container .menu-items {
-  color: #fff; /* Adjust default text color */
+.menu-items {
+  position: fixed;
+  color: black; /* Adjust default text color */
   font-size: 16px;
   font-weight: 400;
   letter-spacing: 0;
@@ -23,7 +16,7 @@
   border-radius: 4px; /* Add rounded corners for a smoother look */
 }
 
-.navigation-container .menu-items:hover {
+.menu-items:hover {
   background-color: #e8edfb; /* Background color on hover */
   color: #000; /* Darken text color on hover */
 }

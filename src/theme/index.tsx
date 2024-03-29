@@ -1,17 +1,4 @@
 import { createTheme } from "@mui/material";
-
-// indigo: {
-//     100: "#d2dcf7",
-//     200: "#a5b8ef",
-//     300: "#7795e8",
-//     400: "#4a71e0",
-//     500: "#1d4ed8",
-//     600: "#173ead",
-//     700: "#112f82",
-//     800: "#0c1f56",
-//     900: "#06102b"
-// },
-
 export const theme = createTheme({
   palette: {
     mode: "light",
@@ -27,6 +14,53 @@ export const theme = createTheme({
     },
     error: {
       main: "#E73A3A",
+    },
+  },
+  typography: {
+    fontFamily: "Poppins, sans-serif",
+    h1: {
+      fontSize: "55px",
+      fontStyle: "normal",
+      fontWeight: "600",
+      lineHeight: "normal",
+      letterSpacing: "-2.4px",
+    },
+    h2: {
+      fontSize: "42px",
+      fontStyle: "normal",
+      fontWeight: "600",
+      lineHeight: "72px",
+    },
+    h3: {
+      fontSize: "42px",
+      fontStyle: "normal",
+      fontWeight: "600",
+      lineHeight: "56px",
+    },
+    h4: {
+      fontSize: "32px",
+      fontStyle: "normal",
+      fontWeight: "600",
+      lineHeight: "56px",
+    },
+    h5: {
+      fontSize: "20px",
+      fontStyle: "normal",
+      fontWeight: "600",
+      lineHeight: "24px",
+    },
+    subtitle1: {
+      color: "#FFFFFFB2",
+      fontSize: "18px",
+      fontWeight: "500",
+      letterSpacing: "normal",
+      lineHeight: "26px",
+    },
+    subtitle2: {
+      fontSize: "16px",
+      fontWeight: "400",
+      letterSpacing: "normal",
+      lineHeight: "26px",
     },
   },
 });

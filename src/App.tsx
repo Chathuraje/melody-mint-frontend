@@ -1,16 +1,10 @@
-import { ThemeProvider } from "@emotion/react";
-import { GlobalLayout } from "./layouts/GlobalLayout";
-import { theme } from "./theme";
-import { CssBaseline } from "@mui/material";
+import { GlobalLayout } from "@/layouts/GlobalLayout";
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <div className="app">
-        <CssBaseline />
-        <GlobalLayout />
-      </div>
-    </ThemeProvider>
+    <div className="app">
+      <GlobalLayout />
+    </div>
   );
 }
 

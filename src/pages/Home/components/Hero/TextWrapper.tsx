@@ -1,32 +1,32 @@
 import { Button } from "@/components/ui";
-import { Box } from "@mui/material";
+import { Box, Typography, Unstable_Grid2 as Grid } from "@mui/material";
 
-const TextWrapper = () => {
+export const TextWrapper = () => {
+  const HeaderTextStyle = {
+    background:
+      "-webkit-linear-gradient(180deg, #fff 30%, rgba(255, 255, 255, 0.75) 90%)",
+    webkitBackgroundClip: "text",
+    backgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+  };
+
   return (
-    <Box
-      alignItems="flex-start"
-      display="flex"
+    <Grid
       flexDirection="column"
-      gap="42px"
-      width="100%"
+      alignItems="left"
+      justifyContent="center"
+      gap="32px"
     >
-      <h1 className="hero-title">Invest & Earn with Music</h1>
-      <p className="hero-description">
+      <Typography variant="h1" style={HeaderTextStyle}>
+        Invest & Earn with Music
+      </Typography>
+      <Typography variant="subtitle1">
         Invest in Funds created by Music artist and earn royalties
-      </p>
-      <Box
-        alignItems="center"
-        display="inline-flex"
-        flex="0 0 auto"
-        gap="22px"
-        justifyContent="center"
-        position="relative"
-      >
+      </Typography>
+      <Box alignItems="left" display="flex" gap="22px" justifyContent="left">
         <Button text="Start for free" typeofButtons="secondary" />
         <Button text="Join as an artist" typeofButtons="tertiary" />
       </Box>
-    </Box>
+    </Grid>
   );
 };
-
-export default TextWrapper;

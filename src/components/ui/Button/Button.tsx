@@ -2,7 +2,7 @@ import { Button as MuiButton } from "@mui/material";
 
 interface ButtonProps {
   text: string;
-  typeofButtons: "main" | "secondary" | "tertiary";
+  typeofButtons: "main" | "secondary" | "tertiary" | "tertiary-dark";
 }
 
 export const Button = (props: ButtonProps) => {
@@ -39,6 +39,18 @@ export const Button = (props: ButtonProps) => {
         "&:hover": {
           backgroundColor: "secondary.light",
           color: "secondary.dark",
+        },
+      };
+      break;
+    case "tertiary-dark":
+      buttonStyles = {
+        backgroundColor: "transparent",
+        border: "1px solid",
+        borderColor: "secondary.dark",
+        color: "secondary.dark",
+        "&:hover": {
+          backgroundColor: "secondary.dark",
+          color: "secondary.light",
         },
       };
       break;
