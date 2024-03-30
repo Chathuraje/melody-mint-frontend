@@ -1,20 +1,23 @@
 import { Grid, Typography } from "@mui/material";
 
-export const PopupLeft = () => {
+interface PopupLeftProp {
+  title: string;
+  subtitle: string;
+}
+
+export const PopupLeft = (props: PopupLeftProp) => {
   return (
     <Grid
       display="flex"
       flexDirection="column"
       alignItems="left"
-      margin="70px"
+      margin="35px"
       gap="20px"
     >
-      <Typography variant="h2" color="white" fontSize="50px">
-        Let’s Begin by choosing your role
+      <Typography variant="h2" color="white" fontSize="48px" lineHeight="1.4">
+        {props.title}
       </Typography>
-      <Typography variant="subtitle1">
-        The registration process starts with selecting your role
-      </Typography>
+      <Typography variant="subtitle1">{props.subtitle}</Typography>
     </Grid>
   );
 };

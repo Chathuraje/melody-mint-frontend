@@ -8,7 +8,6 @@ interface PopupIconBoxPops {
 export const PopupIconBox = (pops: PopupIconBoxPops) => {
   return (
     <Grid
-      xs={6}
       display="flex"
       gap="25px"
       flexDirection="column"

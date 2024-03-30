@@ -1,43 +1,41 @@
-import { Unstable_Grid2 as Grid } from "@mui/material";
-import { PopupLeft } from "./PopupLeft";
-import { PopupRight } from "../../../pages/Fundraisers/AddNewFundraisers/PopupRight";
+import { Container, Unstable_Grid2 as Grid, Paper } from "@mui/material";
+import { PopupContent } from "./PopupContent";
+import { createPortal } from "react-dom";
 
-export const Popups = () => {
-  return (
-    <Grid
-      container
-      xs={12}
-      display="flex"
-      flexDirection="column"
-      alignItems="left"
-      width="100%"
-      height="884px"
-    >
+interface PopupsProp {
+  open: boolean;
+  title: string;
+  subtitle: string;
+  onClose: () => void;
+  children: React.ReactNode;
+}
+
+export const Popups = (props: PopupsProp) => {
+  if (!props.open) return null;
+
+  return createPortal(
+    <Container>
       <Grid
-        xs={5}
-        display="flex"
-        flexDirection="column"
-        alignItems="left"
+        container
         justifyContent="center"
-        height="900px"
+        alignItems="center"
         style={{
-          background:
-            "var(--Gradient-Blue-gradient-2, linear-gradient(180deg, rgba(29, 78, 216, 0.57) 0%, rgba(29, 78, 216, 0.26) 45.51%, rgba(29, 78, 216, 0.17) 100%), #000)",
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          backgroundColor: "rgba(0, 0, 0, 0.5)", // semi-transparent black overlay
+          zIndex: 999999,
         }}
       >
-        <PopupLeft />
+        <Grid xs={10} sm={8} md={6} lg={8}>
+          <Paper elevation={3}>
+            <PopupContent {...props} />
+          </Paper>
+        </Grid>
       </Grid>
-
-      <Grid
-        xs={7}
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
-        justifyContent="center"
-        margin="auto"
-      >
-        <PopupRight />
-      </Grid>
-    </Grid>
+    </Container>,
+    document.getElementById("popup") as Element // Add type assertion
   );
 };
