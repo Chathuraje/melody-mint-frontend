@@ -12,10 +12,7 @@ export const Cta = () => {
 
   return (
     <Grid display="flex" borderRadius={8} style={CTABackStyle}>
-      <Grid display="flex" md={5}>
-        <TextWrapper />
-      </Grid>
-      <Grid md={7}></Grid>
+      <TextWrapper />
     </Grid>
   );
 };

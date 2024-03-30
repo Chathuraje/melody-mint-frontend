@@ -7,7 +7,7 @@ interface FundRaiserCardProp {
 
 export const FundraiserSection = (data: FundRaiserCardProp) => {
   return (
-    <Grid container spacing={2}>
+    <Grid container padding="0px" margin="0px" spacing={2}>
       {[...Array(data.amount)].map((_, index) => (
         <Grid key={index} xs={12} sm={6} md={3}>
           <FundRaiserCard />

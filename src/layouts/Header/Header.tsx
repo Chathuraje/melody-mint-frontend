@@ -1,7 +1,6 @@
 import { Logo } from "@/components/Logo";
-import { Button } from "@/components/ui";
 import { Navigation } from "./components/";
-import { Unstable_Grid2 as Grid } from "@mui/material/";
+import { Button, Unstable_Grid2 as Grid } from "@mui/material/";
 
 export const Header = () => {
   return (
@@ -30,7 +29,9 @@ export const Header = () => {
       </Grid>
 
       <Grid md={3} display="flex" justifyContent="right">
-        <Button text="CONNECT WALLET" typeofButtons="main" />
+        <Button variant="contained" color="primary">
+          Connect Wallet
+        </Button>
       </Grid>
     </Grid>
   );

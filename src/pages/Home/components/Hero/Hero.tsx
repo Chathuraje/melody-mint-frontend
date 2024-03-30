@@ -13,13 +13,18 @@ export const Hero = () => {
   };
 
   return (
-    <Grid display="flex" style={HeroBackStyle}>
+    <Grid style={HeroBackStyle}>
       <Container>
-        <Grid container display="flex" flexDirection="row" alignItems="center">
-          <Grid display="flex" md={7}>
+        <Grid
+          display="flex"
+          flexDirection="row"
+          justifyContent="space-between"
+          padding="72px 0"
+        >
+          <Grid display="flex">
             <TextWrapper />
           </Grid>
-          <Grid display="flex" md={5} alignItems="flex-end">
+          <Grid display="flex">
             <Box
               component="img"
               src={HeroImage}

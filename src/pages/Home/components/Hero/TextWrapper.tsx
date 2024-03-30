@@ -1,5 +1,4 @@
-import { Button } from "@/components/ui";
-import { Box, Typography, Unstable_Grid2 as Grid } from "@mui/material";
+import { Box, Typography, Unstable_Grid2 as Grid, Button } from "@mui/material";
 
 export const TextWrapper = () => {
   const HeaderTextStyle = {
@@ -12,6 +11,7 @@ export const TextWrapper = () => {
 
   return (
     <Grid
+      display="flex"
       flexDirection="column"
       alignItems="left"
       justifyContent="center"
@@ -24,8 +24,12 @@ export const TextWrapper = () => {
         Invest in Funds created by Music artist and earn royalties
       </Typography>
       <Box alignItems="left" display="flex" gap="22px" justifyContent="left">
-        <Button text="Start for free" typeofButtons="secondary" />
-        <Button text="Join as an artist" typeofButtons="tertiary" />
+        <Button variant="contained" color="secondary">
+          Start for free
+        </Button>
+        <Button variant="outlined" color="secondary">
+          Join as an artist
+        </Button>
       </Box>
     </Grid>
   );

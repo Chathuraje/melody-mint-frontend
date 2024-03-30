@@ -1,6 +1,5 @@
-import { Button } from "@/components/ui";
 import { FundraiserSection } from "@/layouts/Global/FundraiserSection/FundraiserSection";
-import { Typography, Unstable_Grid2 as Grid } from "@mui/material";
+import { Typography, Unstable_Grid2 as Grid, Button } from "@mui/material";
 
 export const HomeFundraise = () => {
   return (
@@ -17,7 +16,9 @@ export const HomeFundraise = () => {
       </Grid>
 
       <Grid display="flex" md={12} alignItems="center" justifyContent="center">
-        <Button text="View all fundraisers" typeofButtons="tertiary-dark" />
+        <Button variant="outlined" color="secondary">
+          View more fundraisers
+        </Button>
       </Grid>
     </Grid>
   );

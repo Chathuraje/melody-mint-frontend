@@ -1,5 +1,4 @@
-import { Unstable_Grid2 as Grid, Pagination } from "@mui/material";
-import { Button } from "@/components/ui";
+import { Button, Unstable_Grid2 as Grid, Pagination } from "@mui/material";
 
 export const FundraiserPagination = () => {
   return (
@@ -13,9 +12,13 @@ export const FundraiserPagination = () => {
       border="1px solid rgba(0, 0, 0, 0.10)"
       bgcolor="var(--Shades-White, #FFF)"
     >
-      <Button text="Previous" typeofButtons="secondary" />
+      <Button variant="contained" color="secondary">
+        Previous
+      </Button>
       <Pagination count={11} defaultPage={6} siblingCount={0} />
-      <Button text="Next" typeofButtons="tertiary-dark-inverse" />
+      <Button variant="contained" color="primary">
+        Next
+      </Button>
     </Grid>
   );
 };

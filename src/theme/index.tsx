@@ -16,6 +16,44 @@ export const theme = createTheme({
       main: "#E73A3A",
     },
   },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          textTransform: "none",
+          padding: "8px 22px",
+          alignItems: "center",
+          borderRadius: "5px",
+          fontSize: "14px",
+          fontWeight: "500",
+          transition: "background-color 0.3s ease",
+        },
+      },
+      variants: [
+        {
+          props: { variant: "contained", color: "primary" },
+          style: {
+            backgroundColor: "primary.main",
+            color: "primary.secondary",
+            border: "1px solid primary.main",
+            "&:hover": {
+              backgroundColor: "primary.light",
+            },
+          },
+        },
+        {
+          props: { variant: "contained", color: "secondary" },
+          style: {
+            color: "primary.secondary",
+            border: "1px solid primary.main",
+            "&:hover": {
+              backgroundColor: "primary.light",
+            },
+          },
+        },
+      ],
+    },
+  },
   typography: {
     fontFamily: "Poppins, sans-serif",
     h1: {

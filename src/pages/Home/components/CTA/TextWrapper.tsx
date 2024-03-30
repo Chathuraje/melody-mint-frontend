@@ -1,5 +1,4 @@
-import { Button } from "@/components/ui";
-import { Typography, Unstable_Grid2 as Grid } from "@mui/material";
+import { Typography, Unstable_Grid2 as Grid, Button } from "@mui/material";
 
 export const TextWrapper = () => {
   const HeaderTextStyle = {
@@ -13,11 +12,11 @@ export const TextWrapper = () => {
   return (
     <Grid
       display="flex"
-      alignItems="flex-start"
       flexDirection="column"
+      alignItems="center"
+      margin="auto"
       gap="22px"
-      width="100%"
-      padding="75px 0 75px 65px"
+      padding="100px"
     >
       <Typography variant="h3" style={HeaderTextStyle}>
         Become an artist, fund your music
@@ -25,7 +24,9 @@ export const TextWrapper = () => {
       <Typography variant="subtitle1">
         By starting a fundraiser, you can collect investments to fund your music
       </Typography>
-      <Button text="Start for free" typeofButtons="secondary" />
+      <Button variant="contained" color="secondary">
+        Start for free
+      </Button>
     </Grid>
   );
 };

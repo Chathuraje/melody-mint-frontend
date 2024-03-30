@@ -4,11 +4,17 @@ import { Box, Unstable_Grid2 as Grid } from "@mui/material";
 
 export const Cta2 = () => {
   return (
-    <Grid display="flex" borderRadius={8} bgcolor="#000513" padding="75px">
-      <Grid md={6}>
+    <Grid
+      borderRadius={8}
+      bgcolor="#000513"
+      display="flex"
+      padding=" 55px"
+      gap="75px"
+    >
+      <Grid display="flex" md={7}>
         <TextWrapper />
       </Grid>
-      <Grid md={6}>
+      <Grid display="flex" md={5}>
         <Box
           component="img"
           src={CtaBack2}

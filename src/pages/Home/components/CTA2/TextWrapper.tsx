@@ -1,5 +1,4 @@
-import { Button } from "@/components/ui";
-import { Grid, Typography } from "@mui/material";
+import { Button, Grid, Typography } from "@mui/material";
 
 export const TextWrapper = () => {
   const HeaderTextStyle = {
@@ -12,10 +11,11 @@ export const TextWrapper = () => {
 
   return (
     <Grid
-      alignItems="flex-start"
       display="flex"
       flexDirection="column"
-      gap="22px"
+      alignItems="left"
+      justifyContent="center"
+      gap="32px"
     >
       <Typography variant="h3" style={HeaderTextStyle}>
         This is where your music journey begins
@@ -24,7 +24,9 @@ export const TextWrapper = () => {
         Start your music journey with Melody-Mint and gain the exposure to be a
         future superstar
       </Typography>
-      <Button text="Start for free" typeofButtons="secondary" />
+      <Button variant="contained" color="secondary">
+        Start for free
+      </Button>
     </Grid>
   );
 };

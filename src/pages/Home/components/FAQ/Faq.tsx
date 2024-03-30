@@ -1,7 +1,7 @@
-import { Typography, Unstable_Grid2 as Grid } from "@mui/material";
-import { Features } from "./Features";
+import { Grid, Typography } from "@mui/material";
+import { SingleFaq } from "./SingleFaq";
 
-export const FeaturesSection = () => {
+export const Faq = () => {
   return (
     <Grid display="flex" flexDirection="column" alignItems="center" gap="35px">
       <Grid
@@ -10,17 +10,15 @@ export const FeaturesSection = () => {
         alignItems="center"
         justifyContent="center"
       >
-        <Typography variant="h2">
-          Features that helps your music journey
-        </Typography>
+        <Typography variant="h2">Frequently Asked Questions</Typography>
 
         <Typography variant="subtitle1" color="#000000B2">
-          Melody Minty has in-built features that can help you with your
-          fundraisers.
+          If you have any questions do not hesitate to send them to
+          ask@mintmelody.com or visit our help center
         </Typography>
       </Grid>
       <Grid>
-        <Features />
+        <SingleFaq />
       </Grid>
     </Grid>
   );

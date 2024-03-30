@@ -11,7 +11,6 @@ export const Features = () => {
     bgcolor: "rgba(0, 0, 0, 0.04)",
     border: "solid 1px rgba(0, 0, 0, 0.08)",
     boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.05)",
-    height: "400px",
   };
 
   return (

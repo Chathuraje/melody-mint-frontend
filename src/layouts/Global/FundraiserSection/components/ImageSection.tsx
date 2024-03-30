@@ -14,7 +14,7 @@ export const ImageSection = () => {
       <Grid
         display="flex"
         style={FundRaiserItem}
-        height="286px"
+        height="275px"
         borderRadius="8px"
         padding="10px"
         flexDirection="column"

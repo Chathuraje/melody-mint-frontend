@@ -1,4 +1,9 @@
-import { Box, LinearProgress, Typography, Unstable_Grid2 as Grid } from "@mui/material";
+import {
+  Box,
+  LinearProgress,
+  Typography,
+  Unstable_Grid2 as Grid,
+} from "@mui/material";
 import { ArtistCard } from "./ArtistCard";
 
 export const TextSection = () => {
