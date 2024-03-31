@@ -1,8 +1,8 @@
 import { Grid } from "@mui/material";
-import { DetailsGrid } from "./DetailsGrid";
-import { ButtonGrid } from "./ButtonGrid";
-import { PricingGrid } from "./PricingGrid";
-import { OfferMadeTable } from "./OfferMadeTable";
+import { DetailsGrid } from "./NftRightColumn/DetailsGrid";
+import { ButtonGrid } from "./NftRightColumn/ButtonGrid";
+import { PricingGrid } from "./NftRightColumn/PricingGrid";
+import { OfferMadeTable } from "./NftRightColumn/OfferMadeTable";
 
 export const NftRightColumn = () => {
   return (

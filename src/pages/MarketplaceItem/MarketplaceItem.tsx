@@ -1,11 +1,11 @@
 import { Container, Unstable_Grid2 as Grid } from "@mui/material";
-import { Hero } from "./components/Hero/Hero";
-import { InfoSection } from "./components/InfoSection/InfoSection";
+import { Hero } from "./components/Hero";
+import { InfoSection } from "./components/InfoSection";
 import { FilterSection } from "./components/FilterSection";
-import { SingleCollectionSection } from "./components/SingleCollectionSection/SingleCollectionSection";
+import { SingleCollectionSection } from "./components/SingleCollectionSection";
 import { Pagination } from "@/components/ui/Pagination";
 
-export const SingleCollection = () => {
+export const MarketplaceItem = () => {
   //   const { collectionId } = useParams();
 
   return (

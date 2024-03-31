@@ -1,7 +1,7 @@
 import { Container, Unstable_Grid2 as Grid } from "@mui/material";
 import CollectionHeroPlaceholder from "@/assets/marketplace/single-collection-hero-palceholder.webp";
-import { MarketplaceCollectionInfo } from "./MarketplaceCollectionInfo";
-import { MarketplaceStatics } from "./MarketplaceStatics";
+import { MarketplaceCollectionInfo } from "./Hero/MarketplaceCollectionInfo";
+import { MarketplaceStatics } from "./Hero/MarketplaceStatics";
 
 export const Hero = () => {
   const CollectionHero = {

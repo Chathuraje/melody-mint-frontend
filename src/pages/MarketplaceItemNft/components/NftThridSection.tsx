@@ -1,4 +1,4 @@
-import { SingleCollectionSection } from "@/pages/Marketplace/SingleCollection/components/SingleCollectionSection/SingleCollectionSection";
+import { SingleCollectionSection } from "@/pages/MarketplaceItem/components/SingleCollectionSection";
 import { Grid, Typography } from "@mui/material";
 
 export const NftThridSection = () => {

@@ -2,11 +2,9 @@ import { Outlet, createBrowserRouter } from "react-router-dom";
 import { Home } from "./Home/Home";
 import App from "@/App";
 import { Fundraisers } from "./Fundraisers/Fundraisers";
-import {
-  Marketplace,
-  MarketplaceCollection,
-  SingleToken,
-} from "./Marketplace/Marketplace";
+import { Marketplace } from "./Marketplace/Marketplace";
+import { MarketplaceItem } from "./MarketplaceItem/MarketplaceItem";
+import { MarketplaceItemNft } from "./MarketplaceItemNft/MarketplaceItemNft";
 
 export const routes = [
   {
@@ -36,11 +34,11 @@ export const routes = [
       },
       {
         path: "/marketplace/:collectionId",
-        element: <MarketplaceCollection />,
+        element: <MarketplaceItem />,
       },
       {
         path: "/marketplace/:MarketplaceId/:tokenId",
-        element: <SingleToken />,
+        element: <MarketplaceItemNft />,
       },
       {
         path: "/tracer",

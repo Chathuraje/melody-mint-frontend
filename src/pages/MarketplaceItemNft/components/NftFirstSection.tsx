@@ -1,6 +1,6 @@
 import { Grid } from "@mui/material";
-import { NftLeftColumn } from "./NftLeftColumn";
-import { NftRightColumn } from "./NftRightColumn/NftRightColumn";
+import { NftLeftColumn } from "./NftFirstSection/NftLeftColumn";
+import { NftRightColumn } from "./NftFirstSection/NftRightColumn";
 
 export const NftFirstSection = () => {
   return (

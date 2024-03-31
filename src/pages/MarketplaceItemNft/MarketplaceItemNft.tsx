@@ -1,9 +1,9 @@
 import { Container, Grid } from "@mui/material";
-import { NftFirstSection } from "./components/NftFirstSection/NftFirstSection";
-import { NftSecondSection } from "./components/NftSecondSection/NftSecondSection";
-import { NftThridSection } from "./components/NftThirdSection/NftThridSection";
+import { NftFirstSection } from "./components/NftFirstSection";
+import { NftSecondSection } from "./components/NftSecondSection";
+import { NftThridSection } from "./components/NftThridSection";
 
-export const SingleNft = () => {
+export const MarketplaceItemNft = () => {
   return (
     <Container>
       <Grid
