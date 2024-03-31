@@ -2,6 +2,7 @@ import { Outlet, createBrowserRouter } from "react-router-dom";
 import { Home } from "./Home/Home";
 import App from "@/App";
 import { Fundraisers } from "./Fundraisers/Fundraisers";
+import { Marketplace } from "./Marketplace/Marketplace";
 
 export const routes = [
   {
@@ -21,11 +22,11 @@ export const routes = [
       },
       {
         path: "/fundraisers/:FundraisersId",
-        element: <div>Marketplace ID</div>,
+        element: <div>FundraisersId</div>,
       },
       {
         path: "/marketplace",
-        // element: <AddNewFundraisers />,
+        element: <Marketplace />,
         title: "Marketplace",
         main: true,
       },

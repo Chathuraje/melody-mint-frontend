@@ -2,7 +2,7 @@ import { Grid } from "@mui/material";
 import { ToggleButtons } from "@/components/ui/ToggleButtons";
 import { SelectOptions } from "@/components/ui/SelectOptions";
 
-export const FundraisersFilter = () => {
+export const MarketplaceFilter = () => {
   return (
     <>
       <Grid

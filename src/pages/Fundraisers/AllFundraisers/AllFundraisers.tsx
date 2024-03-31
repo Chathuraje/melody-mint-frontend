@@ -2,7 +2,7 @@ import { FundraiserSection } from "@/layouts/Global/FundraiserSection/Fundraiser
 import { Unstable_Grid2 as Grid, Container } from "@mui/material";
 import { FundraisersHeader } from "./components/FundraisersHeader";
 import { FundraisersFilter } from "./components/FundraisersFilter";
-import { FundraiserPagination } from "@/components/ui/Pagination";
+import { Pagination } from "@/components/ui/Pagination";
 
 export const AllFundraisers = () => {
   return (
@@ -14,7 +14,7 @@ export const AllFundraisers = () => {
         </Grid>
         <Grid display="flex" gap="52px" flexDirection="column">
           <FundraiserSection amount={12} />
-          <FundraiserPagination />
+          <Pagination />
         </Grid>
       </Grid>
     </Container>

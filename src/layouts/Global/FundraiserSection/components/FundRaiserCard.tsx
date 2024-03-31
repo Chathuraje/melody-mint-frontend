@@ -1,18 +1,13 @@
-import { Grid } from "@mui/material";
+import { Card } from "@/components/ui/Card";
 import { ImageSection } from "./ImageSection";
 import { TextSection } from "./TextSection";
 
 const FundRaiserCard = () => {
   return (
-    <Grid
-      sx={{
-        borderRadius: "10px",
-        boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.10)",
-      }}
-    >
+    <Card>
       <ImageSection />
       <TextSection />
-    </Grid>
+    </Card>
   );
 };
 

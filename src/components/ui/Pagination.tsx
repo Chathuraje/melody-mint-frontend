@@ -1,6 +1,10 @@
-import { Button, Unstable_Grid2 as Grid, Pagination } from "@mui/material";
+import {
+  Button,
+  Unstable_Grid2 as Grid,
+  Pagination as MuiPagination,
+} from "@mui/material";
 
-export const FundraiserPagination = () => {
+export const Pagination = () => {
   return (
     <Grid
       display="flex"
@@ -15,7 +19,7 @@ export const FundraiserPagination = () => {
       <Button variant="contained" color="secondary">
         Previous
       </Button>
-      <Pagination count={11} defaultPage={6} siblingCount={0} />
+      <MuiPagination count={11} defaultPage={6} siblingCount={0} />
       <Button variant="contained" color="primary">
         Next
       </Button>
