@@ -6,6 +6,7 @@ import { Marketplace } from "./Marketplace/Marketplace";
 import { MarketplaceItem } from "./MarketplaceItem/MarketplaceItem";
 import { MarketplaceItemNft } from "./MarketplaceItemNft/MarketplaceItemNft";
 import { FundraisersItem } from "./FundraisersItem/FundraisersItem";
+import { Analyst } from "./Analyst/Analyst";
 
 export const routes = [
   {
@@ -42,9 +43,9 @@ export const routes = [
         element: <MarketplaceItemNft />,
       },
       {
-        path: "/tracer",
-        element: <div>tracer</div>,
-        title: "Tracer",
+        path: "/analyst",
+        element: <Analyst />,
+        title: "Analyst",
         main: true,
       },
       {
