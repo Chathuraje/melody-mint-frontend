@@ -2,7 +2,11 @@ import { Outlet, createBrowserRouter } from "react-router-dom";
 import { Home } from "./Home/Home";
 import App from "@/App";
 import { Fundraisers } from "./Fundraisers/Fundraisers";
-import { Marketplace } from "./Marketplace/Marketplace";
+import {
+  Marketplace,
+  MarketplaceCollection,
+  SingleToken,
+} from "./Marketplace/Marketplace";
 
 export const routes = [
   {
@@ -31,24 +35,12 @@ export const routes = [
         main: true,
       },
       {
-        path: "/marketplace/:MarketplaceId",
-        element: <div>Marketplace ID</div>,
+        path: "/marketplace/:collectionId",
+        element: <MarketplaceCollection />,
       },
       {
-        path: "/marketplace/:MarketplaceId/collections",
-        element: <div>Marketplace ID</div>,
-      },
-      {
-        path: "/marketplace/:MarketplaceId/collections/:CollectionsId",
-        element: <div>Marketplace ID</div>,
-      },
-      {
-        path: "/collections/:CollectionsId/nfts",
-        element: <div>Marketplace ID</div>,
-      },
-      {
-        path: "/collections/:CollectionsId/nfts/:NftsId",
-        element: <div>Marketplace ID</div>,
+        path: "/marketplace/:MarketplaceId/:tokenId",
+        element: <SingleToken />,
       },
       {
         path: "/tracer",

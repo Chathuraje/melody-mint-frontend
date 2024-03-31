@@ -1,15 +1,18 @@
 import { Container, Grid } from "@mui/material";
-import { MarketplaceHeader } from "./components/MarketplaceHeader";
 import { MarketplaceFilter } from "./components/MarketplaceFilter";
 import { Pagination } from "@/components/ui/Pagination";
-import { MarketpaceSection } from './components/MarketpaceSection';
+import { MarketpaceSection } from "./components/MarketpaceSection";
+import { SubPageHeaders } from "@/layouts/Global/SubPageHeaders";
 
-export const Marketplace = () => {
+export const AllCollections = () => {
   return (
     <Container>
       <Grid display="flex" gap="22px" flexDirection="column">
         <Grid>
-          <MarketplaceHeader />
+          <SubPageHeaders
+            title="Melody Mint marketplace"
+            subtitle="m ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et do"
+          />
           <MarketplaceFilter />
         </Grid>
         <Grid display="flex" gap="52px" flexDirection="column">

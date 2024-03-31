@@ -1,12 +1,12 @@
 import { Card } from "@/components/ui/Card";
 import { Unstable_Grid2 as Grid, Typography } from "@mui/material";
-import FundraisePlaceholder from "@/assets/fundraiser/fundraise-placeholder.webp";
+import CollectionPlaceholder from "@/assets/marketplace/single-collection-image-palceholder.png";
 import { ArtistCard } from "@/components/ui/ArtistCard";
 import ArtistPlaceholder from "@/assets/fundraiser/artist-placehodler.svg";
 
 export const MarketplaceCard = () => {
   const FundRaiserItem = {
-    backgroundImage: `url(${FundraisePlaceholder})`,
+    backgroundImage: `url(${CollectionPlaceholder})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",

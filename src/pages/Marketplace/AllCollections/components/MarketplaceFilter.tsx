@@ -1,5 +1,4 @@
 import { Grid } from "@mui/material";
-import { ToggleButtons } from "@/components/ui/ToggleButtons";
 import { SelectOptions } from "@/components/ui/SelectOptions";
 
 export const MarketplaceFilter = () => {
@@ -12,10 +11,7 @@ export const MarketplaceFilter = () => {
         justifyContent="space-between"
       >
         <Grid>
-          <ToggleButtons values={["Top", "Trending"]} />
-        </Grid>
-        <Grid>
-          <SelectOptions items={["All", "Dance", "Rock"]} />
+          <SelectOptions label="Music Genre" items={["All", "Dance", "Rock"]} />
         </Grid>
       </Grid>
     </>

@@ -1,6 +1,11 @@
 import { Grid, TextField, Typography } from "@mui/material";
 
-export const MarketplaceHeader = () => {
+interface SubPageHeadersProps {
+  title: string;
+  subtitle: string;
+}
+
+export const SubPageHeaders = (props: SubPageHeadersProps) => {
   return (
     <Grid display="flex" gap="35px" flexDirection="column">
       <Grid
@@ -12,10 +17,8 @@ export const MarketplaceHeader = () => {
         alignItems="center"
       >
         <Grid display="flex" flexDirection="column" alignItems="left">
-          <Typography variant="h2">Marketplace</Typography>
-          <Typography variant="subtitle2">
-            Invest in Funds created by Music artist and earn royalties
-          </Typography>
+          <Typography variant="h2">{props.title}</Typography>
+          <Typography variant="subtitle2">{props.subtitle}</Typography>
         </Grid>
       </Grid>
       <Grid display="flex" paddingBottom="25px">
