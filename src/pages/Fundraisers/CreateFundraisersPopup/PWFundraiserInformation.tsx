@@ -3,7 +3,7 @@ import { Grid, Typography } from "@mui/material";
 import InvestorIcon from "@/assets/fundraiser/icon-account-investor.svg";
 import ArtistIcon from "@/assets/fundraiser/icon-account-artist.svg";
 
-export const SelectUserType = () => {
+export const PWFundraiserInformation = () => {
   return (
     <Grid display="flex" flexDirection="column" padding="70px" gap="30px">
       <Typography variant="subtitle1" color="black" fontSize="19px">

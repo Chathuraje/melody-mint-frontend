@@ -1,5 +1,5 @@
 import { Popups } from "@/layouts/Global/Popups/Popups";
-import { SelectUserType } from "./SelectUserType";
+import { PWFundraiserInformation } from "./PWFundraiserInformation";
 import { useContext } from "react";
 import { FundraiserContext } from "../context/FundraiserContext";
 
@@ -18,10 +18,10 @@ export const CreateFundraisersPopup = () => {
         title="Let’s Begin by choosing your role"
         subtitle="The registration process starts with selecting your role"
         screens={[
-          <SelectUserType />,
-          <SelectUserType />,
-          <SelectUserType />,
-          <SelectUserType />,
+          <PWFundraiserInformation />,
+          // <PWSelectUserType />,
+          // <PWSelectUserType />,
+          // <PWSelectUserType />,
         ]}
         onSubmit={onCreateFundraisers}
       ></Popups>
