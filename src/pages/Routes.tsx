@@ -5,6 +5,7 @@ import { Fundraisers } from "./Fundraisers/Fundraisers";
 import { Marketplace } from "./Marketplace/Marketplace";
 import { MarketplaceItem } from "./MarketplaceItem/MarketplaceItem";
 import { MarketplaceItemNft } from "./MarketplaceItemNft/MarketplaceItemNft";
+import { FundraisersItem } from "./FundraisersItem/FundraisersItem";
 
 export const routes = [
   {
@@ -24,7 +25,7 @@ export const routes = [
       },
       {
         path: "/fundraisers/:FundraisersId",
-        element: <div>FundraisersId</div>,
+        element: <FundraisersItem />,
       },
       {
         path: "/marketplace",
