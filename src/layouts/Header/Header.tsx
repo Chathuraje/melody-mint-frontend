@@ -1,5 +1,5 @@
 import { Logo } from "@/components/Logo";
-import { Navigation } from "./components/";
+import { Navigation } from "./components/Navigation/Navigation";
 import { Button, Unstable_Grid2 as Grid } from "@mui/material/";
 
 export const Header = () => {

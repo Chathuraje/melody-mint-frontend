@@ -1,22 +1,12 @@
-import { FundraiserSection } from "@/layouts/Global/FundraiserSection/FundraiserSection";
-import { Unstable_Grid2 as Grid, Container } from "@mui/material";
-import { FundraisersHeader } from "./components/FundraisersHeader";
-import { FundraisersFilter } from "./components/FundraisersFilter";
-import { FundraiserPagination } from "./components/FundraiserPagination";
+import { AllFundraisers } from "./AllFundraisers/AllFundraisers";
+import { CreateFundraisersPopup } from "./CreateFundraisersPopup/CreateFundraisersPopup";
+import { FundraiserProvider } from "./context/FundraiserContext";
 
 export const Fundraisers = () => {
   return (
-    <Container>
-      <Grid display="flex" gap="22px" flexDirection="column">
-        <Grid>
-          <FundraisersHeader />
-          <FundraisersFilter />
-        </Grid>
-        <Grid display="flex" gap="52px" flexDirection="column">
-          <FundraiserSection amount={12} />
-          <FundraiserPagination />
-        </Grid>
-      </Grid>
-    </Container>
+    <FundraiserProvider>
+      <AllFundraisers />
+      <CreateFundraisersPopup />
+    </FundraiserProvider>
   );
 };
