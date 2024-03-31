@@ -4,7 +4,8 @@ import {
   Typography,
   Unstable_Grid2 as Grid,
 } from "@mui/material";
-import { ArtistCard } from "./ArtistCard";
+import ArtistPlaceholder from "@/assets/fundraiser/artist-placehodler.svg";
+import { ArtistCard } from "@/components/ui/ArtistCard";
 
 export const TextSection = () => {
   return (
@@ -22,7 +23,10 @@ export const TextSection = () => {
           Fundraiser sub title
         </Typography>
 
-        <ArtistCard />
+        <ArtistCard
+          artistName="Artist Name"
+          artistPlaceholder={ArtistPlaceholder}
+        />
 
         <Box width="100%">
           <LinearProgress color="primary" variant="determinate" value={55} />

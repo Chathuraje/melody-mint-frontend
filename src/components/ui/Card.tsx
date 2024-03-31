@@ -7,6 +7,9 @@ interface CardProp {
 export const Card = (prop: CardProp) => {
   return (
     <Grid
+      display="flex"
+      flexDirection="column"
+      gap="10px"
       sx={{
         borderRadius: "10px",
         boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.10)",

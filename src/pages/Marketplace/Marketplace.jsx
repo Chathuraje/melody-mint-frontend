@@ -2,6 +2,7 @@ import { Container, Grid } from "@mui/material";
 import { MarketplaceHeader } from "./components/MarketplaceHeader";
 import { MarketplaceFilter } from "./components/MarketplaceFilter";
 import { Pagination } from "@/components/ui/Pagination";
+import { MarketpaceSection } from './components/MarketpaceSection';
 
 export const Marketplace = () => {
   return (
@@ -12,7 +13,7 @@ export const Marketplace = () => {
           <MarketplaceFilter />
         </Grid>
         <Grid display="flex" gap="52px" flexDirection="column">
-          {/* <FundraiserSection amount={12} /> */}
+          <MarketpaceSection amount={12} />
           <Pagination />
         </Grid>
       </Grid>
