@@ -1,7 +1,7 @@
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 
 interface SelectOptionsProps {
-  label: string;
+  label?: string;
   items: string[];
 }
 
