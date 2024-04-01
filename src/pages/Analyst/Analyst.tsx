@@ -1,4 +1,4 @@
-import { SubPageHeaders } from "@/layouts/Global/SubPageHeaders";
+import { SubPageHeaders } from "@/components/SubPageHeaders";
 import { Container, Unstable_Grid2 as Grid } from "@mui/material";
 import { AnalystFilter } from "./components/AnalystFilter";
 import { AnalystSection } from "./components/AnalystSection";

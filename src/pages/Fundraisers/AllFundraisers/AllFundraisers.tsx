@@ -2,7 +2,7 @@ import { FundraiserSection } from "@/layouts/Global/FundraiserSection/Fundraiser
 import { Unstable_Grid2 as Grid, Container } from "@mui/material";
 import { FundraisersFilter } from "./components/FundraisersFilter";
 import { Pagination } from "@/components/ui/Pagination";
-import { SubPageHeaders } from "@/layouts/Global/SubPageHeaders";
+import { SubPageHeaders } from "@/components/SubPageHeaders";
 
 export const AllFundraisers = () => {
   return (
