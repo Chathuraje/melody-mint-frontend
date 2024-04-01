@@ -6,7 +6,7 @@ import "./Footer.css";
 
 export const Footer = () => {
   return (
-    <Grid bgcolor="#06102b" color="white" padding="75px 0 0 0">
+    <Grid bgcolor="#06102b" color="white" padding="75px 0 0 0" marginTop="70px">
       <Container>
         <Grid display="flex" flexDirection="column" gap="15px">
           <Grid

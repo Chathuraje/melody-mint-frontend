@@ -112,7 +112,7 @@ export const routes = [
       },
       {
         path: "/*",
-        element: <div>404</div>,
+        element: "404 Page",
         title: "404 Page",
       },
     ],
