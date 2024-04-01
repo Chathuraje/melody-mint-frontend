@@ -2,10 +2,11 @@ import { Container, Grid } from "@mui/material";
 import { useState } from "react";
 import { ProfileTab } from "./components/ProfileTab";
 import { PersonalTab } from "./components/PersonalTab";
-import { LogoutTab } from "./Tabs/LogoutTab";
-import { SecurityTab } from "./Tabs/SecurityTab";
-import { WalletTab } from "./Tabs/WalletTab";
+import { SecurityTab } from "./components/SecurityTab";
+import { WalletTab } from "./components/WalletTab";
 import { LeftSliderbar } from "./components/LeftSliderbar";
+import { IncomeTab } from "./components/IncomeTab";
+import { WithdrawalTab } from "./components/WithdrawalTab";
 
 export const EditUser = () => {
   const [value, setValue] = useState<number>(0);
@@ -28,9 +29,10 @@ export const EditUser = () => {
         >
           {value === 0 && <ProfileTab />}
           {value === 1 && <PersonalTab />}
-          {value === 2 && <WalletTab />}
-          {value === 3 && <SecurityTab />}
-          {value === 4 && <LogoutTab />}
+          {value === 2 && <IncomeTab />}
+          {value === 3 && <WithdrawalTab />}
+          {value === 4 && <WalletTab />}
+          {value === 5 && <SecurityTab />}
         </Grid>
       </Grid>
     </Container>

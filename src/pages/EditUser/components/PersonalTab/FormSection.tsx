@@ -6,6 +6,16 @@ export const FormSection = () => {
       <Grid>
         <TextField
           fullWidth
+          label="Website"
+          variant="outlined"
+          // Assuming description is passed as prop or fetched from somewhere
+          value="Lorem ipsum dolor sit amet, consectetur adipiscing elit." // Example description
+        />
+      </Grid>
+
+      <Grid>
+        <TextField
+          fullWidth
           label="Description"
           variant="outlined"
           // Assuming description is passed as prop or fetched from somewhere
