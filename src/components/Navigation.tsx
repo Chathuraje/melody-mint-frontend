@@ -6,6 +6,10 @@ interface NavigatrionsProps {
 }
 
 export const Navigation = (props: NavigatrionsProps) => {
+  const handleClick = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <>
       {routes.map((route) =>
@@ -16,6 +20,7 @@ export const Navigation = (props: NavigatrionsProps) => {
                 key={childRoute.path}
                 to={childRoute.path}
                 className={[props.type].join(" ")}
+                onClick={handleClick}
               >
                 {childRoute.title}
               </Link>
