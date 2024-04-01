@@ -28,7 +28,9 @@ export const ProfileDetails = () => {
           alignItems="end"
           justifyContent="flex-end"
         >
-          <SocialIcons names={["spotify", "instagram", "youtube", "x"]} />
+          <SocialIcons
+            names={["spotify", "instagram", "youtube", "x", "website"]}
+          />
         </Grid>
       </Grid>
 

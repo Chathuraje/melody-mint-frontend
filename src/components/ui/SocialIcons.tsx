@@ -3,9 +3,10 @@ import YoutubeIcon from "@/assets/profile/youtube.svg";
 import SpotifyIcon from "@/assets/profile/spotify.svg";
 import InstergramIcon from "@/assets/profile/instagram.svg";
 import XIcon from "@/assets/profile/x.svg";
+import Website from "@/assets/profile/instagram.svg";
 
 interface SocialIconsProps {
-  names: ("spotify" | "instagram" | "youtube" | "x")[];
+  names: ("spotify" | "instagram" | "youtube" | "x" | "website")[];
 }
 
 export const SocialIcons = (props: SocialIconsProps) => {
@@ -19,6 +20,8 @@ export const SocialIcons = (props: SocialIconsProps) => {
         return YoutubeIcon;
       case "x":
         return XIcon;
+      case "website":
+        return Website;
       default:
         return "";
     }
