@@ -96,13 +96,13 @@ export const routes = [
         path: "help-center",
         element: "Help Center",
         title: "Help Center",
-        footer2: true,
+        footer3: true,
       },
       {
         path: "support",
         element: "Support",
         title: "Support",
-        footer2: true,
+        footer3: true,
       },
       {
         path: "/*",

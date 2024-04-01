@@ -2,7 +2,7 @@ import { routes } from "@/pages/Routes";
 import { Link } from "react-router-dom";
 
 interface NavigatrionsProps {
-  type: "main" | "footer" | "footer2";
+  type: "main" | "footer" | "footer2" | "footer3";
 }
 
 export const Navigation = (props: NavigatrionsProps) => {

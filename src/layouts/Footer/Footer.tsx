@@ -28,7 +28,9 @@ export const Footer = () => {
             <Grid display="flex" flexDirection="column" gap="10px">
               <Navigation type="footer2" />
             </Grid>
-            <Grid display="flex" flexDirection="column"></Grid>
+            <Grid display="flex" flexDirection="column" gap="10px">
+              <Navigation type="footer3" />
+            </Grid>
           </Grid>
           <hr />
           <Grid

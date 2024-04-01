@@ -1,5 +1,6 @@
 .footer,
-.footer2 {
+.footer2,
+.footer3 {
   color: white;
   font-size: 14px;
   font-weight: 400;
@@ -8,6 +9,7 @@
 }
 
 .footer:hover,
-.footer2:hover {
+.footer2:hover,
+.footer3:hover {
   color: #1d4ed8;
 }
