@@ -1,5 +1,5 @@
 import { Unstable_Grid2 as Grid } from "@mui/material";
-import { MarketplaceCard } from "./MarketplaceCard";
+import { MarketplaceCard } from "../../../components/MarketplaceCard";
 
 interface MarketpaceSectionProp {
   amount: number;

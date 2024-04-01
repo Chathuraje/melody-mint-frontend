@@ -1,4 +1,4 @@
-import { Outlet, createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import { Home } from "./Home/Home";
 import App from "@/App";
 import { Fundraisers } from "./Fundraisers/Fundraisers";
@@ -8,6 +8,7 @@ import { MarketplaceItemNft } from "./MarketplaceItemNft/MarketplaceItemNft";
 import { FundraisersItem } from "./FundraisersItem/FundraisersItem";
 import { Analyst } from "./Analyst/Analyst";
 import { AnalystItem } from "./AnalystItem/AnalystItem";
+import { Profile } from "./Profile/Profile";
 
 export const routes = [
   {
@@ -60,18 +61,8 @@ export const routes = [
         main: true,
       },
       {
-        path: "/users",
-        element: (
-          <div>
-            artists Page <Outlet />
-          </div>
-        ),
-        children: [
-          {
-            path: "/users/:Usersid",
-            element: <div>artist ID Page</div>,
-          },
-        ],
+        path: "/user/:Userid",
+        element: <Profile />,
       },
       {
         path: "/*",

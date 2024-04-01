@@ -1,5 +1,5 @@
 import { Unstable_Grid2 as Grid } from "@mui/material";
-import FundRaiserCard from "./components/FundRaiserCard";
+import FundRaiserCard from "../../../components/FundRaiserCard";
 
 interface FundRaiserCardProp {
   amount: number;

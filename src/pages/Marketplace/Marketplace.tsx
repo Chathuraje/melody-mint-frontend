@@ -1,7 +1,7 @@
 import { Container, Grid } from "@mui/material";
 import { MarketplaceFilter } from "./components/MarketplaceFilter";
 import { Pagination } from "@/components/ui/Pagination";
-import { MarketpaceSection } from "./components/MarketpaceSection";
+import { MarketpaceSection } from "@/layouts/Global/MarketplaceSection/MarketpaceSection";
 import { SubPageHeaders } from "@/layouts/Global/SubPageHeaders";
 
 export const Marketplace = () => {

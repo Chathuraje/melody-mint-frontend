@@ -13,23 +13,13 @@ export const MarketplaceCard = () => {
   };
   return (
     <Card>
-      <Grid
-        display="flex"
-        style={FundRaiserItem}
-        height="275px"
-        borderRadius="8px"
-        padding="10px"
-        flexDirection="column"
-        alignItems="flex-end"
-      ></Grid>
+      <Grid display="flex" style={FundRaiserItem} height="275px"></Grid>
 
       <Grid
         gap="16px"
-        padding="8px 8px 24px 8px"
+        padding="15px 15px 15px 15px"
         display="flex"
         flexDirection="column"
-        alignItems="flex-start"
-        alignSelf="stretch"
       >
         <Typography variant="h5">Music Title</Typography>
 
