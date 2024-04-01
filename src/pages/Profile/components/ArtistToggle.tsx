@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Tabs, Tab, Unstable_Grid2 as Grid } from "@mui/material";
 import { FundraiserSection } from "@/layouts/Global/FundraiserSection/FundraiserSection";
 import { MarketpaceSection } from "@/layouts/Global/MarketplaceSection/MarketpaceSection";
+import { FundraiseUpdateBox } from "@/components/FundraiseUpdateBox";
 
 export const ArtistToggle = () => {
   const [selectedTab, setSelectedTab] = useState(0);
@@ -42,7 +43,41 @@ export const ArtistToggle = () => {
           <MarketpaceSection amount={5} />
         </Grid>
       )}
-      {selectedTab === 3 && <Grid>Content for Activities</Grid>}
+      {selectedTab === 3 && (
+        <Grid
+          container
+          display="flex"
+          flexDirection="row"
+          gap="15px"
+          overflow="auto"
+          maxHeight="700px"
+        >
+          <FundraiseUpdateBox
+            title="Update 23/01/2023"
+            description="Exciting news, everyone! I'm absolutely thrilled to share a significant update in our music fundraiser journey. Thanks to your incredible support and generosity, I've recently had the privilege of purchasing a stunning guitar from a local music shop. This isn't just any guitar; it's a symbol of our collective passion and dedication towards bringing our musical vision to life. Every strum, every chord played on this instrument will ec"
+          />
+          <FundraiseUpdateBox
+            title="Update 23/01/2023"
+            description="Exciting news, everyone! I'm absolutely thrilled to share a significant update in our music fundraiser journey. Thanks to your incredible support and generosity, I've recently had the privilege of purchasing a stunning guitar from a local music shop. This isn't just any guitar; it's a symbol of our collective passion and dedication towards bringing our musical vision to life. Every strum, every chord played on this instrument will ec"
+          />
+          <FundraiseUpdateBox
+            title="Update 23/01/2023"
+            description="Exciting news, everyone! I'm absolutely thrilled to share a significant update in our music fundraiser journey. Thanks to your incredible support and generosity, I've recently had the privilege of purchasing a stunning guitar from a local music shop. This isn't just any guitar; it's a symbol of our collective passion and dedication towards bringing our musical vision to life. Every strum, every chord played on this instrument will ec"
+          />
+          <FundraiseUpdateBox
+            title="Update 23/01/2023"
+            description="Exciting news, everyone! I'm absolutely thrilled to share a significant update in our music fundraiser journey. Thanks to your incredible support and generosity, I've recently had the privilege of purchasing a stunning guitar from a local music shop. This isn't just any guitar; it's a symbol of our collective passion and dedication towards bringing our musical vision to life. Every strum, every chord played on this instrument will ec"
+          />
+          <FundraiseUpdateBox
+            title="Update 23/01/2023"
+            description="Exciting news, everyone! I'm absolutely thrilled to share a significant update in our music fundraiser journey. Thanks to your incredible support and generosity, I've recently had the privilege of purchasing a stunning guitar from a local music shop. This isn't just any guitar; it's a symbol of our collective passion and dedication towards bringing our musical vision to life. Every strum, every chord played on this instrument will ec"
+          />
+          <FundraiseUpdateBox
+            title="Update 23/01/2023"
+            description="Exciting news, everyone! I'm absolutely thrilled to share a significant update in our music fundraiser journey. Thanks to your incredible support and generosity, I've recently had the privilege of purchasing a stunning guitar from a local music shop. This isn't just any guitar; it's a symbol of our collective passion and dedication towards bringing our musical vision to life. Every strum, every chord played on this instrument will ec"
+          />
+        </Grid>
+      )}
     </div>
   );
 };

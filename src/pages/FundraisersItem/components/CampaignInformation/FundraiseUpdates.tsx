@@ -1,5 +1,5 @@
 import { Unstable_Grid2 as Grid, Typography } from "@mui/material";
-import { FundraiseUpdateBox } from "./FundraiseUpdateBox";
+import { FundraiseUpdateBox } from "@/components/FundraiseUpdateBox";
 
 export const FundraiseUpdates = () => {
   return (
