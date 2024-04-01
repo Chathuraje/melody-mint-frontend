@@ -1,12 +1,13 @@
 import { Container, Unstable_Grid2 as Grid } from "@mui/material/";
-import { Hero } from "./components/Hero";
 import { ProfileDetails } from "./components/ProfileDetails";
 import { ArtistToggle } from "./components/ArtistToggle";
+import { ProfileHero } from "@/components/ui/ProfileHero";
+import ProfileHeroPlaceholder from "@/assets/profile/profile-hero-palceholder.webp";
 
 export const Profile = () => {
   return (
     <Grid>
-      <Hero />
+      <ProfileHero src={ProfileHeroPlaceholder} height="350px" />
 
       <Container>
         <Grid display="flex" flexDirection="column" gap="25px">

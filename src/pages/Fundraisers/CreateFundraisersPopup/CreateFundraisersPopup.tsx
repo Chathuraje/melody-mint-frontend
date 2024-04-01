@@ -15,9 +15,10 @@ export const CreateFundraisersPopup = () => {
       <Popups
         open={popupState}
         onClose={() => setPopupState(false)}
-        title="Let’s Begin by choosing your role"
-        subtitle="The registration process starts with selecting your role"
+        title="Tell us about your Idea"
+        subtitle="This information helps us understand your idea"
         screens={[
+          <PWFundraiserInformation />,
           <PWFundraiserInformation />,
           // <PWSelectUserType />,
           // <PWSelectUserType />,

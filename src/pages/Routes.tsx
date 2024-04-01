@@ -9,6 +9,7 @@ import { FundraisersItem } from "./FundraisersItem/FundraisersItem";
 import { Analyst } from "./Analyst/Analyst";
 import { AnalystItem } from "./AnalystItem/AnalystItem";
 import { Profile } from "./Profile/Profile";
+import { EditUser } from "./EditUser/EditUser";
 
 export const routes = [
   {
@@ -72,6 +73,11 @@ export const routes = [
       {
         path: "/user/:Userid",
         element: <Profile />,
+        title: "User Profile",
+      },
+      {
+        path: "/user/:Userid/edit",
+        element: <EditUser />,
         title: "User Profile",
       },
       {

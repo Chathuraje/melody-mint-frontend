@@ -1,24 +1,12 @@
 import { Unstable_Grid2 as Grid, IconButton, Typography } from "@mui/material/";
-import ProfileImagePlaceholder from "@/assets/profile/profile-placeholder.svg";
 import EthLogo from "@/assets/fundraiser/ethereum-eth-logo.svg";
+import { ProfileImage } from "@/components/ui/ProfileImage";
+import ProfileImagePlaceholder from "@/assets/profile/profile-placeholder.svg";
 
 export const ProfileBox = () => {
-  const ProfileImage = {
-    backgroundImage: `url(${ProfileImagePlaceholder})`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-  };
-
   return (
     <>
-      <Grid
-        display="flex"
-        style={ProfileImage}
-        height="180px"
-        width="180px"
-        borderRadius="400px"
-      ></Grid>
+      <ProfileImage src={ProfileImagePlaceholder} />
       <Typography fontSize="30px" fontWeight="600" color="#000000">
         Artist username
       </Typography>
