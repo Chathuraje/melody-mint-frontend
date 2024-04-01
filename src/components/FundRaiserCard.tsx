@@ -34,7 +34,12 @@ const FundRaiserCard = () => {
           2% distribution
         </Box>
       </Grid>
-      <Grid gap="16px" display="flex" flexDirection="column">
+      <Grid
+        gap="16px"
+        display="flex"
+        flexDirection="column"
+        padding="15px 15px 15px 15px"
+      >
         <Typography variant="h5">Music Title</Typography>
         <Typography variant="subtitle2" color="#6D6D6D">
           Fundraiser sub title
