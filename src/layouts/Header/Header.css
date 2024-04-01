@@ -1,4 +1,4 @@
-.menu-items {
+.main {
   position: fixed;
   color: black; /* Adjust default text color */
   font-size: 16px;
@@ -16,7 +16,7 @@
   border-radius: 4px; /* Add rounded corners for a smoother look */
 }
 
-.menu-items:hover {
+.main:hover {
   background-color: #e8edfb; /* Background color on hover */
   color: #000; /* Darken text color on hover */
 }

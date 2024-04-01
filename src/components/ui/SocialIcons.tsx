@@ -1,8 +1,8 @@
 import { Unstable_Grid2 as Grid, IconButton } from "@mui/material";
-import YoutubeIcon from "@/assets/youtube.svg";
-import SpotifyIcon from "@/assets/spotify.svg";
-import InstergramIcon from "@/assets/instagram.svg";
-import XIcon from "@/assets/x.svg";
+import YoutubeIcon from "@/assets/profile/youtube.svg";
+import SpotifyIcon from "@/assets/profile/spotify.svg";
+import InstergramIcon from "@/assets/profile/instagram.svg";
+import XIcon from "@/assets/profile/x.svg";
 
 interface SocialIconsProps {
   names: ("spotify" | "instagram" | "youtube" | "x")[];

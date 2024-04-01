@@ -1,0 +1,13 @@
+.footer,
+.footer2 {
+  color: white;
+  font-size: 14px;
+  font-weight: 400;
+  position: relative;
+  text-decoration: none;
+}
+
+.footer:hover,
+.footer2:hover {
+  color: #1d4ed8;
+}

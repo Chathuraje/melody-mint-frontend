@@ -1,6 +1,7 @@
 import { Logo } from "@/components/Logo";
-import { Navigation } from "./components/Navigation/Navigation";
 import { Button, Unstable_Grid2 as Grid } from "@mui/material/";
+import "./Header.css";
+import { Navigation } from "@/components/Navigation";
 
 export const Header = () => {
   return (
@@ -21,11 +22,11 @@ export const Header = () => {
       zIndex={999}
     >
       <Grid md={3} display="flex" justifyContent="left">
-        <Logo />
+        <Logo width={65} />
       </Grid>
 
       <Grid md={6} display="flex" justifyContent="center">
-        <Navigation />
+        <Navigation type="main" />
       </Grid>
 
       <Grid md={3} display="flex" justifyContent="right">
