@@ -6,7 +6,7 @@ interface ProfileEditTabProps {
   children: React.ReactNode;
 }
 
-export const ProfileEditTab = (props: ProfileEditTabProps) => {
+export const FormBox = (props: ProfileEditTabProps) => {
   return (
     <Grid display="flex" flexDirection="column" gap="15px" paddingBottom="40px">
       <Grid

@@ -10,7 +10,7 @@ import { Analyst } from "./Analyst/Analyst";
 import { AnalystItem } from "./AnalystItem/AnalystItem";
 import { Profile } from "./Profile/Profile";
 import { ProfileEdit } from "./ProfileEdit/ProfileEdit";
-import { FundraisersCreate } from "./Fundraisers/FundraisersCreate";
+import { FundraisersCreate } from "./FundraisersCreate/FundraisersCreate";
 
 export const routes = [
   {

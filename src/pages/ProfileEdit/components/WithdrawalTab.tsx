@@ -1,4 +1,4 @@
-import { ProfileEditTab } from "@/components/ProfileEditTab";
+import { FormBox } from "@/components/FormBox";
 import { Grid } from "@mui/material";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 
@@ -37,7 +37,7 @@ const rows = [
 
 export const WithdrawalTab = () => {
   return (
-    <ProfileEditTab
+    <FormBox
       title="Withdrawal Details"
       description="In order to use crypto to use service in melodymint, you need to have a wallet connected."
     >
@@ -65,6 +65,6 @@ export const WithdrawalTab = () => {
           />
         </Grid>
       </Grid>
-    </ProfileEditTab>
+    </FormBox>
   );
 };

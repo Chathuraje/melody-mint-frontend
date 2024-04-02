@@ -1,4 +1,4 @@
-import { ProfileEditTab } from "@/components/ProfileEditTab";
+import { FormBox } from "@/components/FormBox";
 import { ImageSection } from "./ProfileTab/ImageSection";
 import { UniqueSection } from "./ProfileTab/UniqueSection";
 import { FormSection } from "./ProfileTab/FormSection";
@@ -6,7 +6,7 @@ import { Grid } from "@mui/material";
 
 export const ProfileTab = () => {
   return (
-    <ProfileEditTab
+    <FormBox
       title="Profile Details"
       description="Check for item trait changes and items flagged as stolen before a
   offer is accepted"
@@ -24,6 +24,6 @@ export const ProfileTab = () => {
           <FormSection />
         </Grid>
       </Grid>
-    </ProfileEditTab>
+    </FormBox>
   );
 };

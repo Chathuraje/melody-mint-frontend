@@ -40,7 +40,7 @@ export const InvestForm = () => {
           Edit
         </Button>
         <Button fullWidth variant="contained" color="primary">
-          Release Fund
+          Release Royalties
         </Button>
       </Grid>
     </>

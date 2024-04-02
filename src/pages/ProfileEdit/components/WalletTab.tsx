@@ -1,10 +1,10 @@
-import { ProfileEditTab } from "@/components/ProfileEditTab";
+import { FormBox } from "@/components/FormBox";
 import { Button, Grid, IconButton, Typography } from "@mui/material";
 import EthLogo from "@/assets/fundraiser/ethereum-eth-logo.svg";
 
 export const WalletTab = () => {
   return (
-    <ProfileEditTab
+    <FormBox
       title="Wallet Details"
       description="In order to use crypto to use service in melodymint, you need to have a wallet connected."
     >
@@ -56,6 +56,6 @@ export const WalletTab = () => {
           </Grid>
         </Grid>
       </Grid>
-    </ProfileEditTab>
+    </FormBox>
   );
 };

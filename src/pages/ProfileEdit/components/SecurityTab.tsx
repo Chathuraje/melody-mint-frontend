@@ -1,9 +1,9 @@
-import { ProfileEditTab } from "@/components/ProfileEditTab";
+import { FormBox } from "@/components/FormBox";
 import { Button, Grid, Typography } from "@mui/material";
 
 export const SecurityTab = () => {
   return (
-    <ProfileEditTab
+    <FormBox
       title="Security Details"
       description="In order to use crypto to use service in melodymint, you need to have a wallet connected."
     >
@@ -87,6 +87,6 @@ export const SecurityTab = () => {
           </Grid>
         </Grid>
       </Grid>
-    </ProfileEditTab>
+    </FormBox>
   );
 };

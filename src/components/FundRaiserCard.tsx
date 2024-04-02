@@ -40,10 +40,12 @@ const FundRaiserCard = () => {
         flexDirection="column"
         padding="15px 15px 15px 15px"
       >
-        <Typography variant="h5">Music Title</Typography>
-        <Typography variant="subtitle2" color="#6D6D6D">
-          Fundraiser sub title
-        </Typography>
+        <Grid display="flex" flexDirection="column" gap="5px" padding="0">
+          <Typography variant="h5">Music Title</Typography>
+          <Typography variant="subtitle2" color="#6D6D6D">
+            <b>Deadline</b>: 12/12/2022
+          </Typography>
+        </Grid>
 
         <ArtistCard
           artistName="Artist Name"
