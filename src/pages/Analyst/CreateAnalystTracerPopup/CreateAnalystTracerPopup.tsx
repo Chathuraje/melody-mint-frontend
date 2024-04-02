@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AnalystContext } from "../context/AnalystContext";
 import { Popups } from "@/layouts/Global/Popups/Popups";
 import { PWSelectMediaType } from "./PWSelectMediaType";
+import { PWUploadMedia } from "./PWUploadMedia";
 
 export const CreateAnalystTracerPopup = () => {
   const { popupState, setPopupState } = useContext(AnalystContext)!;
@@ -17,14 +18,7 @@ export const CreateAnalystTracerPopup = () => {
         onClose={() => setPopupState(false)}
         title="Tell us about your Idea"
         subtitle="This information helps us understand your idea"
-        screens={[
-          <PWSelectMediaType />,
-          <PWSelectMediaType />,
-          // <PWFundraiserInformation />,
-          // <PWSelectUserType />,
-          // <PWSelectUserType />,
-          // <PWSelectUserType />,
-        ]}
+        screens={[<PWSelectMediaType />, <PWUploadMedia />]}
         onSubmit={onAddItemtoTracer}
       ></Popups>
     </>
