@@ -58,6 +58,16 @@ export const routes = [
         title: "Single NFTs",
       },
       {
+        path: "/marketplace/:MarketplaceId/:tokenId/list-for-sale",
+        element: "List for Sale",
+        title: "List for Sale",
+      },
+      {
+        path: "/marketplace/:MarketplaceId/:tokenId/make-offer",
+        element: "Make Offer",
+        title: "Make Offer",
+      },
+      {
         path: "/analyst",
         element: <Analyst />,
         title: "Analyst",
