@@ -1,22 +1,22 @@
-import { FundraiserSection } from "@/layouts/Global/FundraiserSection/FundraiserSection";
-import { Unstable_Grid2 as Grid, Container } from "@mui/material";
-import { FundraisersFilter } from "./components/FundraisersFilter";
-import { Pagination } from "@/components/ui/Pagination";
 import { SubPageHeaders } from "@/components/SubPageHeaders";
+import { Container, Unstable_Grid2 as Grid } from "@mui/material";
+import { Pagination } from "@/components/ui/Pagination";
+import { AnalystFilter } from "./components/AnalystFilter";
+import { AnalystSection } from "./components/AnalystSection";
 
-export const AllFundraisers = () => {
+export const AllAnalyst = () => {
   return (
     <Container>
       <Grid display="flex" gap="22px" flexDirection="column">
         <Grid>
           <SubPageHeaders
-            title="Explore Fundraisers"
+            title="Music analyst"
             subtitle="Invest in Funds created by Music artist and earn royalties"
           />
-          <FundraisersFilter />
+          <AnalystFilter />
         </Grid>
         <Grid display="flex" gap="52px" flexDirection="column">
-          <FundraiserSection amount={12} />
+          <AnalystSection amount={12} />
           <Pagination />
         </Grid>
       </Grid>

@@ -8,7 +8,7 @@ import { LeftSliderbar } from "./components/LeftSliderbar";
 import { IncomeTab } from "./components/IncomeTab";
 import { WithdrawalTab } from "./components/WithdrawalTab";
 
-export const EditUser = () => {
+export const ProfileEdit = () => {
   const [value, setValue] = useState<number>(0);
 
   const handleChange = (_event: React.SyntheticEvent, newValue: number) => {

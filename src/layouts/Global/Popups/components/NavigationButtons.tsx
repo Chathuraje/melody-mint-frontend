@@ -29,6 +29,7 @@ export const NavigationButtons: React.FC<NavigationButtonsProps> = ({
       width="100%"
       margin="auto"
       gap="15px"
+      padding="0 70px 0 70px"
     >
       {!showPrevious && showNext && <Grid></Grid>}
 

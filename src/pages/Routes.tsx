@@ -9,7 +9,8 @@ import { FundraisersItem } from "./FundraisersItem/FundraisersItem";
 import { Analyst } from "./Analyst/Analyst";
 import { AnalystItem } from "./AnalystItem/AnalystItem";
 import { Profile } from "./Profile/Profile";
-import { EditUser } from "./EditUser/EditUser";
+import { ProfileEdit } from "./ProfileEdit/ProfileEdit";
+import { FundraisersCreate } from "./Fundraisers/FundraisersCreate";
 
 export const routes = [
   {
@@ -28,6 +29,11 @@ export const routes = [
         title: "Fundraisers",
         main: true,
         footer: true,
+      },
+      {
+        path: "/fundraisers/create",
+        element: <FundraisersCreate />,
+        title: "Create a Fundraisers",
       },
       {
         path: "/fundraisers/:FundraisersId",
@@ -77,7 +83,7 @@ export const routes = [
       },
       {
         path: "/user/:Userid/edit",
-        element: <EditUser />,
+        element: <ProfileEdit />,
         title: "User Profile",
       },
       {

@@ -1,7 +1,15 @@
 import { SelectOptions } from "@/components/ui/SelectOptions";
 import { Button, Unstable_Grid2 as Grid } from "@mui/material";
+import { useContext } from "react";
+import { AnalystContext } from "../../context/AnalystContext";
 
 export const AnalystFilter = () => {
+  const { setPopupState } = useContext(AnalystContext)!;
+
+  const handleOpenPopup = () => {
+    setPopupState(true);
+  };
+
   return (
     <>
       <Grid
@@ -21,7 +29,7 @@ export const AnalystFilter = () => {
           />
         </Grid>
         <Grid alignContent="center">
-          <Button variant="outlined" color="primary">
+          <Button onClick={handleOpenPopup} variant="outlined" color="primary">
             Add music to the tracker
           </Button>
         </Grid>

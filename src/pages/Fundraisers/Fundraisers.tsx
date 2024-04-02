@@ -1,12 +1,25 @@
-import { AllFundraisers } from "./AllFundraisers/AllFundraisers";
-import { CreateFundraisersPopup } from "./CreateFundraisersPopup/CreateFundraisersPopup";
-import { FundraiserProvider } from "./context/FundraiserContext";
+import { FundraiserSection } from "@/layouts/Global/FundraiserSection/FundraiserSection";
+import { Unstable_Grid2 as Grid, Container } from "@mui/material";
+import { FundraisersFilter } from "./components/FundraisersFilter";
+import { Pagination } from "@/components/ui/Pagination";
+import { SubPageHeaders } from "@/components/SubPageHeaders";
 
 export const Fundraisers = () => {
   return (
-    <FundraiserProvider>
-      <AllFundraisers />
-      <CreateFundraisersPopup />
-    </FundraiserProvider>
+    <Container>
+      <Grid display="flex" gap="22px" flexDirection="column">
+        <Grid>
+          <SubPageHeaders
+            title="Explore Fundraisers"
+            subtitle="Invest in Funds created by Music artist and earn royalties"
+          />
+          <FundraisersFilter />
+        </Grid>
+        <Grid display="flex" gap="52px" flexDirection="column">
+          <FundraiserSection amount={12} />
+          <Pagination />
+        </Grid>
+      </Grid>
+    </Container>
   );
 };
