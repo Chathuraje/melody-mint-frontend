@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Technology",
+    "description": "Projects related to software, hardware, and technological innovations."
+  },
+  {
+    "name": "Healthcare",
+    "description": "Projects related to medical advancements, healthcare services, and pharmaceuticals."
+  },
+  {
+    "name": "Environment",
+    "description": "Projects focused on environmental sustainability, conservation, and renewable energy."
+  },
+  {
+    "name": "Education",
+    "description": "Projects aimed at improving education systems, providing educational resources, and enhancing learning experiences."
+  },
+  {
+    "name": "Social Impact",
+    "description": "Projects addressing social issues, community development, and humanitarian causes."
+  },
+  {
+    "name": "Arts & Culture",
+    "description": "Projects promoting arts, culture, creativity, and heritage preservation."
+  },
+  {
+    "name": "Food & Agriculture",
+    "description": "Projects related to food production, agriculture, and sustainable farming."
+  },
+  {
+    "name": "Finance & Fintech",
+    "description": "Projects related to financial services, banking, cryptocurrency, and fintech innovations."
+  },
+  {
+    "name": "Renewable Energy",
+    "description": "Projects focused specifically on renewable energy sources such as solar, wind, hydro, and geothermal."
+  },
+  {
+    "name": "Housing & Urban Development",
+    "description": "Projects addressing housing shortages, urban planning, and sustainable urban development."
+  }
+]

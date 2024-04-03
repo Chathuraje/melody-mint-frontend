@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Home } from "./Home/Home";
 import App from "@/App";
-import { Fundraisers } from "./Fundraisers/Fundraisers";
+import { AllFundraisers } from "./Fundraisers/AllFundraisers/AllFundraisers";
 import { Marketplace } from "./Marketplace/Marketplace";
 import { MarketplaceItem } from "./MarketplaceItem/MarketplaceItem";
 import { MarketplaceItemNft } from "./MarketplaceItemNft/MarketplaceItemNft";
@@ -10,9 +10,10 @@ import { Analyst } from "./Analyst/Analyst";
 import { AnalystItem } from "./AnalystItem/AnalystItem";
 import { Profile } from "./Profile/Profile";
 import { ProfileEdit } from "./ProfileEdit/ProfileEdit";
-import { FundraisersCreate } from "./FundraisersCreate/FundraisersCreate";
 import { ListForSale } from "./MarketplaceItemNftListForSale/ListForSale";
 import { MakeOffer } from "./MarketplaceItemNftListForSale/MakeOffer";
+import { CreateFundraisers } from "./Fundraisers/CreateFundraisers";
+import { UpdateFundraisers } from "./Fundraisers/UpdateFundraisers";
 
 export const routes = [
   {
@@ -27,19 +28,24 @@ export const routes = [
       },
       {
         path: "/fundraisers",
-        element: <Fundraisers />,
+        element: <AllFundraisers />,
         title: "Fundraisers",
         main: true,
         footer: true,
       },
       {
         path: "/fundraisers/create",
-        element: <FundraisersCreate />,
+        element: <CreateFundraisers />,
         title: "Create a Fundraisers",
       },
       {
         path: "/fundraisers/:FundraisersId",
         element: <FundraisersItem />,
+        title: "Single Fundraiser",
+      },
+      {
+        path: "/fundraisers/:FundraisersId/update",
+        element: <UpdateFundraisers />,
         title: "Single Fundraiser",
       },
       {

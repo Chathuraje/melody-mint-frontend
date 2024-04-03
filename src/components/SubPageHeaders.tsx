@@ -1,34 +1,22 @@
-import { Grid, TextField, Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
+import { Search } from "./ui/Search";
 
 interface SubPageHeadersProps {
   title: string;
   subtitle: string;
+  filter?: React.ReactNode;
 }
 
 export const SubPageHeaders = (props: SubPageHeadersProps) => {
+  const { title, subtitle, filter } = props;
   return (
-    <Grid display="flex" gap="35px" flexDirection="column">
-      <Grid
-        display="flex"
-        gap="35px"
-        flexDirection="row"
-        paddingTop="45px"
-        justifyContent="space-between"
-        alignItems="center"
-      >
-        <Grid display="flex" flexDirection="column" alignItems="left">
-          <Typography variant="h2">{props.title}</Typography>
-          <Typography variant="subtitle2">{props.subtitle}</Typography>
-        </Grid>
+    <Grid display="flex" gap="25px" flexDirection="column">
+      <Grid display="flex" flexDirection="column">
+        <Typography variant="h2">{title}</Typography>
+        <Typography variant="subtitle2">{subtitle}</Typography>
       </Grid>
-      <Grid display="flex" paddingBottom="25px">
-        <TextField
-          fullWidth
-          label="Search for Marketplace"
-          id="searchMarketplace"
-          placeholder="Search for marketplace"
-        />
-      </Grid>
+      <Search />
+      {filter}
     </Grid>
   );
 };

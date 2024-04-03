@@ -1,17 +1,14 @@
-import { FormControl, Unstable_Grid2 as Grid, TextField } from "@mui/material";
+import { Grid, TextField } from "@mui/material";
 
 export const Search = () => {
   return (
-    <Grid display="flex" width="100%">
-      <FormControl sx={{ m: 1 }} size="small">
-        <TextField
-          fullWidth
-          id="outlined-basic"
-          label="Search"
-          variant="outlined"
-          size="small"
-        />
-      </FormControl>
+    <Grid display="flex" gap="35px" flexDirection="column" width="100%">
+      <TextField
+        fullWidth
+        label="Search for Marketplace"
+        id="searchMarketplace"
+        placeholder="Search for marketplace"
+      />
     </Grid>
   );
 };

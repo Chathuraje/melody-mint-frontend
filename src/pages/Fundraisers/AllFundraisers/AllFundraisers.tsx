@@ -1,10 +1,10 @@
 import { Unstable_Grid2 as Grid, Container } from "@mui/material";
-import { FundraisersFilter } from "./components/FundraisersFilter";
+import { FundraisersFilter } from "./FundraisersFilter";
 import { Pagination } from "@/components/ui/Pagination";
 import { SubPageHeaders } from "@/components/SubPageHeaders";
 import FundRaiserCard from "@/components/FundRaiserCard";
 
-export const Fundraisers = () => {
+export const AllFundraisers = () => {
   return (
     <Container>
       <Grid container display="flex" gap="22px" flexDirection="column">
@@ -12,8 +12,8 @@ export const Fundraisers = () => {
           <SubPageHeaders
             title="Explore Fundraisers"
             subtitle="Invest in Funds created by Music artist and earn royalties"
+            filter={<FundraisersFilter />}
           />
-          <FundraisersFilter />
         </Grid>
         <Grid container direction="column" alignItems="center" gap="25px">
           <Grid container justifyContent="left">
