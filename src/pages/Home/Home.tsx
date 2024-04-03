@@ -1,10 +1,11 @@
-import { Hero } from "./components/Hero/Hero";
-import { Cta } from "./components/Cta/Cta";
-import { HomeFundraise } from "./components/HomeFundraise/HomeFundraise";
-import { FeaturesSection } from "./components/FeaturesSection/FeaturesSection";
-import { Cta2 } from "./components/Cta2/Cta2";
+import { Hero } from "./components/Hero";
+import { Cta } from "./components/Cta";
+import { HomeFundraise } from "./components/HomeFundraise";
+import { FeaturesSection } from "./components/FeaturesSection";
 import { Container, Unstable_Grid2 as Grid } from "@mui/material";
-import { Faq } from "./components/FAQ/Faq";
+import { Faq } from "./components/Faq";
+import CtaBack from "@/assets/homepage/cta-back.webp";
+import CtaBack2 from "@/assets/homepage/cta-back2.webp";
 
 export const Home = () => {
   return (
@@ -13,10 +14,20 @@ export const Home = () => {
 
       <Container>
         <Grid display="flex" gap={10} flexDirection="column">
-          <Cta />
+          <Cta
+            title="Become an artist, fund your music"
+            subtitle="By starting a fundraiser, you can collect investments
+          to fund your music"
+            image={CtaBack}
+          />
           <HomeFundraise />
           <FeaturesSection />
-          <Cta2 />
+          <Cta
+            title="This is where your music journey begins"
+            subtitle="Start your music journey with Melody-Mint and gain the exposure to be a
+            future superstar"
+            image={CtaBack2}
+          />
           <Faq />
         </Grid>
       </Container>

@@ -1,5 +1,5 @@
 import { Typography, Unstable_Grid2 as Grid } from "@mui/material";
-import { Features } from "./Features";
+import { Features } from "./FeaturesSection/Features";
 
 export const FeaturesSection = () => {
   return (
