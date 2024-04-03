@@ -19,7 +19,7 @@ export const Marketplace = () => {
           <Grid container justifyContent="left">
             {[...Array(5)].map((_, index) => (
               <Grid key={index} xs={12} sm={6} md={3} padding={1}>
-                <MarketplaceCard />
+                <MarketplaceCard name="Train the Trainer" floor={14.34} />
               </Grid>
             ))}
           </Grid>

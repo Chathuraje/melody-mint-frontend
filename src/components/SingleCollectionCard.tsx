@@ -2,23 +2,21 @@ import { Card, Grid, Typography } from "@mui/material";
 import SingleCollectionPlaceholder from "@/assets/marketplace/single-collection-image-palceholder.png";
 
 export const SingleCollectionCard = () => {
-  const SingleCollectionItem = {
-    backgroundImage: `url(${SingleCollectionPlaceholder})`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-  };
-
   return (
     <Card>
       <Grid
         display="flex"
-        style={SingleCollectionItem}
         height="275px"
         borderRadius="8px"
         padding="10px"
         flexDirection="column"
         alignItems="flex-end"
+        sx={{
+          backgroundImage: `url(${SingleCollectionPlaceholder})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
       ></Grid>
 
       <Grid
@@ -29,7 +27,7 @@ export const SingleCollectionCard = () => {
         alignItems="flex-start"
         alignSelf="stretch"
       >
-        <Typography variant="h5">Music Title</Typography>
+        <Typography variant="h5">2234</Typography>
 
         <Grid>
           <Typography variant="subtitle2" color="#6D6D6D">

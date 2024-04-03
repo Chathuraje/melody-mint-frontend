@@ -2,8 +2,8 @@ import { Container, Unstable_Grid2 as Grid } from "@mui/material";
 import { Hero } from "./components/Hero";
 import { InfoSection } from "./components/InfoSection";
 import { FilterSection } from "./components/FilterSection";
-import { SingleCollectionSection } from "./components/SingleCollectionSection";
 import { Pagination } from "@/components/ui/Pagination";
+import { MarketplaceCard } from "@/components/MarketplaceCard";
 
 export const MarketplaceItem = () => {
   //   const { collectionId } = useParams();
@@ -13,11 +13,22 @@ export const MarketplaceItem = () => {
       <Hero />
 
       <Container>
-        <Grid display="flex" flexDirection="column" gap="20px">
+        <Grid container display="flex" flexDirection="column" gap="20px">
           <InfoSection />
           <FilterSection />
-          <Grid display="flex" gap="52px" flexDirection="column">
-            <SingleCollectionSection amount={25} />
+          <Grid container display="flex" gap="52px" flexDirection="column">
+            <Grid container padding="0px" margin="0px" spacing={2}>
+              {[...Array(15)].map((_, index) => (
+                <Grid key={index} xs={12} sm={6} md={3}>
+                  <MarketplaceCard
+                    nft
+                    name="#1243"
+                    currentPrice={1500}
+                    lastPrice={1000}
+                  />
+                </Grid>
+              ))}
+            </Grid>
             <Pagination />
           </Grid>
         </Grid>

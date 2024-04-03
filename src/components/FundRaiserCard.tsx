@@ -43,7 +43,7 @@ const FundRaiserCard = () => {
       >
         <Grid display="flex" flexDirection="column" gap="5px" padding="0">
           <Typography variant="h5">Music Title</Typography>
-          <Typography variant="subtitle2" color="#6D6D6D">
+          <Typography variant="subtitle1" color="#6D6D6D" fontSize="14px">
             <b>Deadline</b>: 12/12/2022
           </Typography>
         </Grid>
