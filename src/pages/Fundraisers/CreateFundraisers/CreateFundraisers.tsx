@@ -1,9 +1,9 @@
-import { CUPageTamplage } from "./components/CUPageTamplage";
+import { CUPageTamplage } from "../components/CUPageTamplage";
 
-export const UpdateFundraisers = () => {
+export const CreateFundraisers = () => {
   return (
     <CUPageTamplage
-      title="Update a Fundraiser"
+      title="Create a Fundraiser"
       description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec
   odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla
   quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent

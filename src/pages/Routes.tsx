@@ -1,19 +1,23 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Home } from "./Home/Home";
 import App from "@/App";
-import { AllFundraisers } from "./Fundraisers/AllFundraisers/AllFundraisers";
-import { Marketplace } from "./Marketplace/Marketplace";
-import { MarketplaceItem } from "./MarketplaceItem/MarketplaceItem";
 import { MarketplaceItemNft } from "./MarketplaceItemNft/MarketplaceItemNft";
-import { FundraisersItem } from "./FundraisersItem/FundraisersItem";
 import { Analyst } from "./Analyst/Analyst";
 import { AnalystItem } from "./AnalystItem/AnalystItem";
 import { Profile } from "./Profile/Profile";
 import { ProfileEdit } from "./ProfileEdit/ProfileEdit";
-import { ListForSale } from "./MarketplaceItemNftListForSale/ListForSale";
-import { MakeOffer } from "./MarketplaceItemNftListForSale/MakeOffer";
-import { CreateFundraisers } from "./Fundraisers/CreateFundraisers";
-import { UpdateFundraisers } from "./Fundraisers/UpdateFundraisers";
+import {
+  AllFundraisers,
+  CreateFundraisers,
+  SingleFundraisersItem,
+  UpdateFundraisers,
+} from "./Fundraisers";
+import {
+  AllMarketplace,
+  ListForSale,
+  MakeOffer,
+  MarketplaceItem,
+} from "./Marketplace";
 
 export const routes = [
   {
@@ -40,7 +44,7 @@ export const routes = [
       },
       {
         path: "/fundraisers/:FundraisersId",
-        element: <FundraisersItem />,
+        element: <SingleFundraisersItem />,
         title: "Single Fundraiser",
       },
       {
@@ -50,7 +54,7 @@ export const routes = [
       },
       {
         path: "/marketplace",
-        element: <Marketplace />,
+        element: <AllMarketplace />,
         title: "Marketplace",
         main: true,
         footer: true,

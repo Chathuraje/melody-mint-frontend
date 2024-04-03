@@ -9,8 +9,9 @@ export const FilterSection = () => {
       flexDirection="row"
       alignItems="center"
       justifyContent="space-between"
+      gap="25px"
     >
-      <Search />
+      <Search size="small" />
       <SelectOptions label="Sort" items={["All", "New", "Trending"]} />
     </Grid>
   );

@@ -1,10 +1,10 @@
 import { Container, Grid } from "@mui/material";
-import { MarketplaceFilter } from "./components/MarketplaceFilter";
+import { MarketplaceFilter } from "./MarketplaceFilter";
 import { Pagination } from "@/components/ui/Pagination";
 import { SubPageHeaders } from "@/components/SubPageHeaders";
 import { MarketplaceCard } from "@/components/MarketplaceCard";
 
-export const Marketplace = () => {
+export const AllMarketplace = () => {
   return (
     <Container>
       <Grid container display="flex" gap="22px" flexDirection="column">
@@ -12,8 +12,8 @@ export const Marketplace = () => {
           <SubPageHeaders
             title="Melody Mint marketplace"
             subtitle="m ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et do"
+            filter={<MarketplaceFilter />}
           />
-          <MarketplaceFilter />
         </Grid>
         <Grid container direction="column" alignItems="center" gap="25px">
           <Grid container justifyContent="left">
