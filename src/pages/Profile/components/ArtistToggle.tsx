@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Tabs, Tab, Unstable_Grid2 as Grid } from "@mui/material";
-import { FundraiserSection } from "@/layouts/Global/FundraiserSection/FundraiserSection";
-import { MarketpaceSection } from "@/layouts/Global/MarketplaceSection/MarketpaceSection";
+// import { FundraiserSection } from "@/layouts/Global/FundraiserSection/FundraiserSection";
+// import { MarketpaceSection } from "@/layouts/Global/MarketplaceSection/MarketpaceSection";
 import { FundraiseUpdateBox } from "@/components/FundraiseUpdateBox";
+import FundRaiserCard from "@/components/FundRaiserCard";
+import { MarketplaceCard } from "@/components/MarketplaceCard";
 
 export const ArtistToggle = () => {
   const [selectedTab, setSelectedTab] = useState(0);
@@ -29,18 +31,30 @@ export const ArtistToggle = () => {
       </Tabs>
 
       {selectedTab === 0 && (
-        <Grid>
-          <FundraiserSection amount={15} />
+        <Grid container justifyContent="left">
+          {[...Array(8)].map((_, index) => (
+            <Grid key={index} xs={12} sm={6} md={3} padding={1}>
+              <FundRaiserCard />
+            </Grid>
+          ))}
         </Grid>
       )}
       {selectedTab === 1 && (
-        <Grid>
-          <FundraiserSection amount={5} />
+        <Grid container justifyContent="left">
+          {[...Array(8)].map((_, index) => (
+            <Grid key={index} xs={12} sm={6} md={3} padding={1}>
+              <FundRaiserCard />
+            </Grid>
+          ))}
         </Grid>
       )}
       {selectedTab === 2 && (
-        <Grid>
-          <MarketpaceSection amount={5} />
+        <Grid container justifyContent="left">
+          {[...Array(8)].map((_, index) => (
+            <Grid key={index} xs={12} sm={6} md={3} padding={1}>
+              <MarketplaceCard />
+            </Grid>
+          ))}
         </Grid>
       )}
       {selectedTab === 3 && (

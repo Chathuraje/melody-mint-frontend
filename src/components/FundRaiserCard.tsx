@@ -25,6 +25,7 @@ const FundRaiserCard = () => {
         height="275px"
         flexDirection="column"
         alignItems="flex-end"
+        padding="10px"
       >
         <Box
           padding="8px 12px 8px 12px"

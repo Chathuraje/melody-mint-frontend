@@ -16,18 +16,14 @@ export const AnalystCard = () => {
         display="flex"
         style={AnalystImage}
         height="200px"
-        borderRadius="8px"
-        padding="10px"
         flexDirection="column"
         alignItems="flex-end"
       ></Grid>
       <Grid
         gap="16px"
-        padding="8px 8px 24px 8px"
         display="flex"
         flexDirection="column"
-        alignItems="flex-start"
-        alignSelf="stretch"
+        padding="15px 15px 15px 15px"
       >
         <Typography variant="h5">Music Title</Typography>
         <Typography variant="subtitle2" color="#6D6D6D">
