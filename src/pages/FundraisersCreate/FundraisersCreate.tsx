@@ -2,6 +2,7 @@ import { FormBox } from "@/components/FormBox";
 import { Button, Container, Unstable_Grid2 as Grid } from "@mui/material";
 import { FormHeader } from "./components/FormHeader";
 import { CreationForm } from "./components/CreationForm";
+import { FundraiserForm } from "./components/FundraiserForm";
 
 export const FundraisersCreate = () => {
   return (
@@ -15,7 +16,7 @@ export const FundraisersCreate = () => {
             description="Check for item trait changes and items flagged as stolen before a
   offer is accepted"
           >
-            <CreationForm />
+            <FundraiserForm />
           </FormBox>
           <FormBox
             title="Creation Details"

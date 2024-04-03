@@ -1,7 +1,7 @@
 import { SelectOptions } from "@/components/ui/SelectOptions";
 import { Button, Unstable_Grid2 as Grid } from "@mui/material";
 import { useContext } from "react";
-import { AnalystContext } from "../../context/AnalystContext";
+import { AnalystContext } from "../context/AnalystContext";
 
 export const AnalystFilter = () => {
   const { setPopupState } = useContext(AnalystContext)!;

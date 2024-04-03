@@ -2,7 +2,7 @@ import { Grid, Typography } from "@mui/material";
 
 interface ProfileEditTabProps {
   title: string;
-  description: string;
+  description?: string;
   children: React.ReactNode;
 }
 
@@ -16,9 +16,12 @@ export const FormBox = (props: ProfileEditTabProps) => {
         paddingBottom="20px"
       >
         <Typography variant="h5">{props.title}</Typography>
-        <Typography variant="subtitle1" color="black" fontSize="14px">
-          {props.description}
-        </Typography>
+
+        {props.description && (
+          <Typography variant="subtitle1" color="black" fontSize="14px">
+            {props.description}
+          </Typography>
+        )}
       </Grid>
       <Grid>{props.children}</Grid>
     </Grid>

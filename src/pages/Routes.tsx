@@ -11,6 +11,8 @@ import { AnalystItem } from "./AnalystItem/AnalystItem";
 import { Profile } from "./Profile/Profile";
 import { ProfileEdit } from "./ProfileEdit/ProfileEdit";
 import { FundraisersCreate } from "./FundraisersCreate/FundraisersCreate";
+import { ListForSale } from "./MarketplaceItemNftListForSale/ListForSale";
+import { MakeOffer } from "./MarketplaceItemNftListForSale/MakeOffer";
 
 export const routes = [
   {
@@ -59,12 +61,12 @@ export const routes = [
       },
       {
         path: "/marketplace/:MarketplaceId/:tokenId/list-for-sale",
-        element: "List for Sale",
+        element: <ListForSale />,
         title: "List for Sale",
       },
       {
         path: "/marketplace/:MarketplaceId/:tokenId/make-offer",
-        element: "Make Offer",
+        element: <MakeOffer />,
         title: "Make Offer",
       },
       {

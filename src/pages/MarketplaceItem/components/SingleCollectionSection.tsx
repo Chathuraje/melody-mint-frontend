@@ -1,5 +1,5 @@
 import { Unstable_Grid2 as Grid } from "@mui/material";
-import { SingleCollectionCard } from "./SingleCollectionSection/SingleCollectionCard";
+import { SingleCollectionCard } from "../../../components/SingleCollectionCard";
 
 interface SingleCollectionSectionProp {
   amount: number;
