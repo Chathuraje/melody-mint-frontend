@@ -1,7 +1,11 @@
 import { Logo } from "@/components/Logo";
-import { Button, Unstable_Grid2 as Grid } from "@mui/material/";
+import { Button, Unstable_Grid2 as Grid, Typography } from "@mui/material/";
 import "./Header.css";
 import { Navigation } from "@/components/Navigation";
+import WalletIcon from "@mui/icons-material/Wallet";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+
 
 export const Header = () => {
   return (
@@ -29,10 +33,41 @@ export const Header = () => {
         <Navigation type="main" />
       </Grid>
 
-      <Grid md={3} display="flex" justifyContent="right">
+      <Grid
+        md={3}
+        display="flex"
+        flexDirection="row"
+        justifyContent="right"
+        gap="15px"
+      >
         <Button variant="contained" color="primary">
           Connect Wallet
         </Button>
+
+        <Grid
+          display="flex"
+          flexDirection="row"
+          justifyContent="right"
+          gap="15px"
+          bgcolor="#f5f5f5"
+          padding="5px"
+        >
+          <WalletIcon />
+          <Typography fontFamily="22px" fontWeight="400">
+            234 ETH
+          </Typography>
+        </Grid>
+
+        <Grid
+          display="flex"
+          justifyContent="right"
+          bgcolor="#f5f5f5"
+          padding="5px"
+          gap="15px"
+        >
+          <AccountCircleIcon />
+          <KeyboardArrowDownIcon />
+        </Grid>
       </Grid>
     </Grid>
   );
