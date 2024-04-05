@@ -1,23 +1,35 @@
-import { Grid, MenuItem } from "@mui/material";
+import { Badge, Grid, MenuItem } from "@mui/material";
 import { ChainIcon } from "connectkit";
-import { useSwitchChain } from "wagmi";
+import { useAccount, useSwitchChain } from "wagmi";
 
 export const SwitcherPopup = () => {
   const { chains, switchChain } = useSwitchChain();
+  const { chain } = useAccount();
+
+  console.log(chain?.id);
 
   return (
     <Grid display="flex" flexDirection="column" gap="5px" padding="10px">
-      {chains.map((schain) => (
+      {chains.map((swchain) => (
         <MenuItem
-          key={schain.id}
-          onClick={() => switchChain({ chainId: schain.id })}
+          key={swchain.id}
+          onClick={() => switchChain({ chainId: swchain.id })}
           sx={{
-            padding: "10px",
+            borderRadius: "20px",
+            // backgroundColor:
+            //   swchain.id === chain?.id ? "#22c55e" : "transparent",
           }}
         >
           <Grid display="flex" flexDirection="row" gap="15px">
-            <ChainIcon id={schain.id} />
-            {schain.name}
+            {swchain.id === chain?.id ? (
+              <Badge color="success" overlap="circular" variant="dot">
+                <ChainIcon id={swchain.id} />
+              </Badge>
+            ) : (
+              <ChainIcon id={swchain.id} />
+            )}
+
+            {swchain.name}
           </Grid>
         </MenuItem>
       ))}
