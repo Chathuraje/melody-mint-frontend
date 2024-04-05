@@ -15,6 +15,9 @@ export const theme = createTheme({
     error: {
       main: "#E73A3A",
     },
+    success: {
+      main: "#22c55e",
+    },
   },
   components: {
     MuiButton: {

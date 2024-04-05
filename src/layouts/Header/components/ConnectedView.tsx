@@ -1,21 +1,15 @@
-import { Button, Unstable_Grid2 as Grid, Typography } from "@mui/material";
-import WalletIcon from "@mui/icons-material/Wallet";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-
-import { useBalance, useAccount, useDisconnect } from "wagmi";
-import { truncateAddress } from "@/utils/truncateAddress";
+import { Unstable_Grid2 as Grid } from "@mui/material";
+import { UserPopup } from "./Menu/UserPopup";
+import { WalletDetails } from "./WalletDetails";
+import { ProfileButton } from "./ProfileButton";
+import { SwitcherPopup } from "./Menu/SwitcherPopup";
+import { usePopup } from "../hooks/PopupHook";
+import { Popup } from "./Menu/Popup";
 
 export const ConnectedView = () => {
-  const { address } = useAccount();
-  const { disconnect } = useDisconnect();
+  const [profilePopup, profileActions] = usePopup();
+  const [chainListPopup, chainListActions] = usePopup();
 
-  const { data: { symbol = "", value = 0, decimals = 1 } = {} } = useBalance({
-    address,
-  });
-
-  const readableAmount = Number(value) / 10 ** Number(decimals);
-  const truncatedAddress = truncateAddress(address);
   return (
     <>
       <Grid
@@ -25,37 +19,30 @@ export const ConnectedView = () => {
         justifyContent="center"
         alignItems="center"
       >
-        <Grid
-          display="flex"
-          flexDirection="row"
-          justifyContent="right"
-          gap="15px"
-          bgcolor="#f5f5f5"
-          padding="8px"
-          borderRadius="5px"
-        >
-          <WalletIcon />
-          <Typography fontFamily="22px" fontWeight="400">
-            {readableAmount.toFixed(2)} {symbol}
-          </Typography>
-        </Grid>
-        {truncatedAddress}
-        <Grid
-          display="flex"
-          justifyContent="right"
-          bgcolor="#f5f5f5"
-          padding="5px"
-          borderRadius="5px"
-          gap="15px"
-        >
-          <AccountCircleIcon />
-          <KeyboardArrowDownIcon />
-        </Grid>
-      </Grid>
+        <WalletDetails
+          handleClick={chainListActions.handleClick}
+          open={chainListPopup.open}
+        />
 
-      <Button variant="contained" onClick={() => disconnect()}>
-        Logout
-      </Button>
+        <Popup
+          children={<SwitcherPopup />}
+          open={chainListPopup.open}
+          anchorEl={chainListPopup.anchorEl}
+          onClose={chainListActions.handleClose}
+        />
+
+        <ProfileButton
+          handleClick={profileActions.handleClick}
+          open={profilePopup.open}
+        />
+
+        <Popup
+          children={<UserPopup />}
+          open={profilePopup.open}
+          anchorEl={profilePopup.anchorEl}
+          onClose={profileActions.handleClose}
+        />
+      </Grid>
     </>
   );
 };

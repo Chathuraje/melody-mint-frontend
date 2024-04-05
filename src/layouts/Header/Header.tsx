@@ -3,7 +3,7 @@ import { Unstable_Grid2 as Grid } from "@mui/material/";
 import "./Header.css";
 import { Navigation } from "@/components/Navigation";
 import { useAccount } from "wagmi";
-import { ConnectButton } from "./components/ConnectButton";
+import { DisconnectedView } from "./components/DisconnectedView";
 import { ConnectedView } from "./components/ConnectedView";
 
 export const Header = () => {
@@ -31,7 +31,7 @@ export const Header = () => {
       </Grid>
 
       <Grid md={3} display="flex" flexDirection="row" justifyContent="right">
-        {isConnected ? <ConnectedView /> : <ConnectButton />}
+        {isConnected ? <ConnectedView /> : <DisconnectedView />}
       </Grid>
     </Grid>
   );
