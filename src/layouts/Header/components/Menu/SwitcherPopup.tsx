@@ -6,8 +6,6 @@ export const SwitcherPopup = () => {
   const { chains, switchChain } = useSwitchChain();
   const { chain } = useAccount();
 
-  console.log(chain?.id);
-
   return (
     <Grid display="flex" flexDirection="column" gap="5px" padding="10px">
       {chains.map((swchain) => (

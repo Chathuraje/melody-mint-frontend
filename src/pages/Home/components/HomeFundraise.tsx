@@ -14,7 +14,7 @@ export const HomeFundraise = () => {
 
       <Grid container justifyContent="left">
         {[...Array(8)].map((_, index) => (
-          <Grid key={index} xs={12} sm={6} md={3} padding={1}>
+          <Grid item key={index} xs={12} sm={6} md={3} padding={1}>
             <FundRaiserCard />
           </Grid>
         ))}

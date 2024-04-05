@@ -14,7 +14,7 @@ const config = createConfig(
       [sepolia.id]: http(),
     },
 
-    walletConnectProjectId: WALLETCONNECT_PROJECT_ID,
+    walletConnectProjectId: WALLETCONNECT_PROJECT_ID, // TODO: Uncaught TypeError:
     appName: "Melody Mint",
 
     // appDescription: "Your App Description",

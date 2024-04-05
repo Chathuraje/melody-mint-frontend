@@ -17,7 +17,7 @@ export const Cta = (props: Cta) => {
   const HeaderTextStyle = {
     background:
       "-webkit-linear-gradient(180deg, #fff 30%, rgba(255, 255, 255, 0.75) 90%)",
-    webkitBackgroundClip: "text",
+    WebkitBackgroundClip: "text",
     backgroundClip: "text",
     WebkitTextFillColor: "transparent",
   };
