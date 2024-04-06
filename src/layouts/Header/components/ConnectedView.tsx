@@ -3,7 +3,7 @@ import { UserPopup } from "./Menu/UserPopup";
 import { WalletDetails } from "./WalletDetails";
 import { ProfileButton } from "./ProfileButton";
 import { SwitcherPopup } from "./Menu/SwitcherPopup";
-import { usePopup } from "../hooks/PopupHook";
+import { usePopup } from "../hooks/usePopup";
 import { Popup } from "./Menu/Popup";
 
 export const ConnectedView = () => {
