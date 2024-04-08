@@ -6,8 +6,8 @@ export type ChallengeRequest = {
 export type UserProfileToken = {
   id: string;
   token: string;
-  address: string;
-  chainId: number;
+  wallet_address: string;
+  chain_id: number;
 };
 
 export type UserProfile = {

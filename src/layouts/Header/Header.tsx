@@ -2,13 +2,11 @@ import { Logo } from "@/components/Logo";
 import { Unstable_Grid2 as Grid } from "@mui/material/";
 import "./Header.css";
 import { Navigation } from "@/components/Navigation";
-import { useAccount } from "wagmi";
-import { DisconnectedView } from "./components/DisconnectedView";
-import { ConnectedView } from "./components/ConnectedView";
+import { PopupProvider } from "@/context/PopupProvider";
+import { SignPopup } from "./components/SignPopup";
+import { AuthStateView } from "./AuthStateView";
 
 export const Header = () => {
-  const { isConnected } = useAccount();
-
   return (
     <Grid
       container
@@ -31,7 +29,10 @@ export const Header = () => {
       </Grid>
 
       <Grid md={3} display="flex" flexDirection="row" justifyContent="right">
-        {isConnected ? <ConnectedView /> : <DisconnectedView />}
+        <PopupProvider>
+          <AuthStateView />
+          <SignPopup />
+        </PopupProvider>
       </Grid>
     </Grid>
   );

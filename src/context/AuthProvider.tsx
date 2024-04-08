@@ -1,13 +1,13 @@
-import { SnackbarNotification } from "@/components/ui/SnackbarNotification";
+import { useLoginAPI } from "@/hooks/useLoginAPI";
 import { UserProfile } from "@/models/user";
-import { LoginAPI } from "@/services/AuthService";
+import { handleError } from "@/utils/ErrorHandler";
 import { createContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useAccount, useDisconnect } from "wagmi";
 
 interface AuthContextType {
   user: UserProfile | null;
   token: string | null;
-  authenticate: (address: `0x${string}` | undefined, chainId: number) => void;
+  authenticate: (address: `0x${string}`, chainId: number) => void;
   logout: () => void;
   isAuthenticated: () => boolean;
 }
@@ -23,11 +23,15 @@ export const AuthContext = createContext<AuthContextType>(
 export const AuthProvider = (props: AuthProviderProps) => {
   const { children } = props;
 
-  const navigate = useNavigate();
+  const { loginAPI } = useLoginAPI();
+
+  const { disconnect } = useDisconnect();
 
   const [token, setToken] = useState<string | null>(null);
   const [user, setUser] = useState<UserProfile | null>(null);
   const [isReady, setIsReady] = useState<boolean>(false);
+
+  const { address, chainId } = useAccount();
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
@@ -38,44 +42,41 @@ export const AuthProvider = (props: AuthProviderProps) => {
       setToken(JSON.parse(storedToken));
     }
     setIsReady(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const authenticate = async (
-    address: `0x${string}` | undefined,
-    chainId: number
-  ) => {
-    await LoginAPI({ address, chainId })
-      .then((response) => {
-        if (response) {
-          localStorage.setItem(
-            "auth_token",
-            JSON.stringify(response?.data.token)
-          );
+  const authenticate = async (address: `0x${string}`, chainId: number) => {
+    try {
+      const response = await loginAPI({ address, chainId });
 
-          const userObj = {
-            id: response?.data.id,
-            address: response?.data.address,
-            chainId: response?.data.chainId,
-          };
+      if (response) {
+        localStorage.setItem("auth_token", JSON.stringify(response.data.token));
 
-          localStorage.setItem("user", JSON.stringify(userObj));
-          setToken(response?.data.token);
-          setUser(userObj!);
+        const userObj = {
+          id: response.data.id,
+          address: response.data.wallet_address,
+          chainId: response.data.chain_id,
+        };
 
-          <SnackbarNotification message="Login successful" variant="success" />;
-          navigate("/");
-        }
-      })
-      .catch(() => {
-        <SnackbarNotification
-          message="Server error occured!"
-          variant="error"
-        />;
-      });
+        localStorage.setItem("user", JSON.stringify(userObj));
+        setToken(response.data.token);
+        setUser(userObj);
+      }
+    } catch (error) {
+      disconnect();
+      handleError(error);
+    }
   };
 
   const isAuthenticated = () => {
-    return user !== null;
+    return (
+      user !== null &&
+      user !== undefined &&
+      user.address !== undefined &&
+      user.chainId !== undefined &&
+      user.address === address &&
+      user.chainId === chainId
+    );
   };
 
   const logout = () => {
@@ -83,7 +84,7 @@ export const AuthProvider = (props: AuthProviderProps) => {
     localStorage.removeItem("auth_token");
     setUser(null);
     setToken("");
-    navigate("/");
+    disconnect();
   };
 
   const contextData: AuthContextType = {
