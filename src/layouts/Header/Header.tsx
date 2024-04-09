@@ -25,7 +25,7 @@ export const Header = () => {
       </Grid>
 
       <Grid md={6} display="flex" justifyContent="center">
-        <Navigation type="main" />
+        <Navigation type="header" />
       </Grid>
 
       <Grid md={3} display="flex" flexDirection="row" justifyContent="right">

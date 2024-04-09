@@ -1,4 +1,4 @@
-.footer,
+.footer1,
 .footer2,
 .footer3 {
   color: white;
@@ -8,7 +8,7 @@
   text-decoration: none;
 }
 
-.footer:hover,
+.footer1:hover,
 .footer2:hover,
 .footer3:hover {
   color: #1d4ed8;

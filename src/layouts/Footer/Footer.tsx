@@ -23,7 +23,7 @@ export const Footer = () => {
             </Grid>
 
             <Grid display="flex" flexDirection="column" gap="10px">
-              <Navigation type="footer" />
+              <Navigation type="footer1" />
             </Grid>
             <Grid display="flex" flexDirection="column" gap="10px">
               <Navigation type="footer2" />

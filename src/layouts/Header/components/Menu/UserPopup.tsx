@@ -1,5 +1,6 @@
 import { ProfileImage } from "@/components/ui/ProfileImage";
 import { ProfileMenuItem } from "@/components/ui/ProfileMenuItem";
+import { useAuth } from "@/hooks/useAuth";
 import { useNotification } from "@/hooks/useNotifications";
 import { truncateAddress } from "@/utils/truncateAddress";
 import { Logout, Paid, Settings } from "@mui/icons-material";
@@ -35,12 +36,19 @@ export const UserPopup = () => {
     disconnect();
   };
 
+  const { user } = useAuth();
+
+  let userFullName = "No Name";
+  if (user && user.first_name !== null && user.last_name !== null) {
+    userFullName = (user.first_name || "") + " " + (user.last_name || "");
+  }
+
   return (
     <>
       <Grid display="flex" flexDirection="column" gap="8px">
         <Grid display="flex" flexDirection="column" gap="10px">
           <ProfileMenuItem
-            mainText="Chathura Ekanayake"
+            mainText={userFullName || "User"}
             subText="Profile"
             onClick={handleProfileClick}
             icon={<ProfileImage dimentions="25px" />}
