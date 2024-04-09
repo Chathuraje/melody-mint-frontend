@@ -12,6 +12,7 @@ import { useAccount, useDisconnect } from "wagmi";
 export const UserPopup = () => {
   const { address, chain } = useAccount();
   const truncatedAddress = truncateAddress(address);
+  const { user } = useAuth();
 
   const { disconnect } = useDisconnect();
 
@@ -20,7 +21,7 @@ export const UserPopup = () => {
   const { sendNotification } = useNotification();
 
   const handleProfileClick = () => {
-    navigate(`/user/${address}`);
+    navigate(`/user/${user?.id}`);
   };
 
   const handleNewFundraiserClick = () => {
@@ -28,15 +29,13 @@ export const UserPopup = () => {
   };
 
   const handleSettingsClick = () => {
-    navigate(`/user/${address}/edit`);
+    navigate(`/user/${user?.id}/edit`);
   };
 
   const handleLogoutClick = () => {
     sendNotification("success", "Successfully logged out. Disconnecting...");
     disconnect();
   };
-
-  const { user } = useAuth();
 
   let userFullName = "No Name";
   if (user && user.first_name !== null && user.last_name !== null) {

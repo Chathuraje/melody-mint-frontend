@@ -5,11 +5,18 @@ import InstergramIcon from "@/assets/profile/instagram.svg";
 import XIcon from "@/assets/profile/x.svg";
 import Website from "@/assets/profile/instagram.svg";
 
+interface SocialMediaLinks {
+  [key: string]: string;
+}
+
 interface SocialIconsProps {
-  names: ("spotify" | "instagram" | "youtube" | "x" | "website")[];
+  names: string[];
+  hrefs: SocialMediaLinks;
 }
 
 export const SocialIcons = (props: SocialIconsProps) => {
+  const { names, hrefs } = props;
+
   const getLogoUrl = (name: string) => {
     switch (name) {
       case "spotify":
@@ -29,8 +36,13 @@ export const SocialIcons = (props: SocialIconsProps) => {
 
   return (
     <Grid display="flex" gap="15px">
-      {props.names.map((name) => (
-        <IconButton key={name} aria-label={name}>
+      {names.map((name) => (
+        <IconButton
+          target="_blank"
+          href={hrefs[name]}
+          key={name}
+          aria-label={name}
+        >
           <img src={getLogoUrl(name)} alt={name} width="35px" height="35px" />
         </IconButton>
       ))}

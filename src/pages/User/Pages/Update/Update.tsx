@@ -2,13 +2,13 @@ import { Container, Grid } from "@mui/material";
 import { useState } from "react";
 import { ProfileTab } from "./components/ProfileTab";
 import { PersonalTab } from "./components/PersonalTab";
-import { SecurityTab } from "./components/SecurityTab";
-import { WalletTab } from "./components/WalletTab";
-import { LeftSliderbar } from "./components/LeftSliderbar";
 import { IncomeTab } from "./components/IncomeTab";
 import { WithdrawalTab } from "./components/WithdrawalTab";
+import { WalletTab } from "./components/WalletTab";
+import { SecurityTab } from "./components/SecurityTab";
+import { LeftSliderbar } from "./components/LeftSliderbar";
 
-export const ProfileEdit = () => {
+export const Update = () => {
   const [value, setValue] = useState<number>(0);
 
   const handleChange = (_event: React.SyntheticEvent, newValue: number) => {

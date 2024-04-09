@@ -1,4 +1,4 @@
-import { useLoginAPI } from "@/hooks/useLoginAPI";
+import { useLoginAPI } from "@/hooks/API/useLoginAPI";
 import { useNotification } from "@/hooks/useNotifications";
 import { UserProfile } from "@/models/user";
 import { handleError } from "@/utils/Errors/ErrorHandler";

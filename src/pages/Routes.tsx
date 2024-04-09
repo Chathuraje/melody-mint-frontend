@@ -4,8 +4,6 @@ import App from "@/App";
 import { MarketplaceItemNft } from "./MarketplaceItemNft/MarketplaceItemNft";
 import { Analyst } from "./Analyst/Analyst";
 import { AnalystItem } from "./AnalystItem/AnalystItem";
-import { Profile } from "./Profile/Profile";
-import { ProfileEdit } from "./ProfileEdit/ProfileEdit";
 import {
   AllFundraisers,
   CreateFundraisers,
@@ -20,6 +18,7 @@ import {
 } from "./Marketplace";
 import { ProtectedRoutes } from "./ProtectedRoutes";
 import { Login } from "./Login/Login";
+import { UserUpdate, UserView } from "./User/User";
 
 export interface RoutesInterface {
   path: string;
@@ -163,17 +162,17 @@ export const routes = [
         children: [
           {
             path: "/user/:Userid",
-            element: <Profile />,
+            element: <UserView />,
             title: "User Profile",
           },
           {
-            path: "/user/:Userid/edit",
+            path: "/user/:Userid/update",
             element: (
               <ProtectedRoutes>
-                <ProfileEdit />
+                <UserUpdate />
               </ProtectedRoutes>
             ),
-            title: "User Profile",
+            title: "Update User Profile",
           },
         ],
       },
@@ -206,6 +205,11 @@ export const routes = [
         element: "Support",
         title: "Support",
         menu: ["footer3"],
+      },
+      {
+        path: "/404",
+        element: "404 Page",
+        title: "404 Page",
       },
       {
         path: "/*",

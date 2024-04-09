@@ -3,7 +3,7 @@ import { UploadIcon } from "./UploadIcon";
 import ProfileHeroPlaceholder from "@/assets/profile/profile-hero-palceholder.webp";
 
 interface ProfileHeroProp {
-  src?: string;
+  src?: URL;
   height: string;
   border?: boolean;
   upload?: boolean;
@@ -23,7 +23,7 @@ export const ProfileHero = (props: ProfileHeroProp) => {
     border: "none",
   };
 
-  if (props.src === undefined || props.src === "") {
+  if (props.src === undefined || props.src === null) {
     ProfileHeroStyle.backgroundImage = `url(${ProfileHeroPlaceholder})`;
   }
 

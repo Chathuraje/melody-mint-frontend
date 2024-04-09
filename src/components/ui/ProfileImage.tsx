@@ -3,7 +3,7 @@ import { UploadIcon } from "./UploadIcon";
 import ProfileImagePlaceholder from "@/assets/profile/profile-placeholder.svg";
 
 interface ProfileImageProp {
-  src?: string | React.ReactNode;
+  src?: URL | React.ReactNode | undefined;
   upload?: boolean;
   dimentions?: string;
   border?: boolean;
@@ -30,7 +30,7 @@ export const ProfileImage = (props: ProfileImageProp) => {
     ProfileImageStyle.border = "2px solid #1D4ED8";
   }
 
-  if (props.src === undefined || props.src === "") {
+  if (props.src === undefined || props.src === "" || props.src === null) {
     ProfileImageStyle.backgroundImage = `url(${ProfileImagePlaceholder})`;
   }
 
