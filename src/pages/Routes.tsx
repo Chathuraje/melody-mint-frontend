@@ -18,6 +18,8 @@ import {
   MakeOffer,
   MarketplaceItem,
 } from "./Marketplace";
+import { ProtectedRoutes } from "./ProtectedRoutes";
+import { Login } from "./Login/Login";
 
 export interface RoutesInterface {
   path: string;
@@ -39,6 +41,11 @@ export const routes = [
         menu: ["header", "footer1"],
       },
       {
+        path: "/login",
+        element: <Login />,
+        title: "Login",
+      },
+      {
         path: "/fundraisers",
         children: [
           {
@@ -49,7 +56,11 @@ export const routes = [
           },
           {
             path: "/fundraisers/create",
-            element: <CreateFundraisers />,
+            element: (
+              <ProtectedRoutes>
+                <CreateFundraisers />
+              </ProtectedRoutes>
+            ),
             title: "Create a Fundraisers",
           },
           {
@@ -59,7 +70,11 @@ export const routes = [
           },
           {
             path: "/fundraisers/:FundraisersId/update",
-            element: <UpdateFundraisers />,
+            element: (
+              <ProtectedRoutes>
+                <UpdateFundraisers />
+              </ProtectedRoutes>
+            ),
             title: "Single Fundraiser",
           },
         ],
@@ -91,12 +106,20 @@ export const routes = [
                   },
                   {
                     path: "/marketplace/:collectionId/:tokenId/list-for-sale",
-                    element: <ListForSale />,
+                    element: (
+                      <ProtectedRoutes>
+                        <ListForSale />
+                      </ProtectedRoutes>
+                    ),
                     title: "List for Sale",
                   },
                   {
                     path: "/marketplace/:collectionId/:tokenId/make-offer",
-                    element: <MakeOffer />,
+                    element: (
+                      <ProtectedRoutes>
+                        <MakeOffer />
+                      </ProtectedRoutes>
+                    ),
                     title: "Make Offer",
                   },
                 ],
@@ -110,13 +133,21 @@ export const routes = [
         children: [
           {
             path: "/analyst",
-            element: <Analyst />,
+            element: (
+              <ProtectedRoutes>
+                <Analyst />
+              </ProtectedRoutes>
+            ),
             title: "Analyst",
             menu: ["header", "footer1"],
           },
           {
             path: "/analyst/:AnalystId",
-            element: <AnalystItem />,
+            element: (
+              <ProtectedRoutes>
+                <AnalystItem />
+              </ProtectedRoutes>
+            ),
             title: "Single Analyst Item",
           },
         ],
@@ -137,7 +168,11 @@ export const routes = [
           },
           {
             path: "/user/:Userid/edit",
-            element: <ProfileEdit />,
+            element: (
+              <ProtectedRoutes>
+                <ProfileEdit />
+              </ProtectedRoutes>
+            ),
             title: "User Profile",
           },
         ],

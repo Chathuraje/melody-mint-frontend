@@ -1,13 +1,11 @@
 import { Logo } from "@/components/Logo";
 import { Popups } from "@/components/Popup";
-import { PopupContext } from "@/context/PopupProvider";
 import {
   Button,
   Unstable_Grid2 as Grid,
   IconButton,
   Typography,
 } from "@mui/material";
-import { useContext } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import LockPersonIcon from "@mui/icons-material/LockPerson";
 import SyncLockIcon from "@mui/icons-material/SyncLock";
@@ -16,8 +14,8 @@ import { useAccount, useDisconnect } from "wagmi";
 import { useNotification } from "@/hooks/useNotifications";
 
 export const SignPopup = () => {
-  const { popupState, setPopupState } = useContext(PopupContext)!;
-  const { authenticate, isAuthenticated } = useAuth();
+  const { authenticate, isAuthenticated, signPopupState, setSignPopupState } =
+    useAuth();
 
   const { address, chain, isConnected } = useAccount();
   const chainId = chain?.id;
@@ -26,7 +24,7 @@ export const SignPopup = () => {
 
   const { sendNotification } = useNotification();
 
-  if (!popupState || isAuthenticated() || !isConnected) return null;
+  if (!signPopupState || isAuthenticated() || !isConnected) return null;
 
   const popupClose = () => {
     sendNotification(
@@ -34,7 +32,7 @@ export const SignPopup = () => {
       "User Cancelled the sign request. Disconnecting..."
     );
     disconnect();
-    setPopupState(false);
+    setSignPopupState(false);
   };
 
   const signMessage = () => {

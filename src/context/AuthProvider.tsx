@@ -11,6 +11,8 @@ interface AuthContextType {
   authenticate: (address: `0x${string}`, chainId: number) => void;
   logout: () => void;
   isAuthenticated: () => boolean;
+  signPopupState: boolean;
+  setSignPopupState: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 interface AuthProviderProps {
@@ -22,6 +24,8 @@ export const AuthContext = createContext<AuthContextType>(
 );
 
 export const AuthProvider = (props: AuthProviderProps) => {
+  const [signPopupState, setSignPopupState] = useState(false);
+
   const { children } = props;
 
   const { loginAPI } = useLoginAPI();
@@ -76,10 +80,6 @@ export const AuthProvider = (props: AuthProviderProps) => {
   };
 
   const isAuthenticated = () => {
-    console.log(user);
-    console.log(user?.address === address);
-    console.log(user?.chainId === chainId);
-
     return (
       user !== null &&
       user !== undefined &&
@@ -104,6 +104,8 @@ export const AuthProvider = (props: AuthProviderProps) => {
     authenticate: authenticate,
     logout: logout,
     isAuthenticated: isAuthenticated,
+    signPopupState: signPopupState,
+    setSignPopupState: setSignPopupState,
   };
 
   return (
