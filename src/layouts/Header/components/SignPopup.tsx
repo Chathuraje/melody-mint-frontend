@@ -13,6 +13,7 @@ import LockPersonIcon from "@mui/icons-material/LockPerson";
 import SyncLockIcon from "@mui/icons-material/SyncLock";
 import { useAuth } from "@/hooks/useAuth";
 import { useAccount, useDisconnect } from "wagmi";
+import { useNotification } from "@/hooks/useNotifications";
 
 export const SignPopup = () => {
   const { popupState, setPopupState } = useContext(PopupContext)!;
@@ -23,9 +24,15 @@ export const SignPopup = () => {
 
   const { disconnect } = useDisconnect();
 
+  const { sendNotification } = useNotification();
+
   if (!popupState || isAuthenticated() || !isConnected) return null;
 
   const popupClose = () => {
+    sendNotification(
+      "error",
+      "User Cancelled the sign request. Disconnecting..."
+    );
     disconnect();
     setPopupState(false);
   };

@@ -1,6 +1,7 @@
 import { useLoginAPI } from "@/hooks/useLoginAPI";
+import { useNotification } from "@/hooks/useNotifications";
 import { UserProfile } from "@/models/user";
-import { handleError } from "@/utils/ErrorHandler";
+import { handleError } from "@/utils/Errors/ErrorHandler";
 import { createContext, useEffect, useState } from "react";
 import { useAccount, useDisconnect } from "wagmi";
 
@@ -33,12 +34,14 @@ export const AuthProvider = (props: AuthProviderProps) => {
 
   const { address, chainId } = useAccount();
 
+  const { sendNotification } = useNotification();
+
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     const storedToken = localStorage.getItem("auth_token");
 
     if (storedUser && storedToken) {
-      setUser(JSON.parse(storedToken));
+      setUser(JSON.parse(storedUser));
       setToken(JSON.parse(storedToken));
     }
     setIsReady(true);
@@ -48,7 +51,7 @@ export const AuthProvider = (props: AuthProviderProps) => {
   const authenticate = async (address: `0x${string}`, chainId: number) => {
     try {
       const response = await loginAPI({ address, chainId });
-
+      console.log(response);
       if (response) {
         localStorage.setItem("auth_token", JSON.stringify(response.data.token));
 
@@ -56,11 +59,15 @@ export const AuthProvider = (props: AuthProviderProps) => {
           id: response.data.id,
           address: response.data.wallet_address,
           chainId: response.data.chain_id,
+          first_name: response.data.first_name,
+          last_name: response.data.last_name,
         };
 
         localStorage.setItem("user", JSON.stringify(userObj));
         setToken(response.data.token);
         setUser(userObj);
+
+        sendNotification("success", "Successfully logged in");
       }
     } catch (error) {
       disconnect();
@@ -69,6 +76,10 @@ export const AuthProvider = (props: AuthProviderProps) => {
   };
 
   const isAuthenticated = () => {
+    console.log(user);
+    console.log(user?.address === address);
+    console.log(user?.chainId === chainId);
+
     return (
       user !== null &&
       user !== undefined &&

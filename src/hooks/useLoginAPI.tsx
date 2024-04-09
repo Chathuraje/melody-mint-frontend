@@ -1,6 +1,6 @@
 // AuthService.js
 import axios from "axios";
-import { handleError } from "@/utils/ErrorHandler";
+import { handleError } from "@/utils/Errors/ErrorHandler";
 import { ChallengeRequest, UserProfileToken } from "@/models/user";
 import { useSignMessage } from "wagmi";
 

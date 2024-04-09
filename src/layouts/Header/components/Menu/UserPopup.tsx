@@ -1,20 +1,22 @@
 import { ProfileImage } from "@/components/ui/ProfileImage";
 import { ProfileMenuItem } from "@/components/ui/ProfileMenuItem";
-import { useAuth } from "@/hooks/useAuth";
+import { useNotification } from "@/hooks/useNotifications";
 import { truncateAddress } from "@/utils/truncateAddress";
 import { Logout, Paid, Settings } from "@mui/icons-material";
 import { Divider, Grid } from "@mui/material";
 import { ChainIcon, ConnectKitButton } from "connectkit";
 import { useNavigate } from "react-router-dom";
-import { useAccount } from "wagmi";
+import { useAccount, useDisconnect } from "wagmi";
 
 export const UserPopup = () => {
   const { address, chain } = useAccount();
   const truncatedAddress = truncateAddress(address);
 
-  const { logout } = useAuth();
+  const { disconnect } = useDisconnect();
 
   const navigate = useNavigate();
+
+  const { sendNotification } = useNotification();
 
   const handleProfileClick = () => {
     navigate(`/user/${address}`);
@@ -26,6 +28,11 @@ export const UserPopup = () => {
 
   const handleSettingsClick = () => {
     navigate(`/user/${address}/edit`);
+  };
+
+  const handleLogoutClick = () => {
+    sendNotification("success", "Successfully logged out. Disconnecting...");
+    disconnect();
   };
 
   return (
@@ -70,7 +77,7 @@ export const UserPopup = () => {
 
           <ProfileMenuItem
             mainText="Logout"
-            onClick={logout}
+            onClick={handleLogoutClick}
             icon={
               <Logout
                 fontSize="small"
