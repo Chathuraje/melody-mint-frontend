@@ -29,7 +29,7 @@ export const UserPopup = () => {
   };
 
   const handleSettingsClick = () => {
-    navigate(`/user/${user?.id}/edit`);
+    navigate(`/user/${user?.id}/update`);
   };
 
   const handleLogoutClick = () => {

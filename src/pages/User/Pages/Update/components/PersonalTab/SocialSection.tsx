@@ -1,57 +1,25 @@
+import { useUser } from "@/pages/User/hooks/useUser";
 import { Grid, TextField } from "@mui/material";
 
 export const SocialSection = () => {
+  const { userData, populateSocialIcons } = useUser();
+
+  const { names = [], hrefs = {} } = userData
+    ? populateSocialIcons(userData)
+    : {};
+
   return (
     <>
-      <Grid>
-        <TextField
-          fullWidth
-          label="Spotify channel link"
-          variant="outlined"
-          // Assuming username is passed as prop or fetched from somewhere
-          value="JohnDoe" // Example username
-        />
-      </Grid>
-
-      <Grid>
-        <TextField
-          fullWidth
-          label="YouTube channel link"
-          variant="outlined"
-          // Assuming username is passed as prop or fetched from somewhere
-          value="JohnDoe" // Example username
-        />
-      </Grid>
-
-      <Grid>
-        <TextField
-          fullWidth
-          label="Discord server link"
-          variant="outlined"
-          // Assuming description is passed as prop or fetched from somewhere
-          value="Lorem ipsum dolor sit amet, consectetur adipiscing elit." // Example description
-        />
-      </Grid>
-
-      <Grid>
-        <TextField
-          fullWidth
-          label="X account link"
-          variant="outlined"
-          // Assuming description is passed as prop or fetched from somewhere
-          value="Lorem ipsum dolor sit amet, consectetur adipiscing elit." // Example description
-        />
-      </Grid>
-
-      <Grid>
-        <TextField
-          fullWidth
-          label="Instagram account link"
-          variant="outlined"
-          // Assuming description is passed as prop or fetched from somewhere
-          value="Lorem ipsum dolor sit amet, consectetur adipiscing elit." // Example description
-        />
-      </Grid>
+      {names.map((socialName, index) => (
+        <Grid key={index}>
+          <TextField
+            fullWidth
+            label={`${socialName} account link`}
+            variant="outlined"
+            value={hrefs[socialName] || ""}
+          />
+        </Grid>
+      ))}
     </>
   );
 };

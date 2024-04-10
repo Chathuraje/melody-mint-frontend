@@ -1,6 +1,17 @@
+import { useUser } from "@/pages/User/hooks/useUser";
 import { Grid, TextField } from "@mui/material";
 
 export const UniqueSection = () => {
+  const { userData } = useUser();
+
+  const formattedJoinedDate = userData?.joined_date
+    ? new Date(userData?.joined_date).toLocaleString("default", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+      })
+    : "...";
+
   return (
     <Grid
       container
@@ -15,7 +26,7 @@ export const UniqueSection = () => {
           fullWidth
           label="User ID"
           variant="outlined"
-          value="660b2628dd74f825b3a5edc9"
+          value={userData?.id}
           InputProps={{
             readOnly: true,
             disabled: true,
@@ -27,7 +38,7 @@ export const UniqueSection = () => {
           fullWidth
           label="Joined Date"
           variant="outlined"
-          value="April 2, 2024"
+          value={formattedJoinedDate}
           InputProps={{
             readOnly: true,
             disabled: true,

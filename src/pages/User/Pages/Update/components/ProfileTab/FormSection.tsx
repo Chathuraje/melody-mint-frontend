@@ -1,6 +1,9 @@
+import { useUser } from "@/pages/User/hooks/useUser";
 import { Grid, TextField } from "@mui/material";
 
 export const FormSection = () => {
+  const { userData } = useUser();
+
   return (
     <>
       <Grid>
@@ -8,8 +11,7 @@ export const FormSection = () => {
           fullWidth
           label="Username"
           variant="outlined"
-          // Assuming username is passed as prop or fetched from somewhere
-          value="JohnDoe" // Example username
+          value={userData?.username}
         />
       </Grid>
 
@@ -18,10 +20,9 @@ export const FormSection = () => {
           fullWidth
           label="Description"
           variant="outlined"
-          // Assuming description is passed as prop or fetched from somewhere
-          value="Lorem ipsum dolor sit amet, consectetur adipiscing elit." // Example description
+          value={userData?.artist_description}
           multiline
-          rows={4}
+          rows={15}
         />
       </Grid>
     </>

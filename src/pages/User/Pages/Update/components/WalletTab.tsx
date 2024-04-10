@@ -1,8 +1,21 @@
 import { FormBox } from "@/components/FormBox";
 import { Button, Grid, IconButton, Typography } from "@mui/material";
 import EthLogo from "@/assets/fundraiser/ethereum-eth-logo.svg";
+import { useAccount, useDisconnect } from "wagmi";
+import { truncateAddress } from "@/utils/truncateAddress";
+import { useNavigate } from "react-router-dom";
 
 export const WalletTab = () => {
+  const { disconnect } = useDisconnect();
+  const { address, chain } = useAccount();
+
+  const navigate = useNavigate();
+
+  const handleDisconnect = () => {
+    disconnect();
+    navigate("/");
+  };
+
   return (
     <FormBox
       title="Wallet Details"
@@ -43,14 +56,20 @@ export const WalletTab = () => {
               </IconButton>
             </Grid>
             <Grid>
-              <Typography variant="h5">Polygon Network</Typography>
+              <Typography variant="h5">{chain?.name} Network</Typography>
               <Typography variant="subtitle1" color="black" fontSize="14px">
-                0xc3d3EA....1C92D96
+                {truncateAddress(address, 8, 8)}
               </Typography>
             </Grid>
           </Grid>
           <Grid>
-            <Button variant="contained" color="error">
+            <Button
+              onClick={() => {
+                handleDisconnect();
+              }}
+              variant="contained"
+              color="error"
+            >
               Disconnect
             </Button>
           </Grid>

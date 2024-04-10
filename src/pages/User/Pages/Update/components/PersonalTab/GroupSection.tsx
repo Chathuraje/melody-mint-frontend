@@ -1,3 +1,4 @@
+import { useUser } from "@/pages/User/hooks/useUser";
 import {
   FormControl,
   Grid,
@@ -8,6 +9,8 @@ import {
 } from "@mui/material";
 
 export const GroupSection = () => {
+  const { userData } = useUser();
+
   return (
     <>
       <Grid
@@ -23,7 +26,7 @@ export const GroupSection = () => {
             fullWidth
             label="First Name"
             variant="outlined"
-            value="Chathura"
+            value={userData?.first_name}
           />
         </Grid>
         <Grid xs={5.5}>
@@ -31,7 +34,7 @@ export const GroupSection = () => {
             fullWidth
             label="Last Name"
             variant="outlined"
-            value="Ekanayake"
+            value={userData?.last_name}
           />
         </Grid>
       </Grid>
@@ -49,7 +52,7 @@ export const GroupSection = () => {
             fullWidth
             label="Email"
             variant="outlined"
-            value="chathura@gmail.com"
+            value={userData?.email}
           />
         </Grid>
         <Grid xs={5.5}>
@@ -57,7 +60,7 @@ export const GroupSection = () => {
             fullWidth
             label="Contact Number"
             variant="outlined"
-            value="+94 779681281"
+            value={userData?.contact_no}
           />
         </Grid>
       </Grid>
