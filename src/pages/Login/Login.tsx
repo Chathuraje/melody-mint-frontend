@@ -1,33 +1,31 @@
 import { useAuth } from "@/hooks/useAuth";
+import { Grid } from "@mui/material";
 import { useModal } from "connectkit";
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useAccount } from "wagmi";
 
 export const Login = () => {
-  const { open, setOpen } = useModal();
-  const { isAuthenticated, signPopupState } = useAuth();
-  const [initialModalOpen, setInitialModalOpen] = useState(false);
+  const { open: connectPopup, setOpen: setConnectPopup } = useModal();
+  const { isAuthenticated, signPopupState, user } = useAuth();
   const navigate = useNavigate();
-  const location = useLocation();
+  const [initialConnectPopupOpen, setInitialConnectPopupOpen] = useState(false);
 
-  useEffect(() => {
-    if (!isAuthenticated() && !open && !initialModalOpen) {
-      setOpen(true);
-      setInitialModalOpen(true);
-    }
-  }, [isAuthenticated, setOpen, open, initialModalOpen]);
-
-  useEffect(() => {
-    if (!open && initialModalOpen && !signPopupState) {
-      navigate("/");
-    }
-  }, [open, initialModalOpen, signPopupState, navigate]);
+  const { address, chain } = useAccount();
 
   useEffect(() => {
     if (isAuthenticated()) {
       navigate(-1);
+    } else if (!initialConnectPopupOpen && !signPopupState) {
+      setInitialConnectPopupOpen(true);
+      setConnectPopup(true);
+    } else if (!connectPopup && initialConnectPopupOpen && !signPopupState) {
+      setInitialConnectPopupOpen(false);
+      navigate("/");
     }
-  }, [isAuthenticated, navigate, location]);
 
-  return <div>Login</div>;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user, connectPopup, address, chain]);
+
+  return <Grid>Login</Grid>;
 };

@@ -1,5 +1,5 @@
 import { Container, Grid } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ProfileTab } from "./components/ProfileTab";
 import { PersonalTab } from "./components/PersonalTab";
 import { IncomeTab } from "./components/IncomeTab";
@@ -7,13 +7,21 @@ import { WithdrawalTab } from "./components/WithdrawalTab";
 import { WalletTab } from "./components/WalletTab";
 import { SecurityTab } from "./components/SecurityTab";
 import { LeftSliderbar } from "./components/LeftSliderbar";
+import { useParams } from "react-router-dom";
 
 export const Update = () => {
-  const [value, setValue] = useState<number>(0);
+  const { activeTab } = useParams();
+  const paramValue = activeTab ? parseInt(activeTab) : 0;
+
+  const [value, setValue] = useState<number>(paramValue);
 
   const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
+
+  useEffect(() => {
+    setValue(paramValue);
+  }, [paramValue]);
 
   return (
     <Container>

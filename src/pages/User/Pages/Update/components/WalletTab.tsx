@@ -1,19 +1,16 @@
 import { FormBox } from "@/components/FormBox";
 import { Button, Grid, IconButton, Typography } from "@mui/material";
 import EthLogo from "@/assets/fundraiser/ethereum-eth-logo.svg";
-import { useAccount, useDisconnect } from "wagmi";
+import { useAccount } from "wagmi";
 import { truncateAddress } from "@/utils/truncateAddress";
-import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/hooks/useAuth";
 
 export const WalletTab = () => {
-  const { disconnect } = useDisconnect();
   const { address, chain } = useAccount();
-
-  const navigate = useNavigate();
+  const { logout } = useAuth();
 
   const handleDisconnect = () => {
-    disconnect();
-    navigate("/");
+    logout();
   };
 
   return (

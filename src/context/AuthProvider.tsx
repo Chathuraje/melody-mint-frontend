@@ -55,7 +55,7 @@ export const AuthProvider = (props: AuthProviderProps) => {
   const authenticate = async (address: `0x${string}`, chainId: number) => {
     try {
       const response = await loginAPI({ address, chainId });
-      console.log(response);
+
       if (response) {
         localStorage.setItem("auth_token", JSON.stringify(response.data.token));
 
@@ -70,7 +70,7 @@ export const AuthProvider = (props: AuthProviderProps) => {
         localStorage.setItem("user", JSON.stringify(userObj));
         setToken(response.data.token);
         setUser(userObj);
-
+        setSignPopupState(false);
         sendNotification("success", "Successfully logged in");
       }
     } catch (error) {

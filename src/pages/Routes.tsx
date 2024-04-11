@@ -167,12 +167,26 @@ export const routes = [
           },
           {
             path: "/user/:Userid/update",
-            element: (
-              <ProtectedRoutes>
-                <UserUpdate />
-              </ProtectedRoutes>
-            ),
-            title: "Update User Profile",
+            children: [
+              {
+                path: "/user/:Userid/update",
+                element: (
+                  <ProtectedRoutes>
+                    <UserUpdate />
+                  </ProtectedRoutes>
+                ),
+                title: "Update User Profile",
+              },
+              {
+                path: "/user/:Userid/update/:activeTab",
+                element: (
+                  <ProtectedRoutes>
+                    <UserUpdate />
+                  </ProtectedRoutes>
+                ),
+                title: "Update User Profile",
+              },
+            ],
           },
         ],
       },

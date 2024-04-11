@@ -10,12 +10,18 @@ import CloseIcon from "@mui/icons-material/Close";
 import LockPersonIcon from "@mui/icons-material/LockPerson";
 import SyncLockIcon from "@mui/icons-material/SyncLock";
 import { useAuth } from "@/hooks/useAuth";
-import { useAccount, useDisconnect } from "wagmi";
+import { useAccount, useDisconnect, useSwitchChain } from "wagmi";
 import { useNotification } from "@/hooks/useNotifications";
 
 export const SignPopup = () => {
-  const { authenticate, isAuthenticated, signPopupState, setSignPopupState } =
-    useAuth();
+  const {
+    user,
+    authenticate,
+    isAuthenticated,
+    signPopupState,
+    setSignPopupState,
+  } = useAuth();
+  const { switchChain } = useSwitchChain();
 
   const { address, chain, isConnected } = useAccount();
   const chainId = chain?.id;
@@ -38,6 +44,14 @@ export const SignPopup = () => {
   const signMessage = () => {
     if (address && chainId) {
       authenticate(address, chainId);
+    }
+  };
+
+  const goBack = () => {
+    if (user?.chainId && user?.address === address) {
+      switchChain({ chainId: user.chainId });
+    } else {
+      popupClose();
     }
   };
 
@@ -72,7 +86,9 @@ export const SignPopup = () => {
             <CloseIcon sx={{ color: "white" }} />
           </IconButton>
         </Grid>
-
+        {/* <Grid display="flex" flexDirection="row">
+          <ActiveChainList />
+        </Grid> */}
         <Grid
           display="flex"
           flexDirection="column"
@@ -119,8 +135,10 @@ export const SignPopup = () => {
 
         <Grid container width="100%" boxShadow="0 0 10px 0 rgba(0, 0, 0, 0.2)">
           <Grid display="flex" width="100%" gap="15px" margin="25px">
-            <Button fullWidth variant="outlined" onClick={popupClose}>
-              Cancel
+            <Button fullWidth variant="outlined" onClick={goBack}>
+              {user?.chainId && user?.address === address
+                ? "Switch Back"
+                : "Cancel"}
             </Button>
             <Button fullWidth variant="contained" onClick={signMessage}>
               Sign

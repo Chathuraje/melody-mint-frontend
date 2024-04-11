@@ -7,10 +7,9 @@ import { useEffect } from "react";
 import { useNotification } from "@/hooks/useNotifications";
 
 export const AuthStateView = () => {
-  const { isAuthenticated, logout, setSignPopupState } = useAuth();
+  const { isAuthenticated, setSignPopupState } = useAuth();
 
-  const { status, address, chainId, isDisconnected, isConnected } =
-    useAccount();
+  const { status, address, chainId, isConnected } = useAccount();
 
   const { sendNotification } = useNotification();
 
@@ -21,13 +20,6 @@ export const AuthStateView = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [address, isConnected, chainId, status]);
-
-  useEffect(() => {
-    if (isDisconnected) {
-      logout();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isDisconnected]);
 
   return (
     <ConnectKitButton.Custom>

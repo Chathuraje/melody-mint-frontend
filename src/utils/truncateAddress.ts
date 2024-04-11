@@ -1,7 +1,7 @@
 export const truncateAddress = (
   address: string | undefined,
-  start = 0,
-  end = 5
+  start = 5,
+  end = 4
 ): string => {
   if (!address) return "";
   const addressLength = address.length;

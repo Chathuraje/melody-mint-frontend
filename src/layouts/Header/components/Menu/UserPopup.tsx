@@ -1,24 +1,19 @@
 import { ProfileImage } from "@/components/ui/ProfileImage";
 import { ProfileMenuItem } from "@/components/ui/ProfileMenuItem";
 import { useAuth } from "@/hooks/useAuth";
-import { useNotification } from "@/hooks/useNotifications";
 import { truncateAddress } from "@/utils/truncateAddress";
 import { Logout, Paid, Settings } from "@mui/icons-material";
 import { Divider, Grid } from "@mui/material";
-import { ChainIcon, ConnectKitButton } from "connectkit";
+import { ChainIcon } from "connectkit";
 import { useNavigate } from "react-router-dom";
-import { useAccount, useDisconnect } from "wagmi";
+import { useAccount } from "wagmi";
 
 export const UserPopup = () => {
   const { address, chain } = useAccount();
   const truncatedAddress = truncateAddress(address);
-  const { user } = useAuth();
-
-  const { disconnect } = useDisconnect();
+  const { user, logout } = useAuth();
 
   const navigate = useNavigate();
-
-  const { sendNotification } = useNotification();
 
   const handleProfileClick = () => {
     navigate(`/user/${user?.id}`);
@@ -28,13 +23,12 @@ export const UserPopup = () => {
     navigate("/fundraisers/create");
   };
 
-  const handleSettingsClick = () => {
-    navigate(`/user/${user?.id}/update`);
+  const handleSettingsClick = (activeTab: number) => {
+    navigate(`/user/${user?.id}/update/${activeTab}`);
   };
 
   const handleLogoutClick = () => {
-    sendNotification("success", "Successfully logged out. Disconnecting...");
-    disconnect();
+    logout();
   };
 
   let userFullName = "No Name";
@@ -53,18 +47,12 @@ export const UserPopup = () => {
             icon={<ProfileImage dimentions="25px" />}
           />
 
-          <ConnectKitButton.Custom>
-            {({ show }) => {
-              return (
-                <ProfileMenuItem
-                  mainText={truncatedAddress}
-                  subText="Connected"
-                  onClick={show}
-                  icon={<ChainIcon id={chain?.id} size="25px" />}
-                />
-              );
-            }}
-          </ConnectKitButton.Custom>
+          <ProfileMenuItem
+            mainText={truncatedAddress}
+            subText="Connected"
+            onClick={() => handleSettingsClick(4)}
+            icon={<ChainIcon id={chain?.id} size="25px" />}
+          />
         </Grid>
 
         <Divider />
@@ -78,7 +66,7 @@ export const UserPopup = () => {
 
           <ProfileMenuItem
             mainText="Settings"
-            onClick={handleSettingsClick}
+            onClick={() => handleSettingsClick(0)}
             icon={<Settings fontSize="small" />}
           />
 
