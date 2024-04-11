@@ -32,10 +32,16 @@ const queryClient = new QueryClient();
 export const Web3Provider = (props: Web3ProviderProps) => {
   const { children } = props;
 
+  const connectKitCustomTheme = {
+    "--ck-overlay-background": "#000000db",
+  };
+
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
-        <ConnectKitProvider>{children}</ConnectKitProvider>
+        <ConnectKitProvider customTheme={connectKitCustomTheme}>
+          {children}
+        </ConnectKitProvider>
       </QueryClientProvider>
     </WagmiProvider>
   );

@@ -56,7 +56,7 @@ export const SignPopup = () => {
   };
 
   return (
-    <Popups bgcolor="#1E1E1E">
+    <Popups opacity={0.93} bgcolor="#1E1E1E">
       <Grid
         display="flex"
         flexDirection="column"

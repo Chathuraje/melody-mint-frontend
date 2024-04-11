@@ -4,10 +4,11 @@ import { createPortal } from "react-dom";
 interface PopupsProp {
   children?: React.ReactNode;
   bgcolor: string;
+  opacity?: number;
 }
 
 export const Popups = (props: PopupsProp) => {
-  const { children, bgcolor } = props;
+  const { children, bgcolor, opacity } = props;
 
   return createPortal(
     <Grid
@@ -20,7 +21,7 @@ export const Popups = (props: PopupsProp) => {
         left: 0,
         width: "100%",
         height: "100%",
-        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        backgroundColor: `rgba(0, 0, 0, ${opacity || 0.5})`,
         zIndex: 999999,
       }}
     >

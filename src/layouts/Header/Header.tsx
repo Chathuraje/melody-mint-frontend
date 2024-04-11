@@ -2,7 +2,7 @@ import { Logo } from "@/components/Logo";
 import { Unstable_Grid2 as Grid } from "@mui/material/";
 import "./Header.css";
 import { Navigation } from "@/components/Navigation";
-import { SignPopup } from "@/components/SignPopup";
+import { SignPopup } from "@/layouts/Header/components/SignPopup";
 import { AuthStateView } from "./AuthStateView";
 
 export const Header = () => {
