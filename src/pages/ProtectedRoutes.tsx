@@ -11,28 +11,28 @@ interface ProtectedRoutesProps {
 export const ProtectedRoutes = (props: ProtectedRoutesProps) => {
   const { children } = props;
 
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, user } = useAuth();
   const navigate = useNavigate();
   const { sendNotification } = useNotification();
 
-  const { isConnected, isDisconnected, addresses } = useAccount();
+  const { isConnected, isDisconnected, address, chainId } = useAccount();
   const { isSuccess } = useDisconnect();
 
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (!isAuthenticated()) {
+    if (
+      !isAuthenticated() ||
+      address != user?.address ||
+      chainId != user?.chainId
+    ) {
       sendNotification("error", "You need to be logged in to access this page");
-      if (addresses !== undefined) {
-        navigate("/");
-      } else {
-        navigate("/login");
-      }
+      navigate("/login");
     } else {
       setIsLoading(false);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isDisconnected, isConnected, isSuccess]);
+  }, [isDisconnected, isConnected, isSuccess, address, chainId]);
 
   // Render loading state while authentication is being checked
   if (isLoading) {

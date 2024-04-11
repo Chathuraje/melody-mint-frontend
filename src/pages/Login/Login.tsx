@@ -1,5 +1,5 @@
 import { useAuth } from "@/hooks/useAuth";
-import { Grid } from "@mui/material";
+import { Unstable_Grid2 as Grid } from "@mui/material";
 import { useModal } from "connectkit";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -27,5 +27,15 @@ export const Login = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user, connectPopup, address, chain]);
 
-  return <Grid>Login</Grid>;
+  return (
+    <Grid
+      container
+      display="flex"
+      height="100vh"
+      bgcolor="black"
+      overflow="hidden"
+    >
+      Login
+    </Grid>
+  );
 };
