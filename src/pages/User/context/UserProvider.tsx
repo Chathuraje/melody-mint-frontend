@@ -1,5 +1,5 @@
 import { useUserAPI } from "@/hooks/API/useUserAPI";
-import { UserModel } from "@/models/user";
+import { UserModel } from "@/models/Users";
 import { createContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 

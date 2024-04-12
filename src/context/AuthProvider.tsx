@@ -1,12 +1,12 @@
 import { useLoginAPI } from "@/hooks/API/useLoginAPI";
 import { useNotification } from "@/hooks/useNotifications";
-import { UserProfile } from "@/models/user";
+import { TokenResponse } from "@/models/Users";
 import { handleError } from "@/utils/Errors/ErrorHandler";
 import { createContext, useEffect, useState } from "react";
 import { useAccount, useDisconnect } from "wagmi";
 
 interface AuthContextType {
-  user: UserProfile | null;
+  user: TokenResponse | null;
   token: string | null;
   authenticate: (address: `0x${string}`, chainId: number) => void;
   logout: () => void;
@@ -33,7 +33,7 @@ export const AuthProvider = (props: AuthProviderProps) => {
   const { disconnect } = useDisconnect();
 
   const [token, setToken] = useState<string | null>(null);
-  const [user, setUser] = useState<UserProfile | null>(null);
+  const [user, setUser] = useState<TokenResponse | null>(null);
   const [isReady, setIsReady] = useState<boolean>(false);
 
   const { address, chainId } = useAccount();

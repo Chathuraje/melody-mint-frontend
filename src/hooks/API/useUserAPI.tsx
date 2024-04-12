@@ -1,4 +1,4 @@
-import { User } from "@/models/user";
+import { UserModel } from "@/models/Users";
 import axios from "axios";
 
 const API_URL = import.meta.env.VITE_API_URL;
@@ -12,7 +12,7 @@ export const useUserAPI = () => {
     const { id } = params;
 
     try {
-      const response = await axios.get<User>(`${API_URL}/users/${id}`, {
+      const response = await axios.get<UserModel>(`${API_URL}/users/${id}`, {
         headers: {
           accept: "application/json",
         },
