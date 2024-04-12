@@ -1,6 +1,7 @@
 import { useAuth } from "@/hooks/useAuth";
+import { useLoading } from "@/hooks/useLoading";
 import { useNotification } from "@/hooks/useNotifications";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAccount, useDisconnect } from "wagmi";
 
@@ -18,9 +19,10 @@ export const ProtectedRoutes = (props: ProtectedRoutesProps) => {
   const { isConnected, isDisconnected, address, chainId } = useAccount();
   const { isSuccess } = useDisconnect();
 
-  const [isLoading, setIsLoading] = useState(true);
+  const { setIsLoading } = useLoading();
 
   useEffect(() => {
+    setIsLoading(true);
     if (
       !isAuthenticated() ||
       address != user?.address ||
@@ -33,11 +35,6 @@ export const ProtectedRoutes = (props: ProtectedRoutesProps) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isDisconnected, isConnected, isSuccess, address, chainId]);
-
-  // Render loading state while authentication is being checked
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
 
   // Render children if authenticated, otherwise redirecting to login
   return isAuthenticated() ? <>{children}</> : null;
