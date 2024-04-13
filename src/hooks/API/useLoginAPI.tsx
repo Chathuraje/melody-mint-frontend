@@ -1,9 +1,5 @@
-// AuthService.js
-import axios from "axios";
-import { handleError } from "@/utils/Errors/ErrorHandler";
 import { useSignMessage } from "wagmi";
-
-const API_URL = import.meta.env.VITE_API_URL;
+import axios from "@/utils/axios";
 
 // Response from the request_challenge API
 export type RequestChallengeResponse = {
@@ -39,14 +35,8 @@ export const useLoginAPI = () => {
 
     try {
       const response = await axios.post<RequestChallengeResponse>(
-        `${API_URL}/auth/request_challenge`,
-        JSON.stringify(challengeRequestBody),
-        {
-          headers: {
-            "Content-Type": "application/json",
-            accept: "application/json",
-          },
-        }
+        "/auth/request_challenge",
+        JSON.stringify(challengeRequestBody)
       );
 
       if (response) {
@@ -59,20 +49,14 @@ export const useLoginAPI = () => {
         };
 
         const verification = await axios.post<VerifyChallengeResponse>(
-          `${API_URL}/auth/verify_challenge`,
-          JSON.stringify(verifyRequestBody),
-          {
-            headers: {
-              "Content-Type": "application/json",
-              accept: "application/json",
-            },
-          }
+          "/auth/verify_challenge",
+          JSON.stringify(verifyRequestBody)
         );
 
         return verification;
       }
     } catch (error) {
-      handleError(error);
+      console.log(error);
     }
   };
 

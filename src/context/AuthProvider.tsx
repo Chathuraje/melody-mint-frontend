@@ -1,7 +1,6 @@
 import { useLoginAPI } from "@/hooks/API/useLoginAPI";
 import { useNotification } from "@/hooks/useNotifications";
 import { TokenResponse } from "@/models/Users";
-import { handleError } from "@/utils/Errors/ErrorHandler";
 import { createContext, useEffect, useState } from "react";
 import { useAccount, useDisconnect } from "wagmi";
 
@@ -75,7 +74,6 @@ export const AuthProvider = (props: AuthProviderProps) => {
       }
     } catch (error) {
       disconnect();
-      handleError(error);
     }
   };
 

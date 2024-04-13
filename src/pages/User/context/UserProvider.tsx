@@ -1,4 +1,4 @@
-import { useUserAPI } from "@/hooks/API/useUserAPI";
+import { useProfileAPI } from "@/hooks/API/useProfileAPI";
 import { UserModel } from "@/models/Users";
 import { createContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -30,12 +30,12 @@ export const UserProvider = (params: UserProviderPrams) => {
   const { Userid } = useParams();
   const navigate = useNavigate();
 
-  const { GetUserAPI } = useUserAPI();
+  const { GetProfileAPI } = useProfileAPI();
 
   useEffect(() => {
     const FetchUserData = async () => {
       if (Userid !== undefined) {
-        const data = await GetUserAPI({ id: Userid });
+        const data = await GetProfileAPI();
         if (data) {
           setUserData(data);
         } else {
