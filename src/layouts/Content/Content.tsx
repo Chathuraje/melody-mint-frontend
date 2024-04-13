@@ -10,7 +10,7 @@ export const Content = () => {
   useEffect(() => {
     setIsLoading(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoading]);
+  }, []);
 
   return (
     <Grid minHeight="100vh">

@@ -1,7 +1,6 @@
 import { useProfileAPI } from "@/hooks/API/useProfileAPI";
 import { UserModel } from "@/models/Users";
 import { createContext, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
 
 interface UserContextType {
   userData: UserModel | null;
@@ -27,27 +26,24 @@ interface SocialMediaLinks {
 export const UserProvider = (params: UserProviderPrams) => {
   const { children } = params;
   const [userData, setUserData] = useState<UserModel | null>(null);
-  const { Userid } = useParams();
-  const navigate = useNavigate();
 
   const { GetProfileAPI } = useProfileAPI();
 
   useEffect(() => {
-    const FetchUserData = async () => {
-      if (Userid !== undefined) {
-        const data = await GetProfileAPI();
-        if (data) {
-          setUserData(data);
-        } else {
-          navigate("/404");
-        }
-      }
+    const controller = new AbortController();
+    const getUserData = async () => {
+      const data = await GetProfileAPI(controller.signal);
+      setUserData(data);
     };
 
-    FetchUserData();
+    getUserData();
 
+    return () => {
+      console.log("User data cleanup");
+      controller.abort();
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [Userid]);
+  }, []);
 
   const populateSocialIcons = (user: UserModel) => {
     const names: string[] = [];

@@ -1,5 +1,4 @@
 import { useAuth } from "@/hooks/useAuth";
-import { useLoading } from "@/hooks/useLoading";
 import { useNotification } from "@/hooks/useNotifications";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -19,10 +18,7 @@ export const ProtectedRoutes = (props: ProtectedRoutesProps) => {
   const { isConnected, isDisconnected, address, chainId } = useAccount();
   const { isSuccess } = useDisconnect();
 
-  const { setIsLoading } = useLoading();
-
   useEffect(() => {
-    setIsLoading(true);
     if (
       !isAuthenticated() ||
       address != user?.address ||
@@ -30,8 +26,6 @@ export const ProtectedRoutes = (props: ProtectedRoutesProps) => {
     ) {
       sendNotification("error", "You need to be logged in to access this page");
       navigate("/login");
-    } else {
-      setIsLoading(false);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isDisconnected, isConnected, isSuccess, address, chainId]);

@@ -56,23 +56,24 @@ export const AuthProvider = (props: AuthProviderProps) => {
       const response = await loginAPI({ address, chainId });
 
       if (response) {
-        localStorage.setItem("auth_token", JSON.stringify(response.data.token));
+        localStorage.setItem("auth_token", JSON.stringify(response.token));
 
         const userObj = {
-          id: response.data.id,
-          address: response.data.wallet_address,
-          chainId: response.data.chain_id,
-          first_name: response.data.first_name,
-          last_name: response.data.last_name,
+          id: response.id,
+          address: response.wallet_address,
+          chainId: response.chain_id,
+          first_name: response.first_name,
+          last_name: response.last_name,
         };
 
         localStorage.setItem("user", JSON.stringify(userObj));
-        setToken(response.data.token);
+        setToken(response.token);
         setUser(userObj);
         setSignPopupState(false);
         sendNotification("success", "Successfully logged in");
       }
     } catch (error) {
+      console.error("Error getting challenge message: ", error);
       disconnect();
     }
   };
