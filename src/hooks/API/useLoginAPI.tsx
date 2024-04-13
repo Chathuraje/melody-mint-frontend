@@ -17,46 +17,72 @@ export type VerifyChallengeResponse = {
   last_name: string;
 };
 
-interface handleAuthParams {
+interface getRequestChallengeParams {
   address: `0x${string}`;
   chainId: number;
 }
 
+interface verifyChallengeParams {
+  message: string;
+  signature: string;
+}
+
+const getRequestChallenge = async (params: getRequestChallengeParams) => {
+  const { address, chainId } = params;
+
+  const challengeRequestBody = {
+    wallet_address: address,
+    chain_id: chainId,
+  };
+
+  try {
+    const response = await axios.post(
+      "/auth/request_challenge",
+      JSON.stringify(challengeRequestBody)
+    );
+
+    if (response && response.data.message !== undefined) {
+      const message = response.data.message;
+
+      return message;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const verifyChallenge = async (params: verifyChallengeParams) => {
+  const { message, signature } = params;
+
+  const verifyRequestBody = {
+    message: message,
+    signature: signature,
+  };
+
+  try {
+    const verification = await axios.post(
+      "/auth/verify_challenge",
+      JSON.stringify(verifyRequestBody)
+    );
+
+    return verification;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const useLoginAPI = () => {
   const { signMessageAsync } = useSignMessage();
 
-  const loginAPI = async (params: handleAuthParams) => {
+  const loginAPI = async (params: getRequestChallengeParams) => {
     const { address, chainId } = params;
 
-    const challengeRequestBody = {
-      wallet_address: address,
-      chain_id: chainId,
-    };
+    const message = await getRequestChallenge({ address, chainId });
+    if (message !== undefined) {
+      const signature = await signMessageAsync({ message });
+      const verification = await verifyChallenge({ message, signature });
 
-    try {
-      const response = await axios.post<RequestChallengeResponse>(
-        "/auth/request_challenge",
-        JSON.stringify(challengeRequestBody)
-      );
-
-      if (response) {
-        const message = response.data.message;
-        const signature = await signMessageAsync({ message });
-
-        const verifyRequestBody = {
-          message: message,
-          signature: signature,
-        };
-
-        const verification = await axios.post<VerifyChallengeResponse>(
-          "/auth/verify_challenge",
-          JSON.stringify(verifyRequestBody)
-        );
-
-        return verification;
-      }
-    } catch (error) {
-      console.log(error);
+      return verification;
     }
   };
 
