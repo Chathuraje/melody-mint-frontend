@@ -1,5 +1,5 @@
-import { useUser } from "@/pages/User/hooks/useUser";
 import { Grid, TextField } from "@mui/material";
+import { useUser } from "../../hooks/useUser";
 
 export const SocialSection = () => {
   const { userData, populateSocialIcons } = useUser();

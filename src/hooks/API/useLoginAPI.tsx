@@ -1,10 +1,11 @@
-import { axiosPublic } from "@/utils/axios";
 import { useSignMessage } from "wagmi";
+import { useAxiosPublic } from "../Axios/useAxiosPublic";
 
 // Response from the request_challenge API
 interface getRequestChallengeRequest {
   address: `0x${string}`;
   chainId: number;
+  axiosPublic: ReturnType<typeof useAxiosPublic>["axiosPublic"];
 }
 interface RequestChallengeResponse {
   id: string;
@@ -18,26 +19,32 @@ type getRequestChallengeType = (
 interface verifyChallengeRequest {
   message: string;
   signature: string;
+  axiosPublic: ReturnType<typeof useAxiosPublic>["axiosPublic"];
 }
 interface VerifyChallengeResponse {
   id: string;
-  token: string;
+  access_token: string;
   wallet_address: `0x${string}`;
   chain_id: number;
   first_name: string;
   last_name: string;
+  moralis_id: string;
 }
 
 type verifyChallengeType = (
   params: verifyChallengeRequest
 ) => Promise<VerifyChallengeResponse>;
 
+interface LoginAPIParams {
+  address: `0x${string}`;
+  chainId: number;
+}
 type LoginAPIType = (
-  params: getRequestChallengeRequest
+  params: LoginAPIParams
 ) => Promise<VerifyChallengeResponse>;
 
 const getRequestChallenge: getRequestChallengeType = async (params) => {
-  const { address, chainId } = params;
+  const { address, chainId, axiosPublic } = params;
 
   const challengeRequestBody = {
     wallet_address: address,
@@ -57,7 +64,7 @@ const getRequestChallenge: getRequestChallengeType = async (params) => {
 };
 
 const verifyChallenge: verifyChallengeType = async (params) => {
-  const { message, signature } = params;
+  const { message, signature, axiosPublic } = params;
 
   const verifyRequestBody = {
     message: message,
@@ -67,8 +74,12 @@ const verifyChallenge: verifyChallengeType = async (params) => {
   try {
     const response = await axiosPublic.post<VerifyChallengeResponse>(
       "/auth/verify_challenge",
-      JSON.stringify(verifyRequestBody)
+      JSON.stringify(verifyRequestBody),
+      {
+        withCredentials: true,
+      }
     );
+    console.log(verifyRequestBody);
     return response.data;
   } catch (error) {
     console.error("Error occurred:", error);
@@ -78,14 +89,23 @@ const verifyChallenge: verifyChallengeType = async (params) => {
 
 export const useLoginAPI = () => {
   const { signMessageAsync } = useSignMessage();
+  const { axiosPublic } = useAxiosPublic();
 
   const loginAPI: LoginAPIType = async (params) => {
     const { address, chainId } = params;
 
     try {
-      const { message } = await getRequestChallenge({ address, chainId });
+      const { message } = await getRequestChallenge({
+        address,
+        chainId,
+        axiosPublic,
+      });
       const signature = await signMessageAsync({ message });
-      const verification = await verifyChallenge({ message, signature });
+      const verification = await verifyChallenge({
+        message,
+        signature,
+        axiosPublic,
+      });
       return verification;
     } catch (error) {
       console.error("Error occurred during login:", error);

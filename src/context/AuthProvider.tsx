@@ -1,4 +1,5 @@
 import { useLoginAPI } from "@/hooks/API/useLoginAPI";
+import { useLogoutAPI } from "@/hooks/API/useLogoutAPI";
 import { useNotification } from "@/hooks/useNotifications";
 import { TokenResponse } from "@/models/Users";
 import { createContext, useEffect, useState } from "react";
@@ -7,6 +8,7 @@ import { useAccount, useDisconnect } from "wagmi";
 interface AuthContextType {
   user: TokenResponse | null;
   token: string | null;
+  setToken: React.Dispatch<React.SetStateAction<string | null>>;
   authenticate: (address: `0x${string}`, chainId: number) => void;
   logout: () => void;
   isAuthenticated: () => boolean;
@@ -39,9 +41,11 @@ export const AuthProvider = (props: AuthProviderProps) => {
 
   const { sendNotification } = useNotification();
 
+  const { LogoutAPI } = useLogoutAPI();
+
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    const storedToken = localStorage.getItem("auth_token");
+    const storedUser = localStorage.getItem("mmweb3_user");
+    const storedToken = localStorage.getItem("mmweb3_auth_token");
 
     if (storedUser && storedToken) {
       setUser(JSON.parse(storedUser));
@@ -56,7 +60,10 @@ export const AuthProvider = (props: AuthProviderProps) => {
       const response = await loginAPI({ address, chainId });
 
       if (response) {
-        localStorage.setItem("auth_token", JSON.stringify(response.token));
+        localStorage.setItem(
+          "mmweb3_auth_token",
+          JSON.stringify(response.access_token)
+        );
 
         const userObj = {
           id: response.id,
@@ -64,11 +71,13 @@ export const AuthProvider = (props: AuthProviderProps) => {
           chainId: response.chain_id,
           first_name: response.first_name,
           last_name: response.last_name,
+          moralis_id: response.moralis_id,
         };
 
-        localStorage.setItem("user", JSON.stringify(userObj));
-        setToken(response.token);
+        localStorage.setItem("mmweb3_user", JSON.stringify(userObj));
+        setToken(response.access_token);
         setUser(userObj);
+        // TODO: Also create a user record in blockchain with ID and MoralisID. as a User Hash User create it even the user can't change it if it already not exist there
         setSignPopupState(false);
         sendNotification("success", "Successfully logged in");
       }
@@ -89,17 +98,19 @@ export const AuthProvider = (props: AuthProviderProps) => {
     );
   };
 
-  const logout = () => {
-    localStorage.removeItem("user");
-    localStorage.removeItem("auth_token");
+  const logout = async () => {
+    localStorage.removeItem("mmweb3_user");
+    localStorage.removeItem("mmweb3_auth_token");
     setUser(null);
     setToken("");
     disconnect();
+    await LogoutAPI();
   };
 
   const contextData: AuthContextType = {
     user: user,
     token: token,
+    setToken: setToken,
     authenticate: authenticate,
     logout: logout,
     isAuthenticated: isAuthenticated,

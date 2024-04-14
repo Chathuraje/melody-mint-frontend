@@ -1,4 +1,3 @@
-import { useUser } from "@/pages/User/hooks/useUser";
 import {
   FormControl,
   Grid,
@@ -7,6 +6,7 @@ import {
   Select,
   TextField,
 } from "@mui/material";
+import { useUser } from "../../hooks/useUser";
 
 export const GroupSection = () => {
   const { userData } = useUser();

@@ -2,14 +2,12 @@ import { ProfileHero } from "@/components/ui/ProfileHero";
 import { Container, Grid } from "@mui/material";
 import { ProfileDetails } from "./components/ProfileDetails";
 import { ArtistToggle } from "./components/ArtistToggle";
-import { useUser } from "@/pages/User/hooks/useUser";
+import { UserProvider } from "./provider/UserProvider";
 
 export const View = () => {
-  const { userData } = useUser();
-
   return (
-    <>
-      <ProfileHero src={userData?.profile_hero} height="350px" />
+    <UserProvider>
+      <ProfileHero height="350px" />
 
       <Container>
         <Grid display="flex" flexDirection="column" gap="25px">
@@ -17,6 +15,6 @@ export const View = () => {
           <ArtistToggle />
         </Grid>
       </Container>
-    </>
+    </UserProvider>
   );
 };

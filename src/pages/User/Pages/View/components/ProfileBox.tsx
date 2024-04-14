@@ -2,7 +2,7 @@ import { Unstable_Grid2 as Grid, IconButton, Typography } from "@mui/material/";
 import { ProfileImage } from "@/components/ui/ProfileImage";
 import { truncateAddress } from "@/utils/truncateAddress";
 import { ChainIcon } from "connectkit";
-import { useUser } from "@/pages/User/hooks/useUser";
+import { useUser } from "../hook/useUser";
 
 export const ProfileBox = () => {
   const { userData } = useUser();

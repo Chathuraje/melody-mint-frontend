@@ -1,7 +1,7 @@
 import { ProfileHero } from "@/components/ui/ProfileHero";
 import { ProfileImage } from "@/components/ui/ProfileImage";
-import { useUser } from "@/pages/User/hooks/useUser";
 import { Grid } from "@mui/material";
+import { useUser } from "../../hooks/useUser";
 
 export const ImageSection = () => {
   const { userData } = useUser();

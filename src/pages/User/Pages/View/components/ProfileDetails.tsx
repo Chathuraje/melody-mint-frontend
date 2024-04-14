@@ -1,7 +1,7 @@
 import { Unstable_Grid2 as Grid, Typography } from "@mui/material/";
 import { ProfileBox } from "./ProfileBox";
 import { SocialIcons } from "@/components/ui/SocialIcons";
-import { useUser } from "@/pages/User/hooks/useUser";
+import { useUser } from "../hook/useUser";
 
 export const ProfileDetails = () => {
   const { userData, populateSocialIcons } = useUser();

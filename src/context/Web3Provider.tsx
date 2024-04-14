@@ -1,5 +1,5 @@
 import { WagmiProvider, createConfig, http } from "wagmi";
-import { mainnet, sepolia } from "wagmi/chains";
+import { sepolia } from "wagmi/chains";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ConnectKitProvider, getDefaultConfig } from "connectkit";
@@ -8,9 +8,8 @@ const WALLETCONNECT_PROJECT_ID = import.meta.env.VITE_WALLETCONNECT_PROJECT_ID;
 
 const config = createConfig(
   getDefaultConfig({
-    chains: [mainnet, sepolia],
+    chains: [sepolia],
     transports: {
-      [mainnet.id]: http(),
       [sepolia.id]: http(),
     },
 

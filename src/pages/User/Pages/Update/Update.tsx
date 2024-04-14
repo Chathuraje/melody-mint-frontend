@@ -8,6 +8,7 @@ import { WalletTab } from "./components/WalletTab";
 import { SecurityTab } from "./components/SecurityTab";
 import { LeftSliderbar } from "./components/LeftSliderbar";
 import { useParams } from "react-router-dom";
+import { UserProvider } from "./context/UserProvider";
 
 export const Update = () => {
   const { activeTab } = useParams();
@@ -24,25 +25,26 @@ export const Update = () => {
   }, [paramValue]);
 
   return (
-    <Container>
-      <Grid container>
-        <LeftSliderbar value={value} handleChange={handleChange} />
-
-        <Grid
-          xs={12}
-          sm={9}
-          style={{
-            padding: "20px",
-          }}
-        >
-          {value === 0 && <ProfileTab />}
-          {value === 1 && <PersonalTab />}
-          {value === 2 && <IncomeTab />}
-          {value === 3 && <WithdrawalTab />}
-          {value === 4 && <WalletTab />}
-          {value === 5 && <SecurityTab />}
+    <UserProvider>
+      <Container>
+        <Grid container>
+          <LeftSliderbar value={value} handleChange={handleChange} />
+          <Grid
+            xs={12}
+            sm={9}
+            style={{
+              padding: "20px",
+            }}
+          >
+            {value === 0 && <ProfileTab />}
+            {value === 1 && <PersonalTab />}
+            {value === 2 && <IncomeTab />}
+            {value === 3 && <WithdrawalTab />}
+            {value === 4 && <WalletTab />}
+            {value === 5 && <SecurityTab />}
+          </Grid>
         </Grid>
-      </Grid>
-    </Container>
+      </Container>
+    </UserProvider>
   );
 };
