@@ -14,7 +14,6 @@ export const useHandleAxiosErrors = () => {
           break;
         case 401:
           // Unauthorized: Handle unauthorized error
-          sendNotification("error", "Unauthorized");
           break;
         case 403:
           // Forbidden: Handle forbidden error
