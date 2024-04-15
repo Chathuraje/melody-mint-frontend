@@ -4,6 +4,8 @@ import { createContext, useState } from "react";
 interface ProfileContextType {
   profileData: UserModel | null;
   setProfileData: React.Dispatch<React.SetStateAction<UserModel | null>>;
+  userData: UserModel | null;
+  setUserData: React.Dispatch<React.SetStateAction<UserModel | null>>;
   populateSocialIcons: (profile: UserModel) => {
     names: string[];
     hrefs: { [key: string]: string };
@@ -25,6 +27,7 @@ interface SocialMediaLinks {
 export const ProfileProvider = (params: ProfileProviderPrams) => {
   const { children } = params;
   const [profileData, setProfileData] = useState<UserModel | null>(null);
+  const [userData, setUserData] = useState<UserModel | null>(null);
 
   const populateSocialIcons = (profile: UserModel) => {
     const names: string[] = [];
@@ -45,6 +48,8 @@ export const ProfileProvider = (params: ProfileProviderPrams) => {
   const contextValue: ProfileContextType = {
     profileData: profileData,
     setProfileData: setProfileData,
+    userData: userData,
+    setUserData: setUserData,
     populateSocialIcons: populateSocialIcons,
   };
 

@@ -3,15 +3,7 @@
 import { FormBox } from "@/components/FormBox";
 import { useProfile } from "@/pages/User/hooks/useProfile";
 import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  Button,
-  FormControl,
-  Grid,
-  InputLabel,
-  MenuItem,
-  Select,
-  TextField,
-} from "@mui/material";
+import { Button, Grid, TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { personalUpdateSchema } from "../schemas/updateScehma";
 import { useProfileAPI } from "@/hooks/API/useProfileAPI";
@@ -175,35 +167,6 @@ offer is accepted"
               </Grid>
             </Grid>
 
-            <Grid
-              container
-              display="flex"
-              flexDirection="row"
-              gap="15px"
-              width="100%"
-              justifyContent="space-between"
-            >
-              <Grid xs={6}>
-                <FormControl required sx={{ minWidth: "100%" }}>
-                  <InputLabel id="country-label">Country</InputLabel>
-                  <Select labelId="country-label" id="country" label="Country">
-                    <MenuItem value={10}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
-              <Grid xs={5.5}>
-                <FormControl required sx={{ minWidth: "100%" }}>
-                  <InputLabel id="state-label">State</InputLabel>
-                  <Select labelId="state-label" id="state" label="State">
-                    <MenuItem value={10}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
-            </Grid>
             <Grid>
               <TextField
                 fullWidth

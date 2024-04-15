@@ -2,10 +2,12 @@ import { Unstable_Grid2 as Grid, IconButton, Typography } from "@mui/material/";
 import { ProfileImage } from "@/components/ui/ProfileImage";
 import { truncateAddress } from "@/utils/truncateAddress";
 import { ChainIcon } from "connectkit";
-import { useUser } from "../hook/useUser";
+import { useProfile } from "@/pages/User/hooks/useProfile";
+
+const API_URL = import.meta.env.VITE_API_URL;
 
 export const ProfileBox = () => {
-  const { userData } = useUser();
+  const { userData } = useProfile();
 
   const formattedJoinedDate = userData?.joined_date
     ? new Date(userData?.joined_date).toLocaleString("default", {
@@ -14,9 +16,11 @@ export const ProfileBox = () => {
       })
     : "...";
 
+  const imageURL = `${API_URL}/res/images?image_name=${userData?.profile_image}`;
+
   return (
     <>
-      <ProfileImage border src={userData?.profile_image} />
+      <ProfileImage border src={imageURL} />
       <Typography fontSize="30px" fontWeight="600" color="#000000">
         {userData?.username || "Username"}
       </Typography>

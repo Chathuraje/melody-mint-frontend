@@ -6,7 +6,9 @@ import { ProfileProvider } from "./context/ProfileProvider";
 export const UserView = () => {
   return (
     <Grid>
-      <View />
+      <ProfileProvider>
+        <View />
+      </ProfileProvider>
     </Grid>
   );
 };
