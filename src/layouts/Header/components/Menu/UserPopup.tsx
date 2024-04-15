@@ -50,7 +50,7 @@ export const UserPopup = () => {
           <ProfileMenuItem
             mainText={truncatedAddress}
             subText="Connected"
-            onClick={() => handleSettingsClick(4)}
+            onClick={() => handleSettingsClick(5)}
             icon={<ChainIcon id={chain?.id} size="25px" />}
           />
         </Grid>
@@ -66,7 +66,7 @@ export const UserPopup = () => {
 
           <ProfileMenuItem
             mainText="Settings"
-            onClick={() => handleSettingsClick(0)}
+            onClick={() => handleSettingsClick(1)}
             icon={<Settings fontSize="small" />}
           />
 

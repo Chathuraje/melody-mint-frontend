@@ -1,10 +1,13 @@
 type User = {
   id: string;
+  wallet_address: `0x${string}`;
+  chain_id: number;
+  moralis_id: string;
   first_name: string;
   last_name: string;
   username: string;
-  profile_hero: URL;
-  profile_image: URL;
+  profile_hero: string;
+  profile_image: string;
   artist_description: string;
   social_media: SocialMedia;
   email: string;
@@ -14,25 +17,12 @@ type User = {
   joined_date: string;
 };
 
-type SocialMedia = {
-  spotify?: string; // Spotify profile link
-  instagram?: string; // Instagram profile link
-  youtube?: string; // Youtube channel link
-  x?: string; // Extra social media link
-  discord?: string; // Discord username
+export type SocialMedia = {
+  spotify?: string;
+  instagram?: string;
+  youtube?: string;
+  x?: string;
+  discord?: string;
 };
 
-export type UserModel = User & {
-  wallet_address: `0x${string}`;
-  chain_id: number;
-};
-
-export type UserUpdateModel = Partial<User>;
-
-export type TokenResponse = {
-  id: string;
-  address: `0x${string}`;
-  chainId: number;
-  first_name: string;
-  last_name: string;
-};
+export type UserModel = User;

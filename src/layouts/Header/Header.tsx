@@ -17,7 +17,7 @@ export const Header = () => {
       borderBottom="1px solid rgba(0, 0, 0, 0.1)"
       justifyContent="space-between"
       alignItems="center"
-      zIndex={1}
+      zIndex={99}
     >
       <Grid md={3}>
         <Logo width={65} />

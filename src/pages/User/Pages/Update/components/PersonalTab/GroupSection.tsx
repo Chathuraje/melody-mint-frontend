@@ -6,10 +6,10 @@ import {
   Select,
   TextField,
 } from "@mui/material";
-import { useUser } from "../../hooks/useUser";
+import { useProfile } from "../../../../hooks/useProfile";
 
 export const GroupSection = () => {
-  const { userData } = useUser();
+  const { profileData } = useProfile();
 
   return (
     <>
@@ -26,7 +26,7 @@ export const GroupSection = () => {
             fullWidth
             label="First Name"
             variant="outlined"
-            value={userData?.first_name}
+            value={profileData?.first_name}
           />
         </Grid>
         <Grid xs={5.5}>
@@ -34,7 +34,7 @@ export const GroupSection = () => {
             fullWidth
             label="Last Name"
             variant="outlined"
-            value={userData?.last_name}
+            value={profileData?.last_name}
           />
         </Grid>
       </Grid>
@@ -52,7 +52,7 @@ export const GroupSection = () => {
             fullWidth
             label="Email"
             variant="outlined"
-            value={userData?.email}
+            value={profileData?.email}
           />
         </Grid>
         <Grid xs={5.5}>
@@ -60,7 +60,7 @@ export const GroupSection = () => {
             fullWidth
             label="Contact Number"
             variant="outlined"
-            value={userData?.contact_no}
+            value={profileData?.contact_no}
           />
         </Grid>
       </Grid>

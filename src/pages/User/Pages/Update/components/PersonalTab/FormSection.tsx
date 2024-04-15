@@ -1,8 +1,8 @@
 import { Grid, TextField } from "@mui/material";
-import { useUser } from "../../hooks/useUser";
+import { useProfile } from "../../../../hooks/useProfile";
 
 export const FormSection = () => {
-  const { userData } = useUser();
+  const { profileData } = useProfile();
 
   return (
     <>
@@ -11,7 +11,7 @@ export const FormSection = () => {
           fullWidth
           label="Website"
           variant="outlined"
-          value={userData?.website}
+          value={profileData?.website}
         />
       </Grid>
     </>

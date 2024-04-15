@@ -1,11 +1,11 @@
 import { Grid, TextField } from "@mui/material";
-import { useUser } from "../../hooks/useUser";
+import { useProfile } from "../../../../hooks/useProfile";
 
 export const SocialSection = () => {
-  const { userData, populateSocialIcons } = useUser();
+  const { profileData, populateSocialIcons } = useProfile();
 
-  const { names = [], hrefs = {} } = userData
-    ? populateSocialIcons(userData)
+  const { names = [], hrefs = {} } = profileData
+    ? populateSocialIcons(profileData)
     : {};
 
   return (

@@ -1,6 +1,7 @@
 import { Unstable_Grid2 as Grid } from "@mui/material/";
 import { View } from "./Pages/View/View";
 import { Update } from "./Pages/Update/Update";
+import { ProfileProvider } from "./context/ProfileProvider";
 
 export const UserView = () => {
   return (
@@ -13,7 +14,9 @@ export const UserView = () => {
 export const UserUpdate = () => {
   return (
     <Grid>
-      <Update />
+      <ProfileProvider>
+        <Update />
+      </ProfileProvider>
     </Grid>
   );
 };
