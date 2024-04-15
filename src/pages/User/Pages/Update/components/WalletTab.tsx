@@ -1,9 +1,9 @@
 import { FormBox } from "@/components/FormBox";
 import { Button, Grid, IconButton, Typography } from "@mui/material";
-import EthLogo from "@/assets/fundraiser/ethereum-eth-logo.svg";
 import { useAccount } from "wagmi";
 import { truncateAddress } from "@/utils/truncateAddress";
 import { useAuth } from "@/hooks/useAuth";
+import { ChainIcon } from "connectkit";
 
 export const WalletTab = () => {
   const { address, chain } = useAccount();
@@ -35,7 +35,7 @@ export const WalletTab = () => {
             display="flex"
             flexDirection="row"
             justifyContent="left"
-            gap="8px"
+            gap="18px"
           >
             <Grid
               display="flex"
@@ -43,13 +43,8 @@ export const WalletTab = () => {
               justifyContent="left"
               gap="8px"
             >
-              <IconButton aria-label="Ethereum">
-                <img
-                  src={EthLogo}
-                  alt="Icon eth badge"
-                  width="25px"
-                  height="25px"
-                />
+              <IconButton>
+                <ChainIcon id={chain?.id} />
               </IconButton>
             </Grid>
             <Grid>

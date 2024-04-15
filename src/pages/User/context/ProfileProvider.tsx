@@ -39,11 +39,6 @@ export const ProfileProvider = (params: ProfileProviderPrams) => {
       }
     }
 
-    if (profile.website) {
-      names.push("website");
-      hrefs["website"] = profile.website;
-    }
-
     return { names, hrefs };
   };
 

@@ -5,7 +5,7 @@ import { ProfileImage } from "@/components/ui/ProfileImage";
 import { ProfileHero } from "@/components/ui/ProfileHero";
 import { Form } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { DevTool } from "@hookform/devtools";
+// import { DevTool } from "@hookform/devtools";
 import { useEffect, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { profileUpdateSchema } from "../schemas/updateScehma";
@@ -49,7 +49,7 @@ export const ProfileTab = () => {
       })
     : "";
 
-  const { register, control, handleSubmit, formState, setValue } =
+  const { register, handleSubmit, formState, setValue } =
     useForm<profileFormValuesTypes>({
       mode: "onBlur",
       resolver: zodResolver(profileUpdateSchema),
@@ -261,13 +261,19 @@ export const ProfileTab = () => {
               />
             </Grid>
           </Grid>
-
+        </Grid>
+        <Grid
+          paddingTop="25px"
+          display="flex"
+          flexDirection="row"
+          justifyContent="flex-end"
+        >
           <Button variant="contained" color="primary" type="submit">
             Save Changes
           </Button>
         </Grid>
       </Form>
-      <DevTool control={control} />
+      {/* <DevTool control={control} /> */}
     </FormBox>
   );
 };

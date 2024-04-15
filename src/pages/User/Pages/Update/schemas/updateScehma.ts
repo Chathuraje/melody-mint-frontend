@@ -39,3 +39,18 @@ export const profileUpdateSchema = z.object({
       return true; // First file is valid
     }),
 });
+
+export const personalUpdateSchema = z.object({
+  first_name: z.string(),
+  last_name: z.string(),
+  email: z.string().email(),
+  contact_no: z.string().min(10).max(10),
+  website: z.string(),
+  social_media: z.object({
+    spotify: z.string(),
+    instagram: z.string(),
+    youtube: z.string(),
+    x: z.string(),
+    discord: z.string(),
+  }),
+});
