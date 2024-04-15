@@ -1,10 +1,14 @@
 import { Unstable_Grid2 as Grid, Container } from "@mui/material";
-import { FundraisersFilter } from "./FundraisersFilter";
 import { Pagination } from "@/components/ui/Pagination";
 import { SubPageHeaders } from "@/components/SubPageHeaders";
 import FundRaiserCard from "@/components/FundRaiserCard";
+import { ToggleSwitch } from "@/components/ToggleSwitch";
+import { SelectOptions } from "@/components/ui/SelectOptions";
+import categories from "@/data/categories.json";
 
 export const AllFundraisers = () => {
+  const categoryNames = categories.map((category) => category.name);
+
   return (
     <Container>
       <Grid container display="flex" gap="22px" flexDirection="column">
@@ -12,7 +16,22 @@ export const AllFundraisers = () => {
           <SubPageHeaders
             title="Explore Fundraisers"
             subtitle="Invest in Funds created by Music artist and earn royalties"
-            filter={<FundraisersFilter />}
+            filter={
+              <Grid
+                display="flex"
+                gap="35px"
+                flexDirection="row"
+                justifyContent="space-between"
+                alignContent="center"
+              >
+                <ToggleSwitch values={["Trending", "Top"]} />
+
+                <SelectOptions
+                  label="Categories"
+                  items={["All", ...categoryNames]}
+                />
+              </Grid>
+            }
           />
         </Grid>
         <Grid container direction="column" alignItems="center" gap="25px">

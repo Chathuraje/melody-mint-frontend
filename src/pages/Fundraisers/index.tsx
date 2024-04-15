@@ -1,4 +1,4 @@
-export { SingleFundraisersItem } from "./SingleFundraisersItem/SingleFundraisersItem";
-export { AllFundraisers } from "./AllFundraisers/AllFundraisers";
-export { CreateFundraisers } from "./CreateFundraisers/CreateFundraisers";
-export { UpdateFundraisers } from "./UpdateFundraisers/UpdateFundraisers";
+export { SingleFundraisersItem } from "./Pages/SingleFundraisersItem";
+export { AllFundraisers } from "./Pages/AllFundraisers";
+export { CreateFundraisers } from "./Pages/CreateFundraisers";
+export { UpdateFundraisers } from "./Pages/UpdateFundraisers";
