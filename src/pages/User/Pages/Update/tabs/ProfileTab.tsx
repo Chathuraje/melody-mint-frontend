@@ -5,32 +5,13 @@ import { ProfileImage } from "@/components/ui/ProfileImage";
 import { ProfileHero } from "@/components/ui/ProfileHero";
 import { Form } from "react-router-dom";
 import { useForm } from "react-hook-form";
-// import { DevTool } from "@hookform/devtools";
 import { useEffect, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { profileUpdateSchema } from "../schemas/updateScehma";
 import { useProfileAPI } from "@/hooks/API/useProfileAPI";
 import { useNotification } from "@/hooks/useNotifications";
-// import { SocialMedia } from "@/models/Users";
 
 const API_URL = import.meta.env.VITE_API_URL;
-
-// type UserDataModel = {
-//   first_name?: string | null;
-//   last_name?: string | null;
-//   username?: string | null;
-//   artist_description?: string | null;
-//   social_media?: SocialMedia | null;
-//   email?: string | null;
-//   contact_no?: string | null;
-//   website?: string | null;
-//   disabled?: boolean | null;
-// };
-
-// type UserImageModel = {
-//   profile_hero?: FileList | null;
-//   profile_image?: FileList | null;
-// };
 
 type profileFormValuesTypes = {
   username?: string;
@@ -273,7 +254,6 @@ export const ProfileTab = () => {
           </Button>
         </Grid>
       </Form>
-      {/* <DevTool control={control} /> */}
     </FormBox>
   );
 };

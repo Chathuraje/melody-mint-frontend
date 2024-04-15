@@ -25,10 +25,6 @@ type profileFormValuesTypes = {
 export const PersonalTab = () => {
   const { profileData, setProfileData } = useProfile();
 
-  // const { names = [], hrefs = {} } = profileData
-  //   ? populateSocialIcons(profileData)
-  //   : {};
-
   const { register, handleSubmit, formState, setValue } =
     useForm<profileFormValuesTypes>({
       mode: "onBlur",
@@ -40,7 +36,6 @@ export const PersonalTab = () => {
   const { sendNotification } = useNotification();
 
   useEffect(() => {
-    // Set default values asynchronously after component mounts
     const setDefaultValues = async () => {
       if (profileData) {
         const {

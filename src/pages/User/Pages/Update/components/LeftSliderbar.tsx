@@ -1,31 +1,24 @@
-import { Grid, Tab, Tabs, Typography } from "@mui/material";
+import { Grid, Tabs, Typography } from "@mui/material";
 import BadgeIcon from "@mui/icons-material/Badge";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import WalletIcon from "@mui/icons-material/Wallet";
 import SecurityIcon from "@mui/icons-material/Security";
 import PaymentsIcon from "@mui/icons-material/Payments";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
+import { TabItem } from "./TabItem";
 interface LeftSliderbarProps {
   value: number;
   handleChange: (_event: React.SyntheticEvent, newValue: number) => void;
 }
 
 export const LeftSliderbar = (props: LeftSliderbarProps) => {
-  const customStyles = {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "left",
-    gap: "20px",
-  };
-
   return (
     <Grid
       xs={12}
       sm={3}
       style={{
-        borderRight: "1px solid #e0e0e0", // Added border
-        boxShadow: "4px 0px 5px rgba(0,0,0,0.05)", // Left shadow
+        borderRight: "1px solid #e0e0e0",
+        boxShadow: "4px 0px 5px rgba(0,0,0,0.05)",
         height: "100vh",
       }}
     >
@@ -34,7 +27,6 @@ export const LeftSliderbar = (props: LeftSliderbarProps) => {
       </Typography>
       <Tabs
         orientation="vertical"
-        variant="scrollable"
         value={props.value}
         onChange={props.handleChange}
         sx={{
@@ -42,37 +34,12 @@ export const LeftSliderbar = (props: LeftSliderbarProps) => {
           top: 100,
         }}
       >
-        <Tab
-          icon={<BadgeIcon />}
-          label="Profile Details"
-          sx={{ ...customStyles }}
-        />
-        <Tab
-          icon={<AccountCircleIcon />}
-          label="Personal Details"
-          sx={{ ...customStyles }}
-        />
-        <Tab
-          icon={<MonetizationOnIcon />}
-          label="Income Details"
-          sx={{ ...customStyles }}
-        />
-        <Tab
-          icon={<PaymentsIcon />}
-          label="Withdrawal Details"
-          sx={{ ...customStyles }}
-        />
-
-        <Tab
-          icon={<WalletIcon />}
-          label="Wallet Details"
-          sx={{ ...customStyles }}
-        />
-        <Tab
-          icon={<SecurityIcon />}
-          label="Security"
-          sx={{ ...customStyles }}
-        />
+        <TabItem icon={<BadgeIcon />} label="Profile Details" />
+        <TabItem icon={<AccountCircleIcon />} label="Personal Details" />
+        <TabItem icon={<MonetizationOnIcon />} label="Income Details" />
+        <TabItem icon={<PaymentsIcon />} label="Withdrawal Details" />
+        <TabItem icon={<WalletIcon />} label="Wallet Details" />
+        <TabItem icon={<SecurityIcon />} label="Security" />
       </Tabs>
     </Grid>
   );

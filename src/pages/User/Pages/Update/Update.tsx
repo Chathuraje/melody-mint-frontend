@@ -1,15 +1,17 @@
 import { Container, Grid } from "@mui/material";
 import { useEffect, useState } from "react";
-import { ProfileTab } from "./components/ProfileTab";
-import { PersonalTab } from "./components/PersonalTab";
-import { IncomeTab } from "./components/IncomeTab";
-import { WithdrawalTab } from "./components/WithdrawalTab";
-import { WalletTab } from "./components/WalletTab";
-import { SecurityTab } from "./components/SecurityTab";
-import { LeftSliderbar } from "./components/LeftSliderbar";
 import { useNavigate, useParams } from "react-router-dom";
 import { useProfileAPI } from "@/hooks/API/useProfileAPI";
 import { useProfile } from "../../hooks/useProfile";
+import { LeftSliderbar } from "./components/LeftSliderbar";
+import {
+  ProfileTab,
+  PersonalTab,
+  IncomeTab,
+  WithdrawalTab,
+  WalletTab,
+  SecurityTab,
+} from "./tabs";
 
 export const Update = () => {
   const { activeTab, Userid } = useParams();
@@ -17,14 +19,13 @@ export const Update = () => {
   const [paramValue, setParamValue] = useState(
     activeTab ? parseInt(activeTab) - 1 : 0
   );
+  const { GetProfileAPI } = useProfileAPI();
+  const { setProfileData } = useProfile();
 
   const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
     setParamValue(newValue);
     navigate(`/user/${Userid}/update/${newValue + 1}`);
   };
-
-  const { GetProfileAPI } = useProfileAPI();
-  const { setProfileData } = useProfile();
 
   useEffect(() => {
     setParamValue(paramValue);
