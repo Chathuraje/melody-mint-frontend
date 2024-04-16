@@ -33,9 +33,10 @@ export const useHandleAxiosErrors = () => {
           break;
       }
     } else if (error.request) {
-      console.log("Error during request setup:", error.request);
+      console.log("data:", error.request);
+      sendNotification("error", "Server is Offline....");
     } else {
-      console.log("Error during request setup aaa:", error.message);
+      sendNotification("error", error.message);
     }
     return Promise.reject(error);
   };
