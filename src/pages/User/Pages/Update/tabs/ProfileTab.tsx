@@ -5,11 +5,12 @@ import { ProfileImage } from "@/components/ui/ProfileImage";
 import { ProfileHero } from "@/components/ui/ProfileHero";
 import { Form } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { profileUpdateSchema } from "../schemas/updateScehma";
 import { useProfileAPI } from "@/hooks/API/useProfileAPI";
 import { useNotification } from "@/hooks/useNotifications";
+import { useImagePreview } from "@/hooks/useImagePreview";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -40,18 +41,26 @@ export const ProfileTab = () => {
   const { UpdateProfileAPI } = useProfileAPI();
   const { sendNotification } = useNotification();
 
-  const [previewImage, setPreviewImage] = useState<URL | string | null>(null);
-  const [previewHero, setPreviewHero] = useState<URL | string | null>(null);
+  const {
+    previewImage: profileImagePreview,
+    handleImageOnChange: handleProfileImageOnChange,
+    setPreviewImage: setProfileImage,
+  } = useImagePreview();
+
+  const {
+    previewImage: heroImagePreview,
+    handleImageOnChange: handleHeroImageOnChange,
+    setPreviewImage: setHeroImage,
+  } = useImagePreview();
 
   const imageURI = `${API_URL}/res/images?image_name=`;
 
   useEffect(() => {
-    // Set default values asynchronously after component mounts
     const setDefaultValues = async () => {
       setValue("username", profileData?.username || "");
       setValue("artist_description", profileData?.artist_description || "");
-      setPreviewImage(`${imageURI}${profileData?.profile_image}` || null);
-      setPreviewHero(`${imageURI}${profileData?.profile_hero}` || null);
+      setProfileImage(`${imageURI}${profileData?.profile_image}` || null);
+      setHeroImage(`${imageURI}${profileData?.profile_hero}` || null);
     };
 
     setDefaultValues();
@@ -65,40 +74,8 @@ export const ProfileTab = () => {
     }
   };
 
-  const imageOnChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files.length > 0) {
-      const file = e.target.files?.[0];
-      if (file) {
-        if (file.size > 1024 * 1024 * 3) {
-          sendNotification(
-            "error",
-            "File size exceeds the maximum allowed size of 3MB."
-          );
-          return;
-        } else if (file.type !== "image/png" && file.type !== "image/jpeg") {
-          sendNotification(
-            "error",
-            "Invalid file type. Only PNG and JPEG files are accepted."
-          );
-          return;
-        } else {
-          const fileUrl = URL.createObjectURL(file);
-
-          const fileList = new DataTransfer();
-          fileList.items.add(file);
-          if (e.target.getAttribute("id") === "profile_image") {
-            setPreviewImage(fileUrl);
-            setValue("profile_image", fileList.files);
-          } else if (e.target.getAttribute("id") === "profile_hero") {
-            setPreviewHero(fileUrl);
-            setValue("profile_hero", fileList.files);
-          }
-        }
-      }
-    }
-  };
-
   const onSubmit = async (data: profileFormValuesTypes) => {
+    console.log(data);
     const hasChanges = Object.entries(data).some(([key, value]) => {
       if (key === "profile_image" || key === "profile_hero") {
         return value.length > 0;
@@ -144,13 +121,14 @@ export const ProfileTab = () => {
           >
             <Grid onClick={() => handleBoxClick("profile_image")}>
               {errors.profile_image?.message}
-              <ProfileImage upload src={previewImage} />
+              <ProfileImage upload src={profileImagePreview} />
               <Input
                 type="file"
                 id="profile_image"
                 {...register("profile_image")}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                  imageOnChange(e);
+                  const profile_image = handleProfileImageOnChange(e);
+                  setValue("profile_image", profile_image);
                 }}
                 sx={{
                   display: "none",
@@ -160,7 +138,7 @@ export const ProfileTab = () => {
             <Grid onClick={() => handleBoxClick("profile_hero")}>
               <ProfileHero
                 border
-                src={previewHero}
+                src={heroImagePreview}
                 upload
                 height="200px"
                 width="550px"
@@ -170,7 +148,8 @@ export const ProfileTab = () => {
                 type="file"
                 id="profile_hero"
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                  imageOnChange(e);
+                  const profile_hero = handleHeroImageOnChange(e);
+                  setValue("profile_hero", profile_hero);
                 }}
                 sx={{
                   display: "none",

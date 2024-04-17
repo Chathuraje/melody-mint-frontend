@@ -6,7 +6,7 @@ import { Analyst } from "./Analyst/Analyst";
 import { AnalystItem } from "./AnalystItem/AnalystItem";
 import {
   AllFundraisers,
-  CreateFundraisers,
+  Create,
   SingleFundraisersItem,
   UpdateFundraisers,
 } from "./Fundraisers";
@@ -57,7 +57,7 @@ export const routes = [
             path: "/fundraisers/create",
             element: (
               <ProtectedRoutes>
-                <CreateFundraisers />
+                <Create />
               </ProtectedRoutes>
             ),
             title: "Create a Fundraisers",
