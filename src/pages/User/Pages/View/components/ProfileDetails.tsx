@@ -33,8 +33,18 @@ export const ProfileDetails = () => {
           flexDirection="row"
           alignItems="end"
           justifyContent="flex-end"
+          gap="25px"
         >
           <SocialIcons names={names} hrefs={hrefs} />
+
+          {userData?.website != "" && (
+            <SocialIcons
+              names={["website"]}
+              hrefs={{
+                website: userData?.website || "",
+              }}
+            />
+          )}
         </Grid>
       </Grid>
 

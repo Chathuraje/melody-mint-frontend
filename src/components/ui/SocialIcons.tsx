@@ -29,6 +29,8 @@ export const SocialIcons = (props: SocialIconsProps) => {
         return XIcon;
       case "website":
         return Website;
+      case "discord":
+        return Website;
       default:
         return "";
     }

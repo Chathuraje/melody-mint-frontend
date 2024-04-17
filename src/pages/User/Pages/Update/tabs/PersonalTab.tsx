@@ -18,7 +18,7 @@ type profileFormValuesTypes = {
   contact_no?: string;
   website?: string;
   social_media: {
-    [key: string]: string | undefined;
+    [key: string]: string;
   };
 };
 
@@ -53,9 +53,26 @@ export const PersonalTab = () => {
         setValue("contact_no", contact_no);
         setValue("website", website);
 
-        Object.entries(social_media).forEach(([key, value]) => {
-          setValue(`social_media.${key}`, value);
+        const updatedSocialMedia =
+          social_media === undefined || social_media === null
+            ? {
+                spotify: "",
+                instagram: "",
+                youtube: "",
+                x: "",
+                discord: "",
+              }
+            : social_media;
+
+        // Set values for social_media properties
+        Object.entries(updatedSocialMedia).forEach(([key, value]) => {
+          setValue(
+            `social_media.${key}` as keyof profileFormValuesTypes,
+            value
+          );
         });
+
+        profileData.social_media = updatedSocialMedia;
       }
     };
 
