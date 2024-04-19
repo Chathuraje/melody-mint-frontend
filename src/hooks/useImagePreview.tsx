@@ -6,7 +6,9 @@ export const useImagePreview = () => {
 
   const { sendNotification } = useNotification();
 
-  const handleImageOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageOnChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ): FileList | undefined => {
     if (e.target.files && e.target.files.length > 0) {
       const files = e.target.files[0];
       if (files) {

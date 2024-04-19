@@ -11,6 +11,7 @@ import { profileUpdateSchema } from "../schemas/updateScehma";
 import { useProfileAPI } from "@/hooks/API/useProfileAPI";
 import { useNotification } from "@/hooks/useNotifications";
 import { useImagePreview } from "@/hooks/useImagePreview";
+import { handleBoxClick } from "@/utils/boxClickedTrigger";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -66,13 +67,6 @@ export const ProfileTab = () => {
     setDefaultValues();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profileData, formattedJoinedDate, setValue]);
-
-  const handleBoxClick = (id: string) => {
-    const input = document.getElementById(id);
-    if (input) {
-      input.click();
-    }
-  };
 
   const onSubmit = async (data: profileFormValuesTypes) => {
     console.log(data);

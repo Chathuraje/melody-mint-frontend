@@ -1,6 +1,6 @@
 type Campaign = {
   id: string;
-  name: string;
+  fundraiser_name: string;
   short_description: string;
   goal: number;
   distribution_percentage: number;
@@ -14,7 +14,7 @@ type Campaign = {
   creation_hero: string;
   creator: string;
   current_amount: number;
-  category: string;
+  // category: string;
   disabled: boolean;
   created_date: string;
 };

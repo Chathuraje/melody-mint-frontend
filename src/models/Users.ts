@@ -15,6 +15,7 @@ type User = {
   website: string;
   disabled: boolean;
   joined_date: string;
+  verified: boolean;
 };
 
 export type SocialMedia = {

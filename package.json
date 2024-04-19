@@ -21,6 +21,7 @@
     "@tanstack/react-query": "^5.28.14",
     "axios": "^1.6.8",
     "connectkit": "^1.7.3",
+    "crypto-js": "^4.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.51.3",
@@ -29,10 +30,12 @@
     "sonner": "^1.4.41",
     "viem": "^2.9.9",
     "wagmi": "^2.5.18",
+    "web3": "^4.8.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {
     "@hookform/devtools": "^4.3.1",
+    "@types/crypto-js": "^4.2.2",
     "@types/node": "^20.12.3",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",

@@ -15,9 +15,16 @@ export type UserDataModel = {
   profile_image: FileList | null;
 };
 
+type verificatonStatus = {
+  verified: boolean;
+};
+
 type GetProfileAPIType = (abortSignal: AbortSignal) => Promise<UserModel>;
 type UpdateProfileAPIType = (
   data: Partial<UserDataModel>
+) => Promise<UserModel>;
+type UpdateUserVerifyStatusAPI = (
+  params: verificatonStatus
 ) => Promise<UserModel>;
 
 export const useProfileAPI = () => {
@@ -35,18 +42,26 @@ export const useProfileAPI = () => {
     }
   };
 
-  // const UpdateProfileAPI: UpdateProfileAPIType = async (data) => {
-  //   try {
-  //     const response = await axiosPrivate.put<UserModel>(
-  //       "/users/profile",
-  //       JSON.stringify(data)
-  //     );
-  //     return response.data;
-  //   } catch (error) {
-  //     console.error("Error occurred:", error);
-  //     throw error;
-  //   }
-  // };
+  const UpdateUserVerifyStatusAPI: UpdateUserVerifyStatusAPI = async (data) => {
+    try {
+      const formData = new FormData();
+      formData.append("user_data", JSON.stringify(data));
+
+      const response = await axiosPrivate.put<UserModel>(
+        "/users/profile",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      return response.data;
+    } catch (error) {
+      console.error("Error occurred:", error);
+      throw error;
+    }
+  };
 
   const UpdateProfileAPI: UpdateProfileAPIType = async (data) => {
     try {
@@ -77,5 +92,5 @@ export const useProfileAPI = () => {
     }
   };
 
-  return { GetProfileAPI, UpdateProfileAPI };
+  return { GetProfileAPI, UpdateProfileAPI, UpdateUserVerifyStatusAPI };
 };

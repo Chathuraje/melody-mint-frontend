@@ -1,9 +1,17 @@
 import { useLoginAPI } from "@/hooks/API/useLoginAPI";
 import { useLogoutAPI } from "@/hooks/API/useLogoutAPI";
 import { useNotification } from "@/hooks/useNotifications";
-import { TokenResponse } from "@/models/Users";
 import { createContext, useEffect, useState } from "react";
 import { useAccount, useDisconnect } from "wagmi";
+
+interface TokenResponse {
+  id: string;
+  address: `0x${string}`;
+  chainId: number;
+  first_name: string;
+  last_name: string;
+  moralis_id: string;
+}
 
 interface AuthContextType {
   user: TokenResponse | null;
@@ -77,7 +85,6 @@ export const AuthProvider = (props: AuthProviderProps) => {
         localStorage.setItem("mmweb3_user", JSON.stringify(userObj));
         setToken(response.access_token);
         setUser(userObj);
-        // TODO: Also create a user record in blockchain with ID and MoralisID. as a User Hash User create it even the user can't change it if it already not exist there
         setSignPopupState(false);
         sendNotification("success", "Successfully logged in");
       }
