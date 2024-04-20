@@ -10,22 +10,23 @@ import {
 import { ImageCard } from "@/components/ui/ImageCard";
 import { ProfileHero } from "@/components/ui/ProfileHero";
 import { Form } from "react-router-dom";
-import { useCampaign } from "../hooks/useCampaign";
-import { useCampaingWeb3 } from "@/hooks/API/useCampaingWeb3";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { campaignCreateSchema } from "../schemas/createSchma";
 import { handleBoxClick } from "@/utils/boxClickedTrigger";
 import { useImagePreview } from "@/hooks/useImagePreview";
 import { useNotification } from "@/hooks/useNotifications";
+import { useCampaignAPI } from "@/hooks/API/useCampaignAPI";
+import { useCampaingWeb3 } from "@/hooks/API/useCampaingWeb3";
+import web3 from "web3";
 
 type campaignFormValuesTypes = {
   fundraiser_name: string;
   short_description: string;
   goal: number;
   distribution_percentage: number;
-  start_date: string;
-  end_date: string;
+  start_date: Date;
+  end_date: Date;
   description: string;
   image: FileList;
   creation_name: string;
@@ -35,9 +36,11 @@ type campaignFormValuesTypes = {
 };
 
 export const CreateFundraisers = () => {
-  const { campaignData, setCampaignData } = useCampaign();
+  // const { campaignData, setCampaignData } = useCampaign();
   const { CreateCampaingWeb3 } = useCampaingWeb3();
   const { sendNotification } = useNotification();
+
+  const { StoreCampaignMetaDataAPI } = useCampaignAPI();
 
   const { register, handleSubmit, formState, setValue } =
     useForm<campaignFormValuesTypes>({
@@ -62,30 +65,29 @@ export const CreateFundraisers = () => {
   } = useImagePreview();
 
   const onSubmit = async (data: campaignFormValuesTypes) => {
-    sendNotification("success", "Profile updated successfully");
-    // const hasChanges = Object.entries(data).some(([key, value]) => {
-    //   if (
-    //     key === "image" ||
-    //     key === "creation_image" ||
-    //     key === "creation_hero"
-    //   ) {
-    //     return value instanceof FileList && value.length > 0;
-    //   } else {
-    //     const initialValue =
-    //       campaignData?.[key as keyof campaignFormValuesTypes];
-    //     return value !== initialValue;
-    //   }
-    // });
+    const offChainData = {
+      description: data.description,
+      image: data.image,
+      creation_image: data.creation_image,
+      creation_hero: data.creation_hero,
+      short_description: data.short_description,
+    };
 
-    // if (hasChanges) {
-    const response_data = await CreateCampaingWeb3(data);
-    setCampaignData(response_data);
-    console.log(response_data);
-
-    //   sendNotification("success", "Profile updated successfully");
-    // } else {
-    //   sendNotification("info", "No changes detected");
-    // }
+    const response = await StoreCampaignMetaDataAPI(offChainData);
+    if (response) {
+      const onChain = {
+        fundraiser_name: data.fundraiser_name,
+        goal: Number(web3.utils.toWei(data.goal.toString(), "ether")), // Convert goal to wei using web3
+        distribution_percentage: data.distribution_percentage,
+        start_date: Math.floor(new Date(data.start_date).getTime() / 1000), // Convert start_date to Unix timestamp in seconds
+        end_date: Math.floor(new Date(data.end_date).getTime() / 1000), // Convert end_date to Unix timestamp in seconds
+        meta_data: response,
+      };
+      const web3response = await CreateCampaingWeb3(onChain);
+      if (web3response) {
+        sendNotification("success", "Campaign created successfully");
+      }
+    }
   };
 
   return (
@@ -223,6 +225,7 @@ export const CreateFundraisers = () => {
                     />
                     <TextField
                       fullWidth
+                      type="date"
                       id="start_date"
                       label="Start Date"
                       variant="outlined"
@@ -235,6 +238,7 @@ export const CreateFundraisers = () => {
                     />
                     <TextField
                       fullWidth
+                      type="date"
                       id="end_date"
                       label="Deadline"
                       variant="outlined"

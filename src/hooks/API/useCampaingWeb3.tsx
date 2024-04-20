@@ -1,49 +1,39 @@
-import { CampaignModel } from "@/models/Campaign";
+import { CampaignBlockchain } from "@/models/Campaign";
+import { useMelodyMintContract } from "../Web3/useMelodyMintContract";
+import { WriteContractReturnType } from "viem";
 
-export type CampaingDataModel = {
-  name: string;
-  short_description: string;
-  goal: number;
-  distribution_percentage: number;
-  start_date: string;
-  end_date: string;
-  description: string;
-  image: FileList;
-  creation_name: string;
-  creation_description: string;
-  creation_image: FileList;
-  creation_hero: FileList;
-  current_amount: number;
-  // category: string;
-};
-
-type GetCampaingWeb3Type = () => Promise<CampaignModel>;
+// type GetCampaingWeb3Type = () => Promise<WriteContractReturnType>;
 type CreateCampaingWeb3Type = (
-  data: Partial<CampaingDataModel>
-) => Promise<CampaignModel>;
+  data: CampaignBlockchain
+) => Promise<WriteContractReturnType>;
 
+//TODO: Add Loading Screen until Transaction is completed
 export const useCampaingWeb3 = () => {
-  const GetCampaingWeb3: GetCampaingWeb3Type = async () => {
-    try {
-      //
-    } catch (error) {
-      console.error("Error occurred:", error);
-      throw error;
-    }
-  };
+  const { web3Write } = useMelodyMintContract();
+
+  // const GetCampaingWeb3: GetCampaingWeb3Type = async () => {
+  //   try {
+  //     //
+  //   } catch (error) {
+  //     console.error("Error occurred:", error);
+  //     throw error;
+  //   }
+  // };
 
   const CreateCampaingWeb3: CreateCampaingWeb3Type = async (data) => {
-    console.log(data);
-
-    
-
+    const args: (string | number | boolean)[] = Object.values(data);
+    console.log(args);
     try {
-      //
+      const response = await web3Write({
+        function_name: "createCampaign",
+        args: args,
+      });
+      return response;
     } catch (error) {
       console.error("Error occurred:", error);
       throw error;
     }
   };
 
-  return { GetCampaingWeb3, CreateCampaingWeb3 };
+  return { CreateCampaingWeb3 };
 };

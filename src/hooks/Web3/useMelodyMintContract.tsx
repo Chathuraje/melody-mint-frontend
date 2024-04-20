@@ -7,7 +7,7 @@ const MELODY_MINT_CONTRACT_ADDRESS = import.meta.env
 
 interface web3WriteParams {
   function_name: string;
-  args: string[];
+  args: (string | number | boolean)[];
 }
 
 type web3WriteResponse = (
