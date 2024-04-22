@@ -1,11 +1,3 @@
-/**
- * Truncate the address
- * @param {string} address - The address to truncate
- * @param {number} start - The number of characters to show at the start
- * @param {number} end - The number of characters to show at the end
- * @returns {string} - The truncated address
- */
-
 interface truncateAddressParams {
   address: string | undefined;
   start?: number;
