@@ -12,7 +12,7 @@ export const ProfileButton = (props: ProfileButtonPrps) => {
   const { handleClick, open } = props;
 
   const { address } = useAccount();
-  const truncatedAddress = truncateAddress(address);
+  const truncatedAddress = truncateAddress({ address });
 
   return (
     <IconButton

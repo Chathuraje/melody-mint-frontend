@@ -27,7 +27,8 @@ export const ProfileBox = () => {
       <Grid display="flex" flexDirection="row" gap="4px">
         <Grid display="flex" flexDirection="row" gap="15px">
           <Grid alignContent="center">
-            {truncateAddress(userData?.wallet_address) || "0x00....0000"}
+            {truncateAddress({ address: userData?.wallet_address }) ||
+              "0x00....0000"}
           </Grid>
           <IconButton aria-label="Chain Logo">
             {<ChainIcon id={userData?.chain_id || 1} />}

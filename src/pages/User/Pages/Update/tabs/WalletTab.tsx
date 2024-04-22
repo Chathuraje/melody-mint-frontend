@@ -84,7 +84,7 @@ export const WalletTab = () => {
             <Grid>
               <Typography variant="h5">{chain?.name} Network</Typography>
               <Typography variant="subtitle1" color="black" fontSize="14px">
-                {truncateAddress(address, 8, 8)}
+                {truncateAddress({ address, start: 8, end: 8 })}
               </Typography>
             </Grid>
           </Grid>

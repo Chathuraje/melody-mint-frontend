@@ -10,7 +10,7 @@ import { useAccount } from "wagmi";
 
 export const UserPopup = () => {
   const { address, chain } = useAccount();
-  const truncatedAddress = truncateAddress(address);
+  const truncatedAddress = truncateAddress({ address });
   const { user, logout } = useAuth();
 
   const navigate = useNavigate();
