@@ -5,9 +5,9 @@ import { truncateAddress } from "@/utils/truncateAddress";
 import { useAuth } from "@/hooks/useAuth";
 import { ChainIcon } from "connectkit";
 import { useProfile } from "@/pages/User/hooks/useProfile";
-import { useRegisterUserWeb3 } from "@/hooks/API/useUserVerifyWeb3";
+import { useRegisterUserWeb3 } from "@/api/useUserVerifyWeb3";
 import Web3 from "web3";
-import { useProfileAPI } from "@/hooks/API/useProfileAPI";
+import { useProfileAPI } from "@/api/useProfileAPI";
 import { useEffect, useState } from "react";
 
 export const WalletTab = () => {

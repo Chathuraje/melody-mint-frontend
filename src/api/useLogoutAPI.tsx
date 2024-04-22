@@ -1,4 +1,4 @@
-import { useAxiosPublic } from "../Axios/useAxiosPublic";
+import { useAxiosPublic } from "../hooks/Axios/useAxiosPublic";
 
 type LogoutAPIAPIType = () => void;
 

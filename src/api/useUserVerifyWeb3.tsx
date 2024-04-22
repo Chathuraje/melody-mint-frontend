@@ -1,5 +1,5 @@
 import { WriteContractReturnType } from "viem";
-import { useMelodyMintContract } from "../Web3/useMelodyMintContract";
+import { useMelodyMintContract } from "../hooks/Web3/useMelodyMintContract";
 
 interface RegisterUserWeb3Params {
   user_hash: string;

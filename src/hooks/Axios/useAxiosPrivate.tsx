@@ -1,4 +1,4 @@
-import { useRefreshTokenAPI } from "../API/useRefreshTokenAPI";
+import { useRefreshTokenAPI } from "../../api/useRefreshTokenAPI";
 import { useAuth } from "../useAuth";
 import { useNotification } from "../useNotifications";
 import { useEffect } from "react";

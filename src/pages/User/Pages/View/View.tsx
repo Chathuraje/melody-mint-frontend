@@ -4,7 +4,7 @@ import { ProfileDetails } from "./components/ProfileDetails";
 import { ArtistToggle } from "./components/ArtistToggle";
 import { useEffect } from "react";
 import { useProfile } from "../../hooks/useProfile";
-import { useGetUserAPI } from "@/hooks/API/useUserAPI";
+import { useGetUserAPI } from "@/api/useUserAPI";
 import { useParams } from "react-router-dom";
 
 const API_URL = import.meta.env.VITE_API_URL;

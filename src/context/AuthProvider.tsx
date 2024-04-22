@@ -1,5 +1,5 @@
-import { useLoginAPI } from "@/hooks/API/useLoginAPI";
-import { useLogoutAPI } from "@/hooks/API/useLogoutAPI";
+import { useLoginAPI } from "@/api/useLoginAPI";
+import { useLogoutAPI } from "@/api/useLogoutAPI";
 import { useNotification } from "@/hooks/useNotifications";
 import { createContext, useEffect, useState } from "react";
 import { useAccount, useDisconnect } from "wagmi";

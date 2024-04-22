@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Grid, TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { personalUpdateSchema } from "../schemas/updateScehma";
-import { useProfileAPI } from "@/hooks/API/useProfileAPI";
+import { useProfileAPI } from "@/api/useProfileAPI";
 import { useNotification } from "@/hooks/useNotifications";
 import { useEffect } from "react";
 import { Form } from "react-router-dom";

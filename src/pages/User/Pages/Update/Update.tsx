@@ -1,7 +1,7 @@
 import { Container, Grid } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useProfileAPI } from "@/hooks/API/useProfileAPI";
+import { useProfileAPI } from "@/api/useProfileAPI";
 import { useProfile } from "../../hooks/useProfile";
 import { LeftSliderbar } from "./components/LeftSliderbar";
 import {

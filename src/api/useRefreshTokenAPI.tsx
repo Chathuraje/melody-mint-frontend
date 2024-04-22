@@ -1,5 +1,5 @@
-import { useAxiosPublic } from "../Axios/useAxiosPublic";
-import { useAuth } from "../useAuth";
+import { useAxiosPublic } from "../hooks/Axios/useAxiosPublic";
+import { useAuth } from "../hooks/useAuth";
 
 interface RefreshTokenResponse {
   id: string;

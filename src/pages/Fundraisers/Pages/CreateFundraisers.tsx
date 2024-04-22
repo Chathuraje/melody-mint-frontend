@@ -16,8 +16,8 @@ import { campaignCreateSchema } from "../schemas/createSchma";
 import { handleBoxClick } from "@/utils/boxClickedTrigger";
 import { useImagePreview } from "@/hooks/useImagePreview";
 import { useNotification } from "@/hooks/useNotifications";
-import { useCampaignAPI } from "@/hooks/API/useCampaignAPI";
-import { useCampaingWeb3 } from "@/hooks/API/useCampaingWeb3";
+import { useCampaignAPI } from "@/api/useCampaignAPI";
+import { useCampaingWeb3 } from "@/api/useCampaingWeb3";
 import web3 from "web3";
 
 type campaignFormValuesTypes = {

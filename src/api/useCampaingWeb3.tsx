@@ -1,5 +1,5 @@
 import { CampaignBlockchain } from "@/models/Campaign";
-import { useMelodyMintContract } from "../Web3/useMelodyMintContract";
+import { useMelodyMintContract } from "../hooks/Web3/useMelodyMintContract";
 import { WriteContractReturnType } from "viem";
 
 // type GetCampaingWeb3Type = () => Promise<WriteContractReturnType>;

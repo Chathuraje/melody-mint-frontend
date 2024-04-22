@@ -1,5 +1,5 @@
 import { useSignMessage } from "wagmi";
-import { useAxiosPublic } from "../Axios/useAxiosPublic";
+import { useAxiosPublic } from "../hooks/Axios/useAxiosPublic";
 
 // Response from the request_challenge API
 interface getRequestChallengeRequest {

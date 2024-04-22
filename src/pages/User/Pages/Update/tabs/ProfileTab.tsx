@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 import { useEffect } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { profileUpdateSchema } from "../schemas/updateScehma";
-import { useProfileAPI } from "@/hooks/API/useProfileAPI";
+import { useProfileAPI } from "@/api/useProfileAPI";
 import { useNotification } from "@/hooks/useNotifications";
 import { useImagePreview } from "@/hooks/useImagePreview";
 import { handleBoxClick } from "@/utils/boxClickedTrigger";
