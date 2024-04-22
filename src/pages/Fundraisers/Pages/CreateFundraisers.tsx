@@ -29,10 +29,12 @@ type campaignFormValuesTypes = {
   end_date: Date;
   description: string;
   image: FileList;
-  creation_name: string;
-  creation_description: string;
-  creation_image: FileList;
-  creation_hero: FileList;
+
+  //Collection Data
+  collection_name: string;
+  collection_description: string;
+  collection_image: FileList;
+  collection_hero: FileList;
 };
 
 export const CreateFundraisers = () => {
@@ -68,12 +70,16 @@ export const CreateFundraisers = () => {
     const offChainData = {
       description: data.description,
       image: data.image,
-      creation_image: data.creation_image,
-      creation_hero: data.creation_hero,
       short_description: data.short_description,
+
+      // collection data
+      collection_description: data.collection_description,
+      collection_image: data.collection_image,
+      collection_hero: data.collection_hero,
     };
 
     const response = await StoreCampaignMetaDataAPI(offChainData);
+    console.log(response);
     if (response) {
       const onChain = {
         fundraiser_name: data.fundraiser_name,
@@ -81,7 +87,11 @@ export const CreateFundraisers = () => {
         distribution_percentage: data.distribution_percentage,
         start_date: Math.floor(new Date(data.start_date).getTime() / 1000), // Convert start_date to Unix timestamp in seconds
         end_date: Math.floor(new Date(data.end_date).getTime() / 1000), // Convert end_date to Unix timestamp in seconds
-        meta_data: response,
+        campaign_meta_data: response.campaign_data,
+
+        // collection data
+        collection_name: data.collection_name,
+        collection_meta_data: response.collection_data,
       };
       const web3response = await CreateCampaingWeb3(onChain);
       if (web3response) {
@@ -286,15 +296,15 @@ export const CreateFundraisers = () => {
                   >
                     <TextField
                       fullWidth
-                      id="creation_name"
-                      label="Creation Name"
+                      id="collection_name"
+                      label="Collection Name"
                       variant="outlined"
                       InputLabelProps={{
                         shrink: true,
                       }}
-                      error={!!errors?.creation_name}
-                      helperText={errors.creation_name?.message}
-                      {...register("creation_name")}
+                      error={!!errors?.collection_name}
+                      helperText={errors.collection_name?.message}
+                      {...register("collection_name")}
                     />
                   </Grid>
                   <Grid
@@ -305,17 +315,17 @@ export const CreateFundraisers = () => {
                   >
                     <TextField
                       fullWidth
-                      id="creation_description"
-                      label="Description for the project"
+                      id="collection_description"
+                      label="Description for the Collection"
                       variant="outlined"
                       multiline
                       rows={5}
                       InputLabelProps={{
                         shrink: true,
                       }}
-                      error={!!errors?.creation_description}
-                      helperText={errors.creation_description?.message}
-                      {...register("creation_description")}
+                      error={!!errors?.collection_description}
+                      helperText={errors.collection_description?.message}
+                      {...register("collection_description")}
                     />
                   </Grid>
                 </Grid>
@@ -337,7 +347,7 @@ export const CreateFundraisers = () => {
                   >
                     <Grid
                       xs={4}
-                      onClick={() => handleBoxClick("creation_image")}
+                      onClick={() => handleBoxClick("collection_image")}
                       gap="25px"
                       width="23%"
                       height="300px"
@@ -350,14 +360,14 @@ export const CreateFundraisers = () => {
                         width="100%"
                       />
                       <Input
-                        {...register("creation_image")}
+                        {...register("collection_image")}
                         type="file"
-                        id="creation_image"
+                        id="collection_image"
                         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                          const creation_image =
+                          const collection_image =
                             handleCampaignCreationImageOnChange(e);
-                          creation_image &&
-                            setValue("creation_image", creation_image);
+                          collection_image &&
+                            setValue("collection_image", collection_image);
                         }}
                         sx={{
                           display: "none",
@@ -366,7 +376,7 @@ export const CreateFundraisers = () => {
                     </Grid>
                     <Grid
                       xs={8}
-                      onClick={() => handleBoxClick("creation_hero")}
+                      onClick={() => handleBoxClick("collection_hero")}
                       gap="25px"
                       height="300px"
                       width="73%"
@@ -379,14 +389,14 @@ export const CreateFundraisers = () => {
                         width="100%"
                       />
                       <Input
-                        {...register("creation_hero")}
+                        {...register("collection_hero")}
                         type="file"
-                        id="creation_hero"
+                        id="collection_hero"
                         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                          const creation_hero =
+                          const collection_hero =
                             handleCampaignCreationHeroOnChange(e);
-                          creation_hero &&
-                            setValue("creation_hero", creation_hero);
+                          collection_hero &&
+                            setValue("collection_hero", collection_hero);
                         }}
                         sx={{
                           display: "none",

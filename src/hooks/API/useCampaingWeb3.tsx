@@ -11,15 +11,6 @@ type CreateCampaingWeb3Type = (
 export const useCampaingWeb3 = () => {
   const { web3Write } = useMelodyMintContract();
 
-  // const GetCampaingWeb3: GetCampaingWeb3Type = async () => {
-  //   try {
-  //     //
-  //   } catch (error) {
-  //     console.error("Error occurred:", error);
-  //     throw error;
-  //   }
-  // };
-
   const CreateCampaingWeb3: CreateCampaingWeb3Type = async (data) => {
     const args: (string | number | boolean)[] = Object.values(data);
     console.log(args);

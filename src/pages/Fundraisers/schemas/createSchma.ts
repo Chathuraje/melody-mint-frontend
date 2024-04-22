@@ -27,9 +27,9 @@ export const campaignCreateSchema = z.object({
       }
       return true; // First file is valid
     }),
-  creation_name: z.string().min(3).max(50),
-  creation_description: z.string().min(3).max(100),
-  creation_image: z
+  collection_name: z.string().min(3).max(50),
+  collection_description: z.string().min(3).max(100),
+  collection_image: z
     .instanceof(FileList)
     .optional()
     .refine((fileList) => {
@@ -45,7 +45,7 @@ export const campaignCreateSchema = z.object({
       }
       return true; // First file is valid
     }),
-  creation_hero: z
+  collection_hero: z
     .instanceof(FileList)
     .optional()
     .refine((fileList) => {

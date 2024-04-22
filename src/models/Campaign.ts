@@ -4,16 +4,20 @@ export type CampaignBlockchain = {
   distribution_percentage: number;
   start_date: number;
   end_date: number;
-  // creation_name: string;
-  // creation_description: string;
+  campaign_meta_data: string;
+
+  collection_name: string;
+  collection_meta_data: string;
 };
 
 export type CampaingOffChain = {
   description: string;
   image: FileList;
-  creation_image: FileList;
-  creation_hero: FileList;
   short_description: string;
+
+  collection_description: string;
+  collection_image: FileList;
+  collection_hero: FileList;
 };
 
 export type CampaignModel = CampaignBlockchain & CampaingOffChain;
