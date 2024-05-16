@@ -10,6 +10,11 @@ type StoreCampaignMetaDataResponseType = {
   collection_data: string;
 };
 
+interface InvestmentList {
+  id: string;
+  address: string;
+  amount: number;
+}
 interface CampaignsResponse {
   fundraiser_name: string;
   goal: number;
@@ -24,9 +29,18 @@ interface CampaignsResponse {
   collection_hero: string;
   owner: string;
   collection_address: string;
+  investment: InvestmentList[];
 }
 
+type campaingRequest = {
+  FundraisersId: string;
+  chainId?: number;
+};
+
 type GetAllCampaingDataAPI = (chainId?: number) => Promise<CampaignsResponse[]>;
+type GetCampaingDataAPIType = (
+  data: campaingRequest
+) => Promise<CampaignsResponse>;
 
 export const useCampaignAPI = () => {
   const { axiosPrivate } = useAxiosPrivate();
@@ -98,5 +112,27 @@ export const useCampaignAPI = () => {
     }
   };
 
-  return { StoreCampaignMetaDataAPI, GetAllCampaingDataAPI };
+  const GetCampaingDataAPI: GetCampaingDataAPIType = async (data) => {
+    const { chainId, FundraisersId } = data;
+    if (chainId === undefined) {
+      throw new Error("chainId is undefined");
+    }
+
+    try {
+      const response = await axiosPublic.get<CampaignsResponse>(
+        `/campaign/${chainId}/${FundraisersId}`
+      );
+
+      return response.data;
+    } catch (error) {
+      console.error("Error occurred:", error);
+      throw error;
+    }
+  };
+
+  return {
+    StoreCampaignMetaDataAPI,
+    GetAllCampaingDataAPI,
+    GetCampaingDataAPI,
+  };
 };

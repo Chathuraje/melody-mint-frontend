@@ -7,6 +7,11 @@ import {
 } from "@mui/material";
 import { ArtistCard } from "@/components/ui/ArtistCard";
 import ArtistPlaceholder from "@/assets/fundraiser/artist-placehodler.svg";
+import {
+  eth_value,
+  human_deadline,
+  raised_percentage,
+} from "@/utils/styledVarialbes";
 
 interface FundRaiserCardProps {
   fundraiser_name: string;
@@ -40,19 +45,6 @@ const FundRaiserCard = ({ data }: { data: FundRaiserCardProps }) => {
     // owner,
     // collection_address,
   } = data;
-
-  const human_deadline = (date: number) => {
-    const deadline = new Date(date * 1000);
-    return deadline.toLocaleDateString();
-  };
-
-  const eth_value = (amount: number) => {
-    return amount / 1000000000000000000;
-  };
-
-  const raised_percentage = (amount: number) => {
-    return (amount / goal) * 100;
-  };
 
   const FundRaiserItem = {
     backgroundImage: `url(${collection_image})`,
@@ -98,7 +90,7 @@ const FundRaiserCard = ({ data }: { data: FundRaiserCardProps }) => {
           <LinearProgress
             color="primary"
             variant="determinate"
-            value={raised_percentage(current_amount)}
+            value={raised_percentage(current_amount, goal)}
           />
         </Box>
 

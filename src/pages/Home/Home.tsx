@@ -1,6 +1,6 @@
 import { Hero } from "./components/Hero";
 import { Cta } from "./components/Cta";
-import { HomeFundraise } from "./components/HomeFundraise";
+// import { HomeFundraise } from "./components/HomeFundraise";
 import { FeaturesSection } from "./components/FeaturesSection";
 import { Container, Unstable_Grid2 as Grid } from "@mui/material";
 import { Faq } from "./components/Faq";
@@ -20,7 +20,7 @@ export const Home = () => {
           to fund your music"
             image={CtaBack}
           />
-          <HomeFundraise />
+          {/* <HomeFundraise /> */}
           <FeaturesSection />
           <Cta
             title="This is where your music journey begins"
