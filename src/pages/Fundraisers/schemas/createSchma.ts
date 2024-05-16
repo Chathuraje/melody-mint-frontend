@@ -61,4 +61,5 @@ export const campaignCreateSchema = z.object({
       }
       return true; // First file is valid
     }),
+  collection_symbol: z.string().min(3).max(7),
 });

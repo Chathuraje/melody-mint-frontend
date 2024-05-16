@@ -35,6 +35,7 @@ type campaignFormValuesTypes = {
   collection_description: string;
   collection_image: FileList;
   collection_hero: FileList;
+  collection_symbol: string;
 };
 
 export const CreateFundraisers = () => {
@@ -82,16 +83,17 @@ export const CreateFundraisers = () => {
     console.log(response);
     if (response) {
       const onChain = {
-        fundraiser_name: data.fundraiser_name,
-        goal: Number(web3.utils.toWei(data.goal.toString(), "ether")), // Convert goal to wei using web3
-        distribution_percentage: data.distribution_percentage,
-        start_date: Math.floor(new Date(data.start_date).getTime() / 1000), // Convert start_date to Unix timestamp in seconds
-        end_date: Math.floor(new Date(data.end_date).getTime() / 1000), // Convert end_date to Unix timestamp in seconds
-        campaign_meta_data: response.campaign_data,
+        _fundraiser_name: data.fundraiser_name,
+        _goal: Number(web3.utils.toWei(data.goal.toString(), "ether")), // Convert goal to wei using web3
+        _distribution_percentage: data.distribution_percentage,
+        _start_date: Math.floor(new Date(data.start_date).getTime() / 1000), // Convert start_date to Unix timestamp in seconds
+        _end_date: Math.floor(new Date(data.end_date).getTime() / 1000), // Convert end_date to Unix timestamp in seconds
+        _campaign_meta_data: response.campaign_data,
 
         // collection data
-        collection_name: data.collection_name,
-        collection_meta_data: response.collection_data,
+        _collection_name: data.collection_name,
+        _collection_meta_data: response.collection_data,
+        _collection_symbol: data.collection_symbol,
       };
       const web3response = await CreateCampaingWeb3(onChain);
       if (web3response) {
@@ -305,6 +307,25 @@ export const CreateFundraisers = () => {
                       error={!!errors?.collection_name}
                       helperText={errors.collection_name?.message}
                       {...register("collection_name")}
+                    />
+                  </Grid>
+                  <Grid
+                    display="flex"
+                    flexDirection="row"
+                    gap="25px"
+                    width="100%"
+                  >
+                    <TextField
+                      fullWidth
+                      id="collection_symbol"
+                      label="Collection Sympbol"
+                      variant="outlined"
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
+                      error={!!errors?.collection_symbol}
+                      helperText={errors.collection_symbol?.message}
+                      {...register("collection_symbol")}
                     />
                   </Grid>
                   <Grid

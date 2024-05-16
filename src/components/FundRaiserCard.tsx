@@ -5,13 +5,57 @@ import {
   LinearProgress,
   Typography,
 } from "@mui/material";
-import FundraisePlaceholder from "@/assets/fundraiser/fundraise-placeholder.webp";
 import { ArtistCard } from "@/components/ui/ArtistCard";
 import ArtistPlaceholder from "@/assets/fundraiser/artist-placehodler.svg";
 
-const FundRaiserCard = () => {
+interface FundRaiserCardProps {
+  fundraiser_name: string;
+  goal: number;
+  distribution_percentage?: number;
+  start_date: number;
+  end_date: number;
+  current_amount: number;
+  disabled: boolean;
+  created_date: number;
+  collection_description: string;
+  collection_image: string;
+  collection_hero: string;
+  owner: string;
+  collection_address: string;
+}
+
+const FundRaiserCard = ({ data }: { data: FundRaiserCardProps }) => {
+  const {
+    fundraiser_name,
+    goal,
+    distribution_percentage,
+    // start_date,
+    end_date,
+    current_amount,
+    // disabled,
+    // created_date,
+    // collection_description,
+    collection_image,
+    // collection_hero,
+    // owner,
+    // collection_address,
+  } = data;
+
+  const human_deadline = (date: number) => {
+    const deadline = new Date(date * 1000);
+    return deadline.toLocaleDateString();
+  };
+
+  const eth_value = (amount: number) => {
+    return amount / 1000000000000000000;
+  };
+
+  const raised_percentage = (amount: number) => {
+    return (amount / goal) * 100;
+  };
+
   const FundRaiserItem = {
-    backgroundImage: `url(${FundraisePlaceholder})`,
+    backgroundImage: `url(${collection_image})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
@@ -32,7 +76,7 @@ const FundRaiserCard = () => {
           bgcolor="secondary.light"
           borderRadius="16px"
         >
-          2% distribution
+          {distribution_percentage}% distribution
         </Box>
       </Grid>
       <Grid
@@ -42,23 +86,26 @@ const FundRaiserCard = () => {
         padding="15px 15px 15px 15px"
       >
         <Grid display="flex" flexDirection="column" gap="5px" padding="0">
-          <Typography variant="h5">Music Title</Typography>
+          <Typography variant="h5">{fundraiser_name}</Typography>
           <Typography variant="subtitle1" color="#6D6D6D" fontSize="14px">
-            <b>Deadline</b>: 12/12/2022
+            <b>Deadline</b>: {human_deadline(end_date)}
           </Typography>
         </Grid>
 
-        <ArtistCard
-          artistName="Artist Name"
-          artistPlaceholder={ArtistPlaceholder}
-        />
+        <ArtistCard artistName="name" artistPlaceholder={ArtistPlaceholder} />
 
         <Box width="100%">
-          <LinearProgress color="primary" variant="determinate" value={55} />
+          <LinearProgress
+            color="primary"
+            variant="determinate"
+            value={raised_percentage(current_amount)}
+          />
         </Box>
 
         <Typography variant="subtitle2" color="#6D6D6D">
-          <b>Eth 0.2 raised of Eth 0.5</b>
+          <b>
+            Eth {eth_value(current_amount)} raised of Eth {eth_value(goal)}
+          </b>
         </Typography>
       </Grid>
     </Card>

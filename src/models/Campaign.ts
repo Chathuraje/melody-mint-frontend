@@ -1,13 +1,14 @@
 export type CampaignBlockchain = {
-  fundraiser_name: string;
-  goal: number;
-  distribution_percentage: number;
-  start_date: number;
-  end_date: number;
-  campaign_meta_data: string;
+  _fundraiser_name: string;
+  _goal: number;
+  _distribution_percentage: number;
+  _start_date: number;
+  _end_date: number;
+  _campaign_meta_data: string;
 
-  collection_name: string;
-  collection_meta_data: string;
+  _collection_name: string;
+  _collection_symbol: string;
+  _collection_meta_data: string;
 };
 
 export type CampaingOffChain = {

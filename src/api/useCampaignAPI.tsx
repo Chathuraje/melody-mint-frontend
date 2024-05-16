@@ -1,4 +1,5 @@
 import { useAxiosPrivate } from "@/hooks/Axios/useAxiosPrivate";
+import { useAxiosPublic } from "@/hooks/Axios/useAxiosPublic";
 import { CampaingOffChain } from "@/models/Campaign";
 
 type StoreCampaignMetaDataAPIType = (
@@ -9,8 +10,27 @@ type StoreCampaignMetaDataResponseType = {
   collection_data: string;
 };
 
+interface CampaignsResponse {
+  fundraiser_name: string;
+  goal: number;
+  distribution_percentage: number;
+  start_date: number;
+  end_date: number;
+  current_amount: number;
+  disabled: boolean;
+  created_date: number;
+  collection_description: string;
+  collection_image: string;
+  collection_hero: string;
+  owner: string;
+  collection_address: string;
+}
+
+type GetAllCampaingDataAPI = (chainId?: number) => Promise<CampaignsResponse[]>;
+
 export const useCampaignAPI = () => {
   const { axiosPrivate } = useAxiosPrivate();
+  const { axiosPublic } = useAxiosPublic();
 
   const StoreCampaignMetaDataAPI: StoreCampaignMetaDataAPIType = async (
     data
@@ -61,5 +81,22 @@ export const useCampaignAPI = () => {
     }
   };
 
-  return { StoreCampaignMetaDataAPI };
+  const GetAllCampaingDataAPI: GetAllCampaingDataAPI = async (data) => {
+    const chaindId = data;
+    if (chaindId === undefined) {
+      return [];
+    }
+
+    try {
+      const response = await axiosPublic.get<CampaignsResponse[]>(
+        `/campaign/${chaindId}`
+      );
+      return response.data;
+    } catch (error) {
+      console.error("Error occurred:", error);
+      throw error;
+    }
+  };
+
+  return { StoreCampaignMetaDataAPI, GetAllCampaingDataAPI };
 };

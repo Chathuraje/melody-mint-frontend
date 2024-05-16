@@ -1,5 +1,18 @@
 [
-  { "inputs": [], "stateMutability": "nonpayable", "type": "constructor" },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "owner", "type": "address" }
+    ],
+    "name": "OwnableInvalidOwner",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "account", "type": "address" }
+    ],
+    "name": "OwnableUnauthorizedAccount",
+    "type": "error"
+  },
   {
     "anonymous": false,
     "inputs": [
@@ -42,13 +55,19 @@
       {
         "indexed": false,
         "internalType": "string",
-        "name": "metadata_hash",
+        "name": "campaign_meta_data",
         "type": "string"
       },
       {
         "indexed": true,
         "internalType": "address",
         "name": "owner",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "collection_address",
         "type": "address"
       }
     ],
@@ -91,6 +110,25 @@
     "anonymous": false,
     "inputs": [
       {
+        "indexed": false,
+        "internalType": "string",
+        "name": "collectionName",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "contractAddress",
+        "type": "address"
+      }
+    ],
+    "name": "CollectionCreated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
         "indexed": true,
         "internalType": "uint256",
         "name": "campaign_id",
@@ -110,6 +148,25 @@
       }
     ],
     "name": "InvestmentMade",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "previousOwner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipTransferred",
     "type": "event"
   },
   {
@@ -151,6 +208,13 @@
     "type": "event"
   },
   {
+    "inputs": [{ "internalType": "string", "name": "", "type": "string" }],
+    "name": "collections",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "inputs": [
       {
         "internalType": "string",
@@ -165,7 +229,26 @@
       },
       { "internalType": "uint256", "name": "_start_date", "type": "uint256" },
       { "internalType": "uint256", "name": "_end_date", "type": "uint256" },
-      { "internalType": "string", "name": "_metadata_hash", "type": "string" }
+      {
+        "internalType": "string",
+        "name": "_campaign_meta_data",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_collection_name",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_collection_meta_data",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_collection_symbol",
+        "type": "string"
+      }
     ],
     "name": "createCampaign",
     "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
@@ -215,12 +298,17 @@
           },
           {
             "internalType": "string",
-            "name": "metadata_hash",
+            "name": "campaign_meta_data",
             "type": "string"
           },
-          { "internalType": "address", "name": "owner", "type": "address" }
+          { "internalType": "address", "name": "owner", "type": "address" },
+          {
+            "internalType": "address",
+            "name": "collection_address",
+            "type": "address"
+          }
         ],
-        "internalType": "struct Fundraising.Campaign[]",
+        "internalType": "struct FundraisingInterface.Campaign[]",
         "name": "",
         "type": "tuple[]"
       }
@@ -258,7 +346,7 @@
           { "internalType": "address", "name": "donor", "type": "address" },
           { "internalType": "uint256", "name": "amount", "type": "uint256" }
         ],
-        "internalType": "struct Fundraising.Investment[]",
+        "internalType": "struct FundraisingInterface.Investment[]",
         "name": "",
         "type": "tuple[]"
       }
@@ -288,6 +376,13 @@
     "type": "function"
   },
   {
+    "inputs": [],
+    "name": "owner",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "inputs": [
       { "internalType": "bytes32", "name": "_user_hash", "type": "bytes32" }
     ],
@@ -300,10 +395,26 @@
     "type": "function"
   },
   {
+    "inputs": [],
+    "name": "renounceOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
     "inputs": [
       { "internalType": "uint256", "name": "_campaign_id", "type": "uint256" }
     ],
     "name": "setCampaingDisabled",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "newOwner", "type": "address" }
+    ],
+    "name": "transferOwnership",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
