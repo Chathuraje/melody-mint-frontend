@@ -368,6 +368,11 @@
             "internalType": "address",
             "name": "contractAddress",
             "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "owner_address",
+            "type": "address"
           }
         ],
         "internalType": "struct CollectionsFactoryInterface.CollectionDetails",
