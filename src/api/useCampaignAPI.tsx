@@ -28,7 +28,7 @@ interface CampaignsResponse {
   collection_image: string;
   collection_hero: string;
   owner: string;
-  collection_address: string;
+  collection_address: `0x${string}`;
   investment: InvestmentList[];
 }
 

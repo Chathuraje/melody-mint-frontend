@@ -208,13 +208,6 @@
     "type": "event"
   },
   {
-    "inputs": [{ "internalType": "string", "name": "", "type": "string" }],
-    "name": "collections",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "inputs": [
       {
         "internalType": "string",
@@ -351,6 +344,35 @@
         "internalType": "struct FundraisingInterface.Investment[]",
         "name": "",
         "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_collectionAddress",
+        "type": "address"
+      }
+    ],
+    "name": "getCollectionByCollectionAddress",
+    "outputs": [
+      {
+        "components": [
+          { "internalType": "string", "name": "name", "type": "string" },
+          { "internalType": "string", "name": "symbol", "type": "string" },
+          { "internalType": "string", "name": "metaData", "type": "string" },
+          {
+            "internalType": "address",
+            "name": "contractAddress",
+            "type": "address"
+          }
+        ],
+        "internalType": "struct CollectionsFactoryInterface.CollectionDetails",
+        "name": "",
+        "type": "tuple"
       }
     ],
     "stateMutability": "view",

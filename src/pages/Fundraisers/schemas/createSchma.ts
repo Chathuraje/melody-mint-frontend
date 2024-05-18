@@ -5,12 +5,12 @@ const ACCEPTED_FILE_TYPES = ["image/png", "image/jpeg"];
 
 export const campaignCreateSchema = z.object({
   fundraiser_name: z.string().min(3).max(50),
-  short_description: z.string().min(3).max(100),
+  short_description: z.string().min(3).max(1000),
   goal: z.string().min(1),
   distribution_percentage: z.string().min(1).max(100),
   start_date: z.string().min(3).max(50),
   end_date: z.string().min(3).max(50),
-  description: z.string().min(3).max(500),
+  description: z.string().min(3).max(5000),
   image: z
     .instanceof(FileList)
     .optional()
@@ -28,7 +28,7 @@ export const campaignCreateSchema = z.object({
       return true; // First file is valid
     }),
   collection_name: z.string().min(3).max(50),
-  collection_description: z.string().min(3).max(100),
+  collection_description: z.string().min(3).max(1000),
   collection_image: z
     .instanceof(FileList)
     .optional()

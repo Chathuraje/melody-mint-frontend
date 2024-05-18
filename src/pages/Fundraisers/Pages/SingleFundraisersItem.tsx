@@ -48,7 +48,7 @@ interface CampaignsResponse {
   collection_image: string;
   collection_hero: string;
   owner: string;
-  collection_address: string;
+  collection_address: `0x${string}`;
   investment: InvestmentList[];
 }
 
@@ -58,10 +58,10 @@ export const SingleFundraisersItem = () => {
   const Token = <TokenIcon />;
   const navigate = useNavigate();
   const { GetCampaingDataAPI } = useCampaignAPI();
-  const { investToCampaignWeb3 } = useCampaingWeb3();
+  const { investToCampaignWeb3, createCollectionWeb3 } = useCampaingWeb3();
 
   const [campaingData, setCampaignData] = useState<CampaignsResponse>();
-  const { chainId } = useAccount();
+  const { address, chainId } = useAccount();
 
   const { FundraisersId } = useParams();
   const [investmentAmount, setInvestmentAmount] = useState("");
@@ -77,15 +77,31 @@ export const SingleFundraisersItem = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  function investAmount(amount: string) {
+  async function investAmount(amount: string) {
     if (!FundraisersId) {
       return;
     }
-    const response = investToCampaignWeb3(
+    const response = await investToCampaignWeb3(
       parseInt(FundraisersId),
       BigInt(wei_value(parseFloat(amount)))
     );
     console.log(response);
+
+    if (response) {
+      if (
+        campaingData?.collection_address !== undefined &&
+        address !== undefined
+      ) {
+        console.log("minting the nft");
+        const data = await createCollectionWeb3({
+          collectionAddress: campaingData?.collection_address,
+          ownAddress: address,
+        });
+        if (data) {
+          console.log(data);
+        }
+      }
+    }
   }
 
   function viewCollection(address: string | undefined) {
@@ -100,8 +116,8 @@ export const SingleFundraisersItem = () => {
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
-    height: "290px",
-    width: "240px",
+    height: "100%",
+    width: "300%",
     borderRadius: "16px",
   };
 

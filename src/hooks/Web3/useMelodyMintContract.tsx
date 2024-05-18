@@ -1,5 +1,6 @@
 import { useWriteContract } from "wagmi";
 import abi from "./abi.json";
+import abi_contract from "./collection_abi.json";
 import { WriteContractReturnType } from "viem";
 
 const MELODY_MINT_CONTRACT_ADDRESS = import.meta.env
@@ -22,6 +23,16 @@ interface web3WritePaybleParams {
 
 type web3WritePaybleResponse = (
   aprams: web3WritePaybleParams
+) => Promise<WriteContractReturnType>;
+
+interface web3WriteContractParams {
+  function_name: string;
+  args: (string | number | boolean)[];
+  contract_address: `0x${string}`;
+}
+
+type web3WriteContractResponse = (
+  aprams: web3WriteContractParams
 ) => Promise<WriteContractReturnType>;
 
 export const useMelodyMintContract = () => {
@@ -62,5 +73,22 @@ export const useMelodyMintContract = () => {
     }
   };
 
-  return { web3Write, web3WritePayble };
+  const web3WriteContract: web3WriteContractResponse = async (params) => {
+    const { function_name, args, contract_address } = params;
+
+    try {
+      const response = await writeContractAsync({
+        abi: abi_contract,
+        address: contract_address,
+        functionName: function_name,
+        args: [...args],
+      });
+      return response;
+    } catch (error) {
+      console.error("Error occurred:", error);
+      throw error;
+    }
+  };
+
+  return { web3Write, web3WritePayble, web3WriteContract };
 };
