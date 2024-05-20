@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/Card";
-import AutoGraphIcon from "@mui/icons-material/AutoGraph";
+// import AutoGraphIcon from "@mui/icons-material/AutoGraph";
 import { Unstable_Grid2 as Grid, Typography } from "@mui/material";
 
 interface AnalystStatsProps {
@@ -34,7 +34,7 @@ export const AnalystStatsBox = (props: AnalystStatsProps) => {
             {props.metrics}
           </Typography>
         </Grid>
-        <Grid display="flex" flexDirection="row" gap="10px" alignItems="center">
+        {/* <Grid display="flex" flexDirection="row" gap="10px" alignItems="center">
           <AutoGraphIcon color="primary" />
           <Typography
             variant="subtitle2"
@@ -44,7 +44,7 @@ export const AnalystStatsBox = (props: AnalystStatsProps) => {
           >
             <b>{props.subtitle}</b>
           </Typography>
-        </Grid>
+        </Grid> */}
       </Grid>
     </Card>
   );

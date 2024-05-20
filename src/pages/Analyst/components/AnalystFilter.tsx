@@ -1,13 +1,15 @@
 // import { SelectOptions } from "@/components/ui/SelectOptions";
 import { Button, Unstable_Grid2 as Grid } from "@mui/material";
-import { useContext } from "react";
-import { AnalystContext } from "../context/AnalystContext";
+import { useNavigate } from "react-router-dom";
+// import { useContext } from "react";
+// import { AnalystContext } from "../context/AnalystContext";
 
 export const AnalystFilter = () => {
-  const { setPopupState } = useContext(AnalystContext)!;
+  // const { setPopupState } = useContext(AnalystContext)!;
+  const navigate = useNavigate();
 
   const handleOpenPopup = () => {
-    setPopupState(true);
+    navigate(`/analyst/add-new`);
   };
 
   return (

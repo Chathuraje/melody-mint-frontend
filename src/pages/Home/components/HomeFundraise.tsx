@@ -1,5 +1,5 @@
-import FundRaiserCard from "@/components/FundRaiserCard";
-import { Typography, Grid, Button } from "@mui/material";
+// import FundRaiserCard from "@/components/FundRaiserCard";
+import { Typography, Grid } from "@mui/material";
 
 export const HomeFundraise = () => {
   return (
@@ -12,19 +12,19 @@ export const HomeFundraise = () => {
         </Typography>
       </Grid>
 
-      <Grid container justifyContent="left">
+      {/* <Grid container justifyContent="left">
         {[...Array(8)].map((_, index) => (
           <Grid item key={index} xs={12} sm={6} md={3} padding={1}>
             <FundRaiserCard />
           </Grid>
         ))}
-      </Grid>
-
+      </Grid> */}
+{/* 
       <Grid item>
         <Button variant="outlined" color="secondary">
           View more fundraisers
         </Button>
-      </Grid>
+      </Grid> */}
     </Grid>
   );
 };

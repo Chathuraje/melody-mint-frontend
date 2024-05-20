@@ -19,6 +19,7 @@ import {
 import { ProtectedRoutes } from "./ProtectedRoutes";
 import { Login } from "./Login/Login";
 import { UserUpdate, UserView } from "./User/User";
+import { AddNewAnalyst } from "./Analyst/AddNewAnalyst";
 
 export interface RoutesInterface {
   path: string;
@@ -130,6 +131,15 @@ export const routes = [
       {
         path: "/analyst",
         children: [
+          {
+            path: "/analyst/add-new",
+            element: (
+              <ProtectedRoutes>
+                <AddNewAnalyst />
+              </ProtectedRoutes>
+            ),
+            title: "Add New Analyst",
+          },
           {
             path: "/analyst",
             element: (

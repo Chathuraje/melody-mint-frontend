@@ -1,6 +1,6 @@
-import { Unstable_Grid2 as Grid, IconButton, Typography } from "@mui/material";
-import { SelectOptions } from "@/components/ui/SelectOptions";
-import { Download } from "@mui/icons-material";
+import { Unstable_Grid2 as Grid, Typography } from "@mui/material";
+// import { SelectOptions } from "@/components/ui/SelectOptions";
+// import { Download } from "@mui/icons-material";
 
 interface AnalystChartHeaderProps {
   title: string;
@@ -26,10 +26,10 @@ export const AnalystChartHeader = (props: AnalystChartHeaderProps) => {
           </Typography>
         </Grid>
         <Grid>
-          <IconButton color="primary">
+          {/* <IconButton color="primary">
             <Download />
-          </IconButton>
-          <SelectOptions items={["This Week", "This Month"]} />
+          </IconButton> */}
+          {/* <SelectOptions items={["This Week", "This Month"]} /> */}
         </Grid>
       </Grid>
     </Grid>

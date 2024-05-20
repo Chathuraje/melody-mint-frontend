@@ -80,13 +80,16 @@ export const AllAnalyst = () => {
                 <CircularProgress />
               </Grid>
             ) : (
-              musicData?.map((musics, index) => (
+              musicData?.map((musics: MusicResponse, index) => (
                 <Grid key={index} xs={12} sm={6} md={3} padding={1}>
                   <Link
-                    to={`/marketplace/${musics?.id}`}
+                    to={`/analyst/${musics?.id}`}
                     style={{ textDecoration: "none", color: "inherit" }}
                   >
-                    <AnalystCard />
+                    <AnalystCard
+                      title={musics?.title}
+                      total_platform={musics?.total_platform}
+                    />
                   </Link>
                 </Grid>
               ))

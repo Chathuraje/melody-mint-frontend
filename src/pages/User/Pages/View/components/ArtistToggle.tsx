@@ -3,7 +3,7 @@ import { Tabs, Tab, Unstable_Grid2 as Grid } from "@mui/material";
 // import { FundraiserSection } from "@/layouts/Global/FundraiserSection/FundraiserSection";
 // import { MarketpaceSection } from "@/layouts/Global/MarketplaceSection/MarketpaceSection";
 import { FundraiseUpdateBox } from "@/components/FundraiseUpdateBox";
-import FundRaiserCard from "@/components/FundRaiserCard";
+// import FundRaiserCard from "@/components/FundRaiserCard";
 
 export const ArtistToggle = () => {
   const [selectedTab, setSelectedTab] = useState(0);
@@ -33,7 +33,7 @@ export const ArtistToggle = () => {
         <Grid container justifyContent="left">
           {[...Array(8)].map((_, index) => (
             <Grid key={index} xs={12} sm={6} md={3} padding={1}>
-              <FundRaiserCard />
+              {/* <FundRaiserCard /> */}
             </Grid>
           ))}
         </Grid>
@@ -42,7 +42,7 @@ export const ArtistToggle = () => {
         <Grid container justifyContent="left">
           {[...Array(8)].map((_, index) => (
             <Grid key={index} xs={12} sm={6} md={3} padding={1}>
-              <FundRaiserCard />
+              {/* <FundRaiserCard /> */}
             </Grid>
           ))}
         </Grid>
