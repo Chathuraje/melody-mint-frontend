@@ -27,6 +27,7 @@ interface FundRaiserCardProps {
   collection_hero: string;
   owner: string;
   collection_address: string;
+  owner_name: string;
 }
 
 const FundRaiserCard = ({ data }: { data: FundRaiserCardProps }) => {
@@ -44,6 +45,7 @@ const FundRaiserCard = ({ data }: { data: FundRaiserCardProps }) => {
     // collection_hero,
     // owner,
     // collection_address,
+    owner_name,
   } = data;
 
   const FundRaiserItem = {
@@ -84,7 +86,10 @@ const FundRaiserCard = ({ data }: { data: FundRaiserCardProps }) => {
           </Typography>
         </Grid>
 
-        <ArtistCard artistName="name" artistPlaceholder={ArtistPlaceholder} />
+        <ArtistCard
+          artistName={owner_name}
+          artistPlaceholder={ArtistPlaceholder}
+        />
 
         <Box width="100%">
           <LinearProgress

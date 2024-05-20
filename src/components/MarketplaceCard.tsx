@@ -1,14 +1,17 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import CollectionPlaceholder from "@/assets/marketplace/single-collection-image-palceholder.png";
 import { useState } from "react";
+import { truncateAddress } from "@/utils/truncateAddress";
 
 interface MarketplaceCardProps {
   nft?: boolean;
   name: string;
   floor?: number;
-  currentPrice?: number;
-  lastPrice?: number;
+  currentPrice?: string;
+  lastPrice?: string;
   src?: string;
+  symbol?: string;
+  collection_addresse?: string;
 }
 
 export const MarketplaceCard = (props: MarketplaceCardProps) => {
@@ -65,7 +68,8 @@ export const MarketplaceCard = (props: MarketplaceCardProps) => {
           }}
         >
           <Grid display="flex" flexDirection="row" gap="10px">
-            <Typography fontSize="16px">{props.name}</Typography>
+            <Typography fontSize="16px">{props.name}</Typography> ||
+            <Typography fontSize="16px">{props.symbol}</Typography>
             {props.nft && (
               <Typography fontSize="16px" color="textSecondary">
                 | Price: {props.currentPrice} ETH
@@ -73,11 +77,14 @@ export const MarketplaceCard = (props: MarketplaceCardProps) => {
             )}
           </Grid>
           <Grid display="flex" width="100%" flexDirection="column" gap="15px">
-            <Typography fontSize="14px" color="textSecondary">
+            <Typography fontSize="14px">
+              {truncateAddress({ address: props.collection_addresse })}
+            </Typography>
+            {/* <Typography fontSize="14px" color="textSecondary">
               {props.nft
                 ? `Last Price: ${props.lastPrice} eth`
                 : `Floor: ${props.floor} eth`}
-            </Typography>
+            </Typography> */}
 
             {props.nft && (
               <Button fullWidth variant="contained">

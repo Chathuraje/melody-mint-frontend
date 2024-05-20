@@ -1,6 +1,6 @@
-import { Container, Grid } from "@mui/material";
+import { CircularProgress, Container, Grid } from "@mui/material";
 import { MarketplaceFilter } from "./MarketplaceFilter";
-import { Pagination } from "@/components/ui/Pagination";
+// import { Pagination } from "@/components/ui/Pagination";
 import { SubPageHeaders } from "@/components/SubPageHeaders";
 import { MarketplaceCard } from "@/components/MarketplaceCard";
 import { useAccount } from "wagmi";
@@ -19,17 +19,23 @@ interface MarketplaceResponse {
 
 export const AllMarketplace = () => {
   const { GetAllMarketplaceDataAPI } = useMarketplaceAPI();
+  const [isLoading, setIsLoading] = useState(false);
 
   const { chainId } = useAccount();
   const [marketplaceData, setMarketplaceData] =
     useState<MarketplaceResponse[]>();
 
   useEffect(() => {
-    GetAllMarketplaceDataAPI(chainId).then((data) => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      const data = await GetAllMarketplaceDataAPI(chainId);
       setMarketplaceData(data);
-    });
+      setIsLoading(false);
+    };
+
+    fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [chainId]);
 
   return (
     <Container>
@@ -37,28 +43,47 @@ export const AllMarketplace = () => {
         <Grid>
           <SubPageHeaders
             title="Melody Mint marketplace"
-            subtitle="m ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et do"
+            subtitle="Discover the latest NFTs on Melody Mint."
             filter={<MarketplaceFilter />}
           />
         </Grid>
         <Grid container direction="column" alignItems="center" gap="25px">
           <Grid container justifyContent="left">
-            {marketplaceData?.map((marketplace, index) => (
-              <Grid key={index} xs={12} sm={6} md={3} padding={1}>
-                <Link
-                  to={`/marketplace/${marketplace?.collection_addresse}`}
-                  style={{ textDecoration: "none", color: "inherit" }}
-                >
-                  <MarketplaceCard
-                    src={marketplace?.collection_image}
-                    name={marketplace?.collection_name}
-                    floor={14.34}
-                  />
-                </Link>
+            {isLoading ? (
+              <Grid
+                container
+                justifyContent="center"
+                alignItems="center"
+                style={{
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                  position: "absolute",
+                }}
+              >
+                <CircularProgress />
               </Grid>
-            ))}
+            ) : (
+              marketplaceData?.map((marketplace, index) => (
+                <Grid key={index} xs={12} sm={6} md={3} padding={1}>
+                  <Link
+                    to={`/marketplace/${marketplace?.collection_addresse}`}
+                    style={{ textDecoration: "none", color: "inherit" }}
+                  >
+                    <MarketplaceCard
+                      src={marketplace?.collection_image}
+                      name={marketplace?.collection_name}
+                      // floor={marketplace?.collection_symbol}
+                      symbol={marketplace?.collection_symbol}
+                      collection_addresse={marketplace?.collection_addresse}
+                    />
+                  </Link>
+                </Grid>
+              ))
+            )}
           </Grid>
-          <Pagination />
+          {/* <Pagination /> */}
         </Grid>
       </Grid>
     </Container>

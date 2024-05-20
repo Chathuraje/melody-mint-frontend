@@ -13,7 +13,7 @@ import {
 import {
   AllMarketplace,
   ListForSale,
-  MakeOffer,
+  // MakeOffer,
   MarketplaceItem,
 } from "./Marketplace";
 import { ProtectedRoutes } from "./ProtectedRoutes";
@@ -112,15 +112,15 @@ export const routes = [
                     ),
                     title: "List for Sale",
                   },
-                  {
-                    path: "/marketplace/:collectionId/:tokenId/make-offer",
-                    element: (
-                      <ProtectedRoutes>
-                        <MakeOffer />
-                      </ProtectedRoutes>
-                    ),
-                    title: "Make Offer",
-                  },
+                  // {
+                  //   path: "/marketplace/:collectionId/:tokenId/make-offer",
+                  //   element: (
+                  //     <ProtectedRoutes>
+                  //       <MakeOffer />
+                  //     </ProtectedRoutes>
+                  //   ),
+                  //   title: "Make Offer",
+                  // },
                 ],
               },
             ],
@@ -151,12 +151,12 @@ export const routes = [
           },
         ],
       },
-      {
-        path: "/about",
-        element: <div>about</div>,
-        title: "About",
-        menu: ["header", "footer1"],
-      },
+      // {
+      //   path: "/about",
+      //   element: <div>about</div>,
+      //   title: "About",
+      //   menu: ["header", "footer1"],
+      // },
       {
         path: "/user",
         children: [

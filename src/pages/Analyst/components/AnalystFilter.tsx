@@ -1,4 +1,4 @@
-import { SelectOptions } from "@/components/ui/SelectOptions";
+// import { SelectOptions } from "@/components/ui/SelectOptions";
 import { Button, Unstable_Grid2 as Grid } from "@mui/material";
 import { useContext } from "react";
 import { AnalystContext } from "../context/AnalystContext";
@@ -23,10 +23,10 @@ export const AnalystFilter = () => {
           <ToggleButtons values={["Top", "Trending"]} />
         </Grid> */}
         <Grid>
-          <SelectOptions
+          {/* <SelectOptions
             label="Music Genres"
             items={["All", "Dance", "Rock"]}
-          />
+          /> */}
         </Grid>
         <Grid alignContent="center">
           <Button onClick={handleOpenPopup} variant="outlined" color="primary">

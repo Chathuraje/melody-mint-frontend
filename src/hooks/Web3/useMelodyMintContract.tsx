@@ -35,6 +35,17 @@ type web3WriteContractResponse = (
   aprams: web3WriteContractParams
 ) => Promise<WriteContractReturnType>;
 
+interface web3WriteContractPaybleParams {
+  function_name: string;
+  args: (string | number | boolean)[];
+  contract_address: `0x${string}`;
+  value: bigint;
+}
+
+type web3WriteContractPaybleResponse = (
+  aprams: web3WriteContractPaybleParams
+) => Promise<WriteContractReturnType>;
+
 export const useMelodyMintContract = () => {
   const { writeContractAsync } = useWriteContract();
 
@@ -90,5 +101,30 @@ export const useMelodyMintContract = () => {
     }
   };
 
-  return { web3Write, web3WritePayble, web3WriteContract };
+  const web3WriteContractPayble: web3WriteContractPaybleResponse = async (
+    params
+  ) => {
+    const { function_name, args, contract_address, value } = params;
+
+    try {
+      const response = await writeContractAsync({
+        abi: abi_contract,
+        address: contract_address,
+        functionName: function_name,
+        args: [...args],
+        value: value,
+      });
+      return response;
+    } catch (error) {
+      console.error("Error occurred:", error);
+      throw error;
+    }
+  };
+
+  return {
+    web3Write,
+    web3WritePayble,
+    web3WriteContract,
+    web3WriteContractPayble,
+  };
 };

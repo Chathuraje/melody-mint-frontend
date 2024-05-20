@@ -22,8 +22,9 @@ interface GetAllNFTDataAPIDataResponse {
   collection_address: string;
   collection_owner: string;
   nfts: {
-    nft_id: string;
     owner_address: string;
+    nft_id: string;
+    price: number;
   }[];
 }
 
@@ -34,6 +35,27 @@ interface GetAllNFTDataRequest {
 type GetAllNFTDataAPIDataAPI = (
   data: GetAllNFTDataRequest
 ) => Promise<GetAllNFTDataAPIDataResponse>;
+
+interface GetSingleNFTDataAPIDataResponse {
+  collection_name: string;
+  collection_symbol: string;
+  collection_description: string;
+  collection_image: string;
+  collection_hero: string;
+  collection_address: `0x${string}`;
+  collection_owner: string;
+  nft_id: string;
+  owner_address: string;
+  price: number;
+}
+interface GetSingleNFTDataRequest {
+  chainId?: number;
+  contract_address?: string;
+  nft_id?: number;
+}
+type GetSingleNFTDataAPIDataAPI = (
+  data: GetSingleNFTDataRequest
+) => Promise<GetSingleNFTDataAPIDataResponse>;
 
 export const useMarketplaceAPI = () => {
   const { axiosPrivate } = useAxiosPrivate();
@@ -73,8 +95,27 @@ export const useMarketplaceAPI = () => {
     }
   };
 
+  const GetSingleNFTDataAPI: GetSingleNFTDataAPIDataAPI = async (data) => {
+    const { chainId, contract_address, nft_id } = data;
+
+    if (chainId === undefined || contract_address === undefined) {
+      return {} as GetSingleNFTDataAPIDataResponse;
+    }
+
+    try {
+      const response = await axiosPrivate.get<GetSingleNFTDataAPIDataResponse>(
+        `/marketplace/nft/${chainId}/${contract_address}/${nft_id}`
+      );
+      return response.data;
+    } catch (error) {
+      console.error("Error occurred:", error);
+      throw error;
+    }
+  };
+
   return {
     GetAllMarketplaceDataAPI,
     GetAllNFTDataAPI,
+    GetSingleNFTDataAPI,
   };
 };

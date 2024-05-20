@@ -1,5 +1,8 @@
-import { Unstable_Grid2 as Grid, Container } from "@mui/material";
-import { Pagination } from "@/components/ui/Pagination";
+import {
+  Unstable_Grid2 as Grid,
+  Container,
+  CircularProgress,
+} from "@mui/material";
 import { SubPageHeaders } from "@/components/SubPageHeaders";
 import FundRaiserCard from "@/components/FundRaiserCard";
 import { ToggleSwitch } from "@/components/ToggleSwitch";
@@ -24,6 +27,7 @@ interface CampaignsResponse {
   collection_hero: string;
   owner: string;
   collection_address: string;
+  owner_name: string;
 }
 
 export const AllFundraisers = () => {
@@ -33,12 +37,19 @@ export const AllFundraisers = () => {
   const [campaingData, setCampaignData] = useState<CampaignsResponse[]>();
   const { chainId } = useAccount();
 
+  const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
-    GetAllCampaingDataAPI(chainId).then((data) => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      const data = await GetAllCampaingDataAPI(chainId);
       setCampaignData(data);
-    });
+      setIsLoading(false);
+    };
+
+    fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [chainId]);
 
   return (
     <Container>
@@ -67,18 +78,34 @@ export const AllFundraisers = () => {
         </Grid>
         <Grid container direction="column" alignItems="left" gap="25px">
           <Grid container justifyContent="left">
-            {campaingData?.map((campaign, index) => (
-              <Grid key={index} xs={12} sm={6} md={3} padding={1}>
-                <Link
-                  to={`/fundraisers/${index}`}
-                  style={{ textDecoration: "none", color: "inherit" }}
-                >
-                  <FundRaiserCard data={campaign} />
-                </Link>
+            {isLoading ? (
+              <Grid
+                container
+                justifyContent="center"
+                alignItems="center"
+                style={{
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                  position: "absolute",
+                }}
+              >
+                <CircularProgress />
               </Grid>
-            ))}
+            ) : (
+              campaingData?.map((campaign, index) => (
+                <Grid key={index} xs={12} sm={6} md={3} padding={1}>
+                  <Link
+                    to={`/fundraisers/${index}`}
+                    style={{ textDecoration: "none", color: "inherit" }}
+                  >
+                    <FundRaiserCard data={campaign} />
+                  </Link>
+                </Grid>
+              ))
+            )}
           </Grid>
-          <Pagination />
         </Grid>
       </Grid>
     </Container>

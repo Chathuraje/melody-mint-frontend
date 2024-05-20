@@ -30,6 +30,7 @@ interface CampaignsResponse {
   owner: string;
   collection_address: `0x${string}`;
   investment: InvestmentList[];
+  owner_name: string;
 }
 
 type campaingRequest = {
