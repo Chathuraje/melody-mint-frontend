@@ -11,7 +11,8 @@ import { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 import { useMarketplaceAPI } from "@/api/useMarketplaceAPI";
 import { useCampaingWeb3 } from "@/api/useCampaingWeb3";
-import { eth_value, wei_value } from "@/utils/styledVarialbes";
+import { eth_value } from "@/utils/styledVarialbes";
+import axios from "axios";
 
 interface GetSingleNFTDataAPIDataResponse {
   collection_name: string;
@@ -39,7 +40,20 @@ export const MarketplaceItemNft = () => {
   const [price, setPrice] = useState<string>("");
   const [transferAddress, setTransferAddress] = useState<string>("");
 
+  const [ethPrice, setEthPrice] = useState(null);
+
   useEffect(() => {
+    const fetchEthPrice = async () => {
+      try {
+        const response = await axios.get(
+          "https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd"
+        );
+        setEthPrice(response.data.ethereum.usd);
+      } catch (error) {
+        console.error("Error fetching ETH price:", error);
+      }
+    };
+
     const fetchData = async () => {
       setIsLoading(true);
       const data = await GetSingleNFTDataAPI({
@@ -52,6 +66,7 @@ export const MarketplaceItemNft = () => {
     };
 
     fetchData();
+    fetchEthPrice();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chainId]);
 
@@ -74,7 +89,7 @@ export const MarketplaceItemNft = () => {
 
     const response = await buyNFTWeb3(
       nftData?.nft_id,
-      BigInt(nftData?.price.toString()),
+      BigInt(parseFloat(nftData.price.toString())),
       collectionId as `0x${string}`
     );
 
@@ -88,8 +103,8 @@ export const MarketplaceItemNft = () => {
     }
 
     const response = await listForSaleWeb3(
-      Number(nftData?.nft_id) || 0,
-      wei_value(parseFloat(nftData?.price.toString())),
+      Number(nftData?.nft_id) || 1,
+      parseFloat(nftData.price.toString()),
       collectionId as `0x${string}`
     );
 
@@ -189,14 +204,15 @@ export const MarketplaceItemNft = () => {
                         gap="8px"
                       >
                         <Typography variant="h6" fontSize="25px">
-                          <b>{eth_value(nftData?.price)} ETH</b>
+                          <b>
+                            {nftData?.price ? eth_value(nftData.price) : 0} ETH
+                          </b>
                         </Typography>
                         <Typography variant="h6" fontSize="15px">
-                          (
-                          {nftData
-                            ? (eth_value(nftData?.price) * 3072.57).toFixed(3)
+                          {nftData?.price
+                            ? eth_value(nftData.price) * (ethPrice ?? 0)
                             : 0}
-                          USD)
+                          USD
                         </Typography>
                       </Grid>
                     </Grid>

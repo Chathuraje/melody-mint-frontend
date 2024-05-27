@@ -20,7 +20,7 @@ export const Header = () => {
       zIndex={99}
     >
       <Grid md={3}>
-        <Logo width={65} />
+        <Logo width={150} />
       </Grid>
 
       <Grid md={6} display="flex" justifyContent="center">
