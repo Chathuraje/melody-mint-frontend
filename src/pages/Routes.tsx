@@ -29,8 +29,6 @@ export interface RoutesInterface {
   children?: RoutesInterface[];
 }
 
-const PUBLIC_URL = import.meta.env.VITE_PUBLIC_URL;
-
 export const routes = [
   {
     path: "/",
@@ -246,6 +244,4 @@ export const routes = [
   },
 ];
 
-export const router = createBrowserRouter(routes, {
-  basename: PUBLIC_URL,
-});
+export const router = createBrowserRouter(routes);
